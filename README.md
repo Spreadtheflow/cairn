@@ -101,6 +101,27 @@ renommez-le, et lisez `METHODE.md`. **La méthode fonctionne entièrement sans
 script, sans agent et sans Obsidian.** Ce sont des accélérateurs, pas des
 prérequis.
 
+## Et ensuite, sur un nouveau projet ?
+
+Rien à préparer. Vous créez votre dossier de travail, vous lancez votre
+assistant, et **il s'aperçoit tout seul qu'il ne connaît pas cet endroit** : il
+vous pose quatre questions et crée ce qu'il faut.
+
+Il le sait parce que chaque projet du cairn note le chemin de son dossier de
+travail. L'assistant cherche celui qui correspond ; s'il n'en trouve aucun, c'est
+que le projet est nouveau.
+
+Si vous préférez garder la main, deux raccourcis :
+
+```sh
+cd /vers/mon/nouveau/projet
+cairn.sh ici        # rattache ce dossier, en posant les quatre questions
+cairn.sh ou         # dit à quel projet ce dossier est rattaché
+```
+
+Et pour ceux qui ne veulent pas de terminal, le dossier `skill/` contient un
+skill Claude Code : copiez-le dans `~/.claude/skills/` et tapez `/cairn`.
+
 ## Les documents
 
 | Fichier | Pour qui |
@@ -111,6 +132,7 @@ prérequis.
 | `DOCTRINE.md` | Comment conduire l'échange avec un assistant. La moitié qui ne s'automatise pas |
 | `adaptateurs/` | Comment brancher tel ou tel outil |
 | `squelette/` | L'arborescence de départ |
+| `skill/` | Le skill `/cairn`, pour rattacher un dossier sans ligne de commande |
 | `exemples/` | Un projet complet et fictif, pour voir à quoi ça ressemble une fois habité |
 
 ## Licence

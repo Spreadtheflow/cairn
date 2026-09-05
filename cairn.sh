@@ -16,10 +16,13 @@ Usage :
   cairn.sh init [chemin]           crée un cairn (par défaut ~/cairn)
   cairn.sh groupe <chemin>         ajoute un dossier de rangement avec son _commun
   cairn.sh projet <chemin>         crée un projet et pose les 4 questions
+  cairn.sh ici [chemin]            rattache le DOSSIER COURANT à un projet du cairn
+  cairn.sh ou                      dit à quel projet le dossier courant est rattaché
 
-Les chemins sont relatifs à la racine du cairn, aussi profonds que voulu :
+Les chemins de projet sont relatifs à la racine du cairn, aussi profonds que voulu :
   cairn.sh groupe clients/orsay-mutuelle
   cairn.sh projet clients/orsay-mutuelle/audit-conformite
+  cd ~/travail/nouveau-site && cairn.sh ici clients/orsay-mutuelle/refonte
 
 Le cairn utilisé est $CAIRN s'il est défini, sinon ~/cairn.
 USAGE
@@ -40,6 +43,16 @@ remplacer() {
     motif=$1 valeur=$2 fichier=$3
     tmp=$(mktemp)
     sed "s|$motif|$valeur|" "$fichier" > "$tmp" && mv "$tmp" "$fichier"
+}
+
+# Refuse les emplacements réservés et les chemins qui sortent du cairn.
+verifier_chemin() {
+    case "$1" in
+        commun|archive|gabarits|commun/*|archive/*|gabarits/*)
+            echo "\"$1\" est un emplacement réservé." >&2; exit 1 ;;
+        /*|*/../*|../*)
+            echo "Donnez un chemin relatif à la racine du cairn." >&2; exit 1 ;;
+    esac
 }
 
 cmd_init() {
@@ -69,8 +82,8 @@ Trois choses à faire, dans cet ordre :
   2. Branchez votre assistant.
      Voir adaptateurs/ dans le dépôt de la méthode.
 
-  3. Créez votre premier projet :
-     cairn.sh projet pro/mon-premier-projet
+  3. Placez-vous dans un dossier de travail et lancez :
+     cairn.sh ici
 
 Pour l'historique et la sauvegarde, un git init dans $racine est une bonne idée
 dès maintenant : tout ce que vous ferez ensuite devient réversible.
@@ -81,16 +94,9 @@ TERMINE
 cmd_groupe() {
     [ $# -eq 1 ] || usage
     chemin=$1
-    case "$chemin" in
-        commun|archive|gabarits|commun/*|archive/*|gabarits/*)
-            echo "\"$chemin\" est un emplacement réservé." >&2; exit 1 ;;
-        /*|*/../*|../*)
-            echo "Donnez un chemin relatif à la racine du cairn." >&2; exit 1 ;;
-    esac
+    verifier_chemin "$chemin"
     racine=$(cairn_racine)
     [ ! -d "$racine/$chemin" ] || { echo "$chemin existe déjà." >&2; exit 1; }
-    [ ! -f "$racine/$chemin/contexte.md" ] || {
-        echo "$chemin est un projet, pas un groupe." >&2; exit 1; }
 
     mkdir -p "$racine/$chemin/_commun"
     printf '# Commun de %s\n\n<!-- Ce qui vaut pour tout ce qui se trouve en dessous, et pas au-delà.\n     Une ligne par fichier. -->\n' \
@@ -98,27 +104,62 @@ cmd_groupe() {
     echo "Groupe créé : $racine/$chemin"
 }
 
-cmd_projet() {
-    [ $# -eq 1 ] || usage
-    chemin=$1
-    case "$chemin" in
-        commun|archive|gabarits|commun/*|archive/*|gabarits/*)
-            echo "\"$chemin\" est un emplacement réservé." >&2; exit 1 ;;
-        /*|*/../*|../*)
-            echo "Donnez un chemin relatif à la racine du cairn." >&2; exit 1 ;;
-        */*) : ;;
-        *)  echo "Un projet vit dans un domaine. Essayez : $chemin/quelque-chose" >&2
-            exit 1 ;;
-    esac
+# Pose les quatre questions du rituel. Résultat dans $r_travail, $r_capture,
+# $r_diffusion. Le chemin de travail peut être imposé par le premier argument.
+rituel() {
+    echo
+    echo "Quatre questions, une seule fois. Entrée accepte la valeur par défaut."
+    echo
+    if [ $# -eq 1 ] && [ -n "$1" ]; then
+        r_travail=$1
+        echo "Dossier de travail : $r_travail"
+    else
+        printf 'Où se trouve le dossier de travail ? [aucun] : '
+        read -r r_travail || r_travail=""
+        [ -n "$r_travail" ] || r_travail="(aucun)"
+    fi
+
+    printf 'On capture de la mémoire ici ? (oui / non / a-la-demande) [oui] : '
+    read -r r_capture || r_capture=""
+    [ -n "$r_capture" ] || r_capture="oui"
+
+    echo
+    echo "Où pourra finir ce qui sera écrit ici ?"
+    echo "  privee    ça reste chez moi. On écrit en clair, noms compris."
+    echo "  partagee  ce sera remis à un client ou un collègue."
+    echo "  publique  ça peut finir publié. On anonymise en écrivant."
+    printf 'Diffusion ? [privee] : '
+    read -r r_diffusion || r_diffusion=""
+    [ -n "$r_diffusion" ] || r_diffusion="privee"
+}
+
+# Crée l'arborescence d'un projet. $1 chemin dans le cairn, $2 dossier de travail.
+creer_projet() {
+    chemin=$1 travail=$2
     racine=$(cairn_racine)
     projet="$racine/$chemin"
     nom=$(basename "$chemin")
     domaine=$(printf '%s' "$chemin" | cut -d/ -f1)
 
-    [ ! -d "$projet" ] || { echo "$chemin existe déjà." >&2; exit 1; }
+    mkdir -p "$projet"
+    cp "$racine/gabarits/contexte.md" "$projet/contexte.md"
+    cp "$racine/gabarits/journal.md"  "$projet/journal.md"
+    cp "$racine/gabarits/index.md"    "$projet/index.md"
 
-    # Un projet ne vit pas dans un autre projet.
-    parent=$(dirname "$chemin")
+    remplacer 'nom-stable-du-projet' "$nom"                    "$projet/contexte.md"
+    remplacer '^domaine: .*$'        "domaine: $domaine"       "$projet/contexte.md"
+    remplacer '^chemin: .*$'         "chemin: $travail"        "$projet/contexte.md"
+    remplacer '^capture: .*$'        "capture: $r_capture"     "$projet/contexte.md"
+    remplacer '^diffusion: .*$'      "diffusion: $r_diffusion" "$projet/contexte.md"
+    remplacer '05/09/2026'           "$AUJOURDHUI"             "$projet/contexte.md"
+    remplacer '05/09/2026'           "$AUJOURDHUI"             "$projet/journal.md"
+    remplacer '# Nom du projet'      "# $nom"                  "$projet/index.md"
+}
+
+# Refuse un projet à l'intérieur d'un autre projet.
+verifier_pas_imbrique() {
+    racine=$(cairn_racine)
+    parent=$(dirname "$1")
     while [ "$parent" != "." ] && [ "$parent" != "/" ]; do
         if [ -f "$racine/$parent/contexte.md" ]; then
             echo "$parent est déjà un projet ; un projet n'en contient pas d'autre." >&2
@@ -127,50 +168,149 @@ cmd_projet() {
         fi
         parent=$(dirname "$parent")
     done
+}
 
-    # Le rituel d'ouverture. Une seule fois, à la création.
-    echo
-    echo "Quatre questions, une seule fois. Entrée accepte la valeur par défaut."
-    echo
+cmd_projet() {
+    [ $# -eq 1 ] || usage
+    chemin=$1
+    verifier_chemin "$chemin"
+    case "$chemin" in
+        */*) : ;;
+        *)   echo "Un projet vit dans un domaine. Essayez : $chemin/quelque-chose" >&2
+             exit 1 ;;
+    esac
+    racine=$(cairn_racine)
+    [ ! -d "$racine/$chemin" ] || { echo "$chemin existe déjà." >&2; exit 1; }
+    verifier_pas_imbrique "$chemin"
 
-    printf 'Où se trouve le dossier de travail ? [aucun] : '
-    read -r travail || travail=""
-    [ -n "$travail" ] || travail="(aucun)"
-
-    printf 'On capture de la mémoire ici ? (oui / non / a-la-demande) [oui] : '
-    read -r capture || capture=""
-    [ -n "$capture" ] || capture="oui"
-
-    echo
-    echo "Où pourra finir ce qui sera écrit ici ?"
-    echo "  privee    ça reste chez moi. On écrit en clair, noms compris."
-    echo "  partagee  ce sera remis à un client ou un collègue."
-    echo "  publique  ça peut finir publié. On anonymise en écrivant."
-    printf 'Diffusion ? [privee] : '
-    read -r diffusion || diffusion=""
-    [ -n "$diffusion" ] || diffusion="privee"
-
-    mkdir -p "$projet"
-    cp "$racine/gabarits/contexte.md" "$projet/contexte.md"
-    cp "$racine/gabarits/journal.md"  "$projet/journal.md"
-    cp "$racine/gabarits/index.md"    "$projet/index.md"
-
-    remplacer 'nom-stable-du-projet' "$nom"                  "$projet/contexte.md"
-    remplacer '^domaine: .*$'        "domaine: $domaine"     "$projet/contexte.md"
-    remplacer '^chemin: .*$'         "chemin: $travail"      "$projet/contexte.md"
-    remplacer '^capture: .*$'        "capture: $capture"     "$projet/contexte.md"
-    remplacer '^diffusion: .*$'      "diffusion: $diffusion" "$projet/contexte.md"
-    remplacer '05/09/2026'           "$AUJOURDHUI"           "$projet/contexte.md"
-    remplacer '05/09/2026'           "$AUJOURDHUI"           "$projet/journal.md"
-    remplacer '# Nom du projet'      "# $nom"                "$projet/index.md"
+    rituel
+    creer_projet "$chemin" "$r_travail"
 
     echo
-    echo "Projet créé : $projet"
-    if [ "$capture" = "non" ]; then
+    echo "Projet créé : $racine/$chemin"
+    if [ "$r_capture" = "non" ]; then
         echo "Capture désactivée : rien ne sera retenu ici tant que vous ne changez"
         echo "pas cette ligne dans contexte.md."
     else
         echo "Complétez contexte.md, c'est ce qui sera lu en premier."
+    fi
+    echo
+}
+
+# Cherche le projet dont le chemin de travail contient le dossier donné.
+resoudre() {
+    racine=$(cairn_racine)
+    cible=$1
+    if [ -f "$cible/.cairn" ]; then
+        sed -n 's/^projet: *//p' "$cible/.cairn" | head -1
+        return
+    fi
+    # Le chemin le PLUS SPÉCIFIQUE gagne : un projet déclaré sur un dossier large
+    # (une racine, un home) ne doit pas avaler les projets rangés en dessous.
+    meilleur=""; longueur=0
+    for c in $(find "$racine" -name contexte.md -not -path "*/gabarits/*" 2>/dev/null); do
+        t=$(sed -n 's/^chemin: *//p' "$c" | head -1)
+        [ -n "$t" ] || continue
+        [ "$t" = "(aucun)" ] && continue
+        case "$cible" in
+            "$t"|"$t"/*)
+                n=${#t}
+                if [ "$n" -gt "$longueur" ]; then
+                    longueur=$n
+                    d=$(dirname "$c")
+                    meilleur="${d#$racine/}"
+                fi ;;
+        esac
+    done
+    [ -n "$meilleur" ] && printf '%s' "$meilleur"
+    return 0
+}
+
+# Chemin de travail declare par un projet du cairn.
+chemin_de() {
+    racine=$(cairn_racine)
+    sed -n 's/^chemin: *//p' "$racine/$1/contexte.md" 2>/dev/null | head -1
+}
+
+cmd_ou() {
+    ici=$(pwd)
+    trouve=$(resoudre "$ici")
+    if [ -n "$trouve" ]; then
+        racine=$(cairn_racine)
+        echo "$ici"
+        echo "  rattaché à : $trouve"
+        echo "  mémoire    : $racine/$trouve"
+    else
+        echo "$ici n'est rattaché à aucun projet du cairn."
+        echo "Pour le rattacher : cairn.sh ici"
+    fi
+}
+
+cmd_ici() {
+    ici=$(pwd)
+    racine=$(cairn_racine)
+
+    deja=$(resoudre "$ici")
+    if [ -n "$deja" ]; then
+        # Rattaché exactement ici : rien à faire.
+        # Couvert par un projet plus large : on peut vouloir un projet propre.
+        if [ "$(chemin_de "$deja")" = "$ici" ]; then
+            echo "Ce dossier est déjà rattaché à : $deja"
+            if [ ! -f "$ici/.cairn" ]; then
+                printf 'cairn: %s\nprojet: %s\n' "$racine" "$deja" > "$ici/.cairn"
+                echo "Marqueur .cairn écrit."
+            fi
+            exit 0
+        fi
+        echo "Ce dossier est couvert par un projet plus large : $deja"
+        if [ $# -eq 0 ]; then
+            printf 'Créer un projet propre à ce dossier ? [o/N] : '
+            read -r rep || rep=""
+            case "$rep" in
+                o|O|oui|OUI) : ;;
+                *) echo "On garde $deja."
+                   printf 'cairn: %s\nprojet: %s\n' "$racine" "$deja" > "$ici/.cairn"
+                   echo "Marqueur .cairn écrit vers $deja."
+                   exit 0 ;;
+            esac
+        fi
+        echo "Le nouveau projet primera, son chemin étant plus précis."
+    fi
+
+    if [ $# -eq 1 ]; then
+        chemin=$1
+    else
+        echo
+        echo "Ce dossier n'est rattaché à aucun projet."
+        echo "Domaines existants : $(find "$racine" -maxdepth 1 -mindepth 1 -type d -not -name '.*' \
+            -not -name commun -not -name archive -not -name gabarits -exec basename {} \; | tr '\n' ' ')"
+        printf 'Chemin du projet dans le cairn (ex. clients/machin/site) : '
+        read -r chemin || chemin=""
+        [ -n "$chemin" ] || { echo "Annulé." >&2; exit 1; }
+    fi
+
+    verifier_chemin "$chemin"
+    case "$chemin" in */*) : ;; *) echo "Un projet vit dans un domaine." >&2; exit 1 ;; esac
+    [ ! -d "$racine/$chemin" ] || { echo "$chemin existe déjà dans le cairn." >&2; exit 1; }
+    verifier_pas_imbrique "$chemin"
+
+    parent=$(dirname "$chemin")
+    [ -d "$racine/$parent" ] || { mkdir -p "$racine/$parent/_commun"
+        printf '# Commun de %s\n\n' "$parent" > "$racine/$parent/_commun/index.md"
+        echo "Groupe créé au passage : $parent"; }
+
+    rituel "$ici"
+    creer_projet "$chemin" "$ici"
+    printf 'cairn: %s\nprojet: %s\n' "$racine" "$chemin" > "$ici/.cairn"
+
+    echo
+    echo "Rattaché."
+    echo "  dossier de travail : $ici"
+    echo "  mémoire            : $racine/$chemin"
+    echo "  marqueur           : $ici/.cairn"
+    if [ "$r_capture" = "non" ]; then
+        echo
+        echo "Capture désactivée : rien ne sera retenu ici."
     fi
     echo
 }
@@ -181,5 +321,7 @@ case "$commande" in
     init)   cmd_init "$@" ;;
     groupe) cmd_groupe "$@" ;;
     projet) cmd_projet "$@" ;;
-    *)       usage ;;
+    ici)    cmd_ici "$@" ;;
+    ou)     cmd_ou "$@" ;;
+    *)      usage ;;
 esac

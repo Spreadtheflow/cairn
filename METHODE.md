@@ -160,7 +160,47 @@ Une seule chose ne dépend d'aucune politique : **jamais de valeur de secret dan
 un cairn**. On note le nom du secret et l'endroit où il vit, jamais sa valeur.
 Ce n'est pas un arbitrage, c'est une règle.
 
-## 5. Le rituel d'ouverture
+## 5. Retrouver le projet, et le rituel d'ouverture
+
+### Retrouver le projet depuis le dossier de travail
+
+Un assistant démarre dans un **dossier de travail**, pas dans le cairn. Il faut
+donc qu'il sache remonter au projet correspondant. La méthode ne demande aucun
+registre à tenir, parce que le lien est **déjà écrit** : chaque `contexte.md`
+porte le chemin de son dossier de travail.
+
+La résolution est donc une recherche : parmi les `contexte.md` du cairn, celui
+dont le `chemin` contient le dossier courant. C'est instantané sur quelques
+dizaines de projets, et surtout **toujours juste**, puisque rien n'est dupliqué.
+Un dérivé ne se maintient pas, il se recalcule.
+
+Deux précisions qui comptent. On travaille souvent dans un **sous-dossier**, donc
+la comparaison porte sur le dossier courant **et ses parents**. Et quand
+plusieurs projets couvrent le dossier, **le plus spécifique gagne** : on retient
+le `chemin` le plus long. Sans cette règle, un projet déclaré sur un dossier
+large, une racine de travail ou un répertoire personnel, avalerait tous les
+projets rangés en dessous de lui.
+
+**Le marqueur, en renfort.** Un fichier `.cairn` de deux lignes peut être posé à
+la racine du dossier de travail :
+
+```
+cairn: /chemin/vers/le/cairn
+projet: clients/orsay-mutuelle/audit-conformite
+```
+
+Il n'est pas obligatoire. Il sert dans trois cas : un outil qui ne sait pas
+chercher dans le système de fichiers, deux projets dont les chemins se
+recouvrent, et un humain qui ouvre le dossier et doit voir d'un coup d'œil qu'une
+mémoire existe. Comme il voyage avec le dossier, il survit à un déplacement là où
+le `chemin` de `contexte.md` devient faux.
+
+### Le rituel
+
+Quand la résolution ne trouve rien, l'assistant ne se tait pas : **il joue le
+rituel**. C'est là qu'est l'automatisation. Personne n'a à créer un dossier dans
+le cairn avant de commencer à travailler ; on crée son dossier de travail, on
+lance son assistant, et il constate qu'il ne connaît pas l'endroit.
 
 À la première session sur un projet qui n'a pas encore de `contexte.md`, quatre
 questions, une seule fois :

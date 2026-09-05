@@ -17,9 +17,13 @@ lire les fichiers du disque :
 
 Ma mémoire suit la méthode Cairn et vit dans `~/cairn/`.
 
+Au démarrage, retrouve le projet correspondant au dossier courant : un fichier
+`.cairn` ici ou dans un parent, sinon le `contexte.md` du cairn dont le champ
+`chemin` couvre ce dossier. Si tu n'en trouves aucun, demande-moi si on rattache
+ce dossier, et n'écris rien avant.
+
 Avant d'écrire quoi que ce soit en mémoire, lis `~/cairn/METHODE.md` et le
-`contexte.md` du projet courant, et respecte la politique qui y est déclarée.
-Si le projet n'a pas de `contexte.md`, n'écris rien et demande-moi.
+`contexte.md` du projet, et respecte la politique qui y est déclarée.
 ```
 
 ## Le bloc complet
@@ -33,7 +37,7 @@ vous-même le contenu du socle commun en début de conversation.
 
 Un adaptateur doit répondre à quatre questions, et à rien d'autre :
 
-1. Où vit la mémoire ?
+1. Où vit la mémoire, et comment la retrouver depuis un dossier de travail ?
 2. Quel format a un souvenir ?
 3. Quelle politique s'applique avant d'écrire ?
 4. Que ne faut-il pas retenir ?

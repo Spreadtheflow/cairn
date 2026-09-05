@@ -43,6 +43,29 @@ complète est dans `~/cairn/METHODE.md` et les pratiques d'échange dans
 `~/cairn/DOCTRINE.md`. Ces deux fichiers font autorité sur toute convention de
 mémoire par défaut.
 
+## Retrouver le projet, au démarrage
+
+Je démarre dans un **dossier de travail**, pas dans le cairn. Avant toute chose,
+résous le projet correspondant :
+
+1. Un fichier `.cairn` à la racine du dossier courant ou d'un parent. Il porte
+   `cairn:` et `projet:`. S'il existe, c'est la réponse.
+2. Sinon, cherche parmi les `contexte.md` du cairn celui dont le champ `chemin`
+   est le dossier courant **ou l'un de ses parents** : on travaille souvent dans
+   un sous-dossier.
+**Le plus spécifique gagne.** Si plusieurs projets couvrent le dossier courant,
+retenir celui dont le `chemin` est le plus long. Un projet déclaré sur un dossier
+large, une racine de travail ou un répertoire personnel, ne doit pas avaler les
+projets rangés en dessous de lui.
+
+
+Si tu trouves, lis `contexte.md`, `index.md` et le socle `commun/`, et n'annonce
+rien de plus qu'une ligne.
+
+**Si tu ne trouves rien, ne te tais pas : joue le rituel d'ouverture** (plus bas)
+et crée le projet. C'est le geste qui évite d'avoir à préparer un dossier dans le
+cairn avant de commencer à travailler.
+
 ## Avant d'écrire quoi que ce soit en mémoire
 
 Lis `contexte.md` du projet courant et respecte sa politique.
@@ -63,7 +86,7 @@ secret, seulement son nom et l'endroit où il vit.
 
 ## Rituel d'ouverture
 
-À la première session sur un projet sans `contexte.md`, pose quatre questions,
+Quand la résolution ci-dessus ne trouve rien, pose quatre questions,
 en une fois et en prose : de quel domaine ça relève, comment on appelle ce
 projet, est-ce qu'on capture de la mémoire ici, et où pourra finir ce qui sera
 écrit. Écris ensuite `contexte.md` depuis `~/cairn/gabarits/contexte.md`.
@@ -130,10 +153,18 @@ non évident là-dedans, et retiens ça.
 
 ---
 
-## 3. Vérifier
+## 3. Le skill, pour ceux qui ne veulent pas de terminal
+
+Le dépôt fournit un skill `cairn` (dans `skill/cairn/`), à copier dans
+`~/.claude/skills/cairn/`. Invoqué par `/cairn`, il fait la résolution et le
+rattachement conversationnellement, sans script ni ligne de commande.
+
+## 4. Vérifier
 
 - Ouvrez une session sur un projet neuf : le rituel doit se jouer une fois, puis
   plus jamais.
 - Ouvrez une session sur un projet en `capture: non` : rien ne doit être écrit.
 - Faites retenir quelque chose sur un projet normal : le fichier doit apparaître
   dans le cairn, avec son `Pourquoi`.
+- Placez-vous dans un dossier de travail inconnu : l'assistant doit s'en
+  apercevoir seul et proposer de le rattacher.
