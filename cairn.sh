@@ -1,5 +1,5 @@
 #!/bin/sh
-# Cairn — méthode de mémoire pour assistants IA
+# Cairn, méthode de mémoire pour assistants IA
 # https://github.com/Spreadtheflow/cairn
 #
 # Ce script est un raccourci, pas la méthode. Tout ce qu'il fait peut se faire
