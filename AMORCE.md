@@ -12,11 +12,21 @@ phrase :
 Il vous posera quelques questions sur vous et votre façon de travailler, puis
 tout sera en place. Comptez dix minutes, dont huit de conversation.
 
+**Une seule condition :** votre assistant doit pouvoir lire et écrire des
+fichiers sur votre ordinateur. C'est le cas des outils qui s'installent sur la
+machine. Ce n'est pas le cas d'une simple conversation dans un navigateur : dans
+ce cas, l'installation par l'assistant ne marchera pas, et il faut suivre
+`INSTALLATION.md` à la main.
+
 ---
 
 ## À partir d'ici, ce sont des instructions pour l'assistant
 
 Tu installes la méthode Cairn. Lis ce document en entier avant de commencer.
+
+**Vérifie d'abord que tu peux lire et écrire des fichiers sur cette machine.** Si
+tu ne le peux pas, ne fais semblant de rien : dis-le, et oriente vers
+`INSTALLATION.md`, qui décrit le chemin manuel.
 
 **La règle qui gouverne toute l'installation : tu as le droit d'utiliser le
 terminal, la personne non.** Ne lui demande jamais de taper une commande, de
