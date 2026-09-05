@@ -89,6 +89,24 @@ logiciel, un travail sur des données ou la rédaction d'un livre.
 
 ## Commencer
 
+### Vous n'êtes pas développeur
+
+Vous n'avez rien à installer vous-même, et rien à taper dans un terminal.
+Installez Claude Code, Codex ou l'assistant de votre choix, puis collez-lui cette
+phrase :
+
+> Installe Cairn chez moi en suivant, à la lettre, le document
+> https://raw.githubusercontent.com/Spreadtheflow/cairn/main/AMORCE.md
+
+Il vous posera quelques questions sur vous et votre façon de travailler, écrira
+votre profil avec vos mots, mettra tout en place et rattachera un premier projet.
+Comptez dix minutes, dont huit de conversation.
+
+C'est le chemin recommandé sous **macOS comme sous Windows**, et il ne demande ni
+ligne de commande, ni git, ni droits administrateur.
+
+### Vous êtes à l'aise avec un terminal
+
 ```sh
 git clone https://github.com/Spreadtheflow/cairn.git
 cd cairn
@@ -156,7 +174,8 @@ travailler, c'est exactement à ça qu'ils servent.
 | Fichier | Pour qui |
 |---|---|
 | `README.md` | Vous êtes ici |
-| `INSTALLATION.md` | Pour mettre en place, dix minutes |
+| `AMORCE.md` | **Pour installer sans rien taper** : à faire lire à votre assistant |
+| `INSTALLATION.md` | Pour mettre en place à la main, dix minutes |
 | `METHODE.md` | La spécification complète, si vous voulez comprendre le détail |
 | `DOCTRINE.md` | Comment conduire l'échange avec un assistant. La moitié qui ne s'automatise pas |
 | `adaptateurs/` | Comment brancher tel ou tel outil |

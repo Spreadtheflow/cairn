@@ -2,33 +2,17 @@
 
 Claude Code possède une mémoire intégrée qui écrit dans
 `~/.claude/projects/<slug>/memory/`, avec sa propre convention à quatre types.
-Cet adaptateur fait deux choses : il redirige cette mémoire vers votre cairn, et
-il remplace la convention native par celle de Cairn.
+Cet adaptateur la remplace par celle de Cairn.
 
-## 1. Rediriger
+**Une seule chose est nécessaire : coller un bloc d'instructions.** Pas de lien
+symbolique, pas de ligne de commande. Les instructions suffisent à faire écrire
+l'assistant dans votre cairn ; le reste de ce document est facultatif.
 
-Pour chaque projet, remplacez le dossier de mémoire par un lien vers le dossier
-du projet dans votre cairn.
+**Vous n'êtes pas à l'aise avec tout ça ?** Ne lisez pas ce document. Ouvrez
+`AMORCE.md` à la racine du dépôt : il contient une phrase à copier, et c'est
+votre assistant qui fait l'installation.
 
-```sh
-# ~/.claude/projects/<slug>/ où <slug> est le chemin de travail avec des tirets
-# exemple : /mnt/work/Clients/X  ->  -mnt-work-Clients-X
-SLUG=-mnt-work-Clients-X
-PROJET=~/cairn/clients/mon-client/le-chantier
-
-mkdir -p "$PROJET"
-rm -rf ~/.claude/projects/$SLUG/memory        # vérifiez d'abord ce qu'il contient
-ln -s "$PROJET" ~/.claude/projects/$SLUG/memory
-```
-
-Vérifiez sur un seul projet avant de généraliser : ouvrez une session, faites
-retenir quelque chose, et confirmez que le fichier apparaît bien dans le cairn.
-
-**Si votre version de Claude Code refuse d'écrire à travers un lien**, le repli
-est de ne pas rediriger du tout et de laisser le bloc ci-dessous indiquer le
-chemin réel du cairn. C'est un peu moins automatique, ça fonctionne aussi bien.
-
-## 2. Remplacer la convention
+## 1. Remplacer la convention
 
 Collez ce bloc dans `~/.claude/CLAUDE.md`. Il est volontairement court : ce sont
 des instructions, pas de la documentation.
@@ -178,13 +162,14 @@ non évident là-dedans, et retiens ça.
 
 ---
 
-## 3. Le skill, pour ceux qui ne veulent pas de terminal
+## 2. Les skills
 
-Le dépôt fournit un skill `cairn` (dans `skill/cairn/`), à copier dans
-`~/.claude/skills/cairn/`. Invoqué par `/cairn`, il fait la résolution et le
-rattachement conversationnellement, sans script ni ligne de commande.
+Le dépôt fournit huit skills dans `skill/`, à copier dans `~/.claude/skills/`.
+`/cairn` fait la résolution et le rattachement en conversation, sans script ni
+ligne de commande ; les autres mettent la doctrine en gestes. Voir
+`skill/README.md`.
 
-## 4. Vérifier
+## 3. Vérifier
 
 - Ouvrez une session sur un projet neuf : le rituel doit se jouer une fois, puis
   plus jamais.
@@ -193,3 +178,36 @@ rattachement conversationnellement, sans script ni ligne de commande.
   dans le cairn, avec son `Pourquoi`.
 - Placez-vous dans un dossier de travail inconnu : l'assistant doit s'en
   apercevoir seul et proposer de le rattacher.
+
+---
+
+## Annexe, facultative : rediriger la mémoire intégrée
+
+**À ne faire que si vous êtes à l'aise avec la ligne de commande, et sous macOS
+ou Linux.** Sous Windows, les liens symboliques demandent des droits
+particuliers : sautez cette annexe, tout fonctionne sans.
+
+Ce que ça apporte : la mémoire **intégrée** de Claude Code écrit alors elle aussi
+dans le cairn, en plus des instructions ci-dessus. C'est une ceinture en plus des
+bretelles, pas un prérequis.
+
+Pour chaque projet, remplacez le dossier de mémoire par un lien vers le dossier
+du projet dans votre cairn.
+
+```sh
+# ~/.claude/projects/<slug>/ où <slug> est le chemin de travail avec des tirets
+# exemple : /mnt/work/Clients/X  ->  -mnt-work-Clients-X
+SLUG=-mnt-work-Clients-X
+PROJET=~/cairn/clients/mon-client/le-chantier
+
+mkdir -p "$PROJET"
+rm -rf ~/.claude/projects/$SLUG/memory        # vérifiez d'abord ce qu'il contient
+ln -s "$PROJET" ~/.claude/projects/$SLUG/memory
+```
+
+Vérifiez sur un seul projet avant de généraliser : ouvrez une session, faites
+retenir quelque chose, et confirmez que le fichier apparaît bien dans le cairn.
+
+**Si votre version de Claude Code refuse d'écrire à travers un lien**, le repli
+est de ne pas rediriger du tout et de laisser le bloc ci-dessous indiquer le
+chemin réel du cairn. C'est un peu moins automatique, ça fonctionne aussi bien.

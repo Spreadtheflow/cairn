@@ -1,5 +1,12 @@
 # Installation
 
+**Vous n'êtes pas développeur ?** Ne lisez pas ce document. Ouvrez `AMORCE.md` :
+il contient une phrase à copier dans votre assistant, et c'est lui qui installe
+tout, en vous posant quelques questions. Aucun terminal, aucun git, aucun droit
+administrateur, sous macOS comme sous Windows.
+
+Ce qui suit est le chemin manuel, pour ceux qui préfèrent faire eux-mêmes.
+
 Comptez dix minutes pour le socle. Les accélérateurs viennent après, quand vous
 en aurez envie, et aucun n'est obligatoire.
 
