@@ -88,7 +88,7 @@ gouvernera toute la suite.
 
 ## Si le script est disponible
 
-`cairn.sh ou` et `cairn.sh ici` font exactement ce qui précède. Les utiliser
+`cairn.sh ou` et `cairn.sh init` font exactement ce qui précède. Les utiliser
 plutôt que de refaire le travail à la main. Ils ne sont pas nécessaires : la
 méthode fonctionne entièrement sans eux.
 

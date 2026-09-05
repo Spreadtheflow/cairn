@@ -91,7 +91,7 @@ logiciel, un travail sur des données ou la rédaction d'un livre.
 ```sh
 git clone https://github.com/Spreadtheflow/cairn.git
 cd cairn
-./cairn.sh init ~/cairn
+./cairn.sh installer ~/cairn
 ```
 
 Puis lisez `INSTALLATION.md`, qui prend une dizaine de minutes.
@@ -115,12 +115,33 @@ Si vous préférez garder la main, deux raccourcis :
 
 ```sh
 cd /vers/mon/nouveau/projet
-cairn.sh ici        # rattache ce dossier, en posant les quatre questions
+cairn.sh init        # rattache ce dossier, en posant les quatre questions
 cairn.sh ou         # dit à quel projet ce dossier est rattaché
 ```
 
 Et pour ceux qui ne veulent pas de terminal, le dossier `skill/` contient un
 skill Claude Code : copiez-le dans `~/.claude/skills/` et tapez `/cairn`.
+
+## La méthode de travail, pas seulement le rangement
+
+Un dossier bien rangé, tout le monde peut le copier. Ce qui se transmet plus
+difficilement, c'est la façon de conduire l'échange, et c'est là que se joue
+l'essentiel de la qualité de ce qu'on obtient.
+
+`DOCTRINE.md` la décrit en huit pratiques. Le dossier `skill/` en met quatre en
+gestes :
+
+- `/cadrer` ouvre un chantier : on comprend, on met les tensions sur la table, on
+  recommande, on découpe en phases. On ne produit rien.
+- `/challenger` passe un projet existant au crible, **une fois**, en lisant
+  d'abord ce qui a déjà été refusé pour ne pas le reproposer.
+- `/relire` vérifie avant de livrer, avec une méthode adaptée à ce qui a été
+  produit, et une lecture de sécurité ou de conformité selon les cas.
+- `/entretien` passe la mémoire en revue et propose ce qu'il faut fusionner,
+  promouvoir ou retirer. Il propose, il n'applique jamais.
+
+Ces skills sont **assumés comme opinionés**. Adaptez-les à votre façon de
+travailler, c'est exactement à ça qu'ils servent.
 
 ## Les documents
 
@@ -132,7 +153,7 @@ skill Claude Code : copiez-le dans `~/.claude/skills/` et tapez `/cairn`.
 | `DOCTRINE.md` | Comment conduire l'échange avec un assistant. La moitié qui ne s'automatise pas |
 | `adaptateurs/` | Comment brancher tel ou tel outil |
 | `squelette/` | L'arborescence de départ |
-| `skill/` | Le skill `/cairn`, pour rattacher un dossier sans ligne de commande |
+| `skill/` | Les skills : `/cairn`, `/cadrer`, `/challenger`, `/relire`, `/entretien` |
 | `exemples/` | Un projet complet et fictif, pour voir à quoi ça ressemble une fois habité |
 
 ## Licence

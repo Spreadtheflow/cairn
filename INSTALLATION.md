@@ -8,7 +8,7 @@ en aurez envie, et aucun n'est obligatoire.
 ```sh
 git clone https://github.com/Spreadtheflow/cairn.git
 cd cairn
-./cairn.sh init ~/cairn
+./cairn.sh installer ~/cairn
 ```
 
 Ou à la main, ce qui revient exactement au même : copiez le dossier `squelette/`
@@ -39,7 +39,7 @@ Placez-vous dans votre dossier de travail et rattachez-le :
 
 ```sh
 cd /vers/mon/projet
-/chemin/vers/cairn.sh ici
+/chemin/vers/cairn.sh init
 ```
 
 Quatre questions, une seule fois. Le projet est créé dans le cairn, le chemin de
@@ -55,16 +55,17 @@ est rattaché.
 
 Puis travaillez normalement. Les souvenirs viendront tout seuls.
 
-### Le skill, pour se passer du terminal
+### Les skills
 
-Le dossier `skill/cairn/` du dépôt contient un skill Claude Code :
+Le dossier `skill/` du dépôt contient cinq skills Claude Code :
 
 ```sh
-mkdir -p ~/.claude/skills && cp -R skill/cairn ~/.claude/skills/
+mkdir -p ~/.claude/skills && cp -R skill/* ~/.claude/skills/
 ```
 
-Tapez ensuite `/cairn` dans n'importe quel dossier, il fait la même chose en
-conversation.
+`/cairn` rattache un dossier sans passer par le terminal. `/cadrer`,
+`/challenger`, `/relire` et `/entretien` mettent la doctrine en gestes : voir
+`skill/README.md`. Aucun n'est nécessaire au fonctionnement de la méthode.
 
 ---
 

@@ -10,7 +10,7 @@ l'écart ne vient pas de l'outil. Il vient de la manière de conduire l'échange
 Une mémoire bien rangée aide, mais une mémoire bien rangée au service d'un
 mauvais échange ne produit que du bruit bien classé.
 
-Les sept pratiques qui suivent sont formulées comme des consignes à un agent,
+Les huit pratiques qui suivent sont formulées comme des consignes à un agent,
 mais elles décrivent d'abord une manière de travailler à deux. Elles se lisent
 aussi bien dans un sens que dans l'autre.
 
@@ -125,13 +125,56 @@ avant de le commenter. Dans un travail de données, c'est aller voir le schéma
 plutôt que le premier millier de lignes. Dans un texte, c'est remonter à la
 source plutôt que citer la citation.
 
+## 8. Relire, vérifier, éprouver
+
+Rien n'est livré tant que ça n'a pas été repassé. **Produire n'est pas livrer.**
+
+**La vérification dépend de ce qui a été produit**, et c'est la première question
+à se poser :
+
+- **Du code** s'exécute. On le lance, on joue le cas nominal et au moins un cas
+  limite, on lit la sortie plutôt que de la supposer. Un test qui n'a pas tourné
+  ne compte pas.
+- **Un texte** se relit à froid, en entier, en cherchant les affirmations qu'on
+  ne pourrait pas sourcer et les passages où la forme a pris le pas sur le fond.
+- **Une présentation, une maquette, une page** se regarde. Rendue, à la bonne
+  taille, dans les conditions du destinataire.
+- **Un document de travail** se confronte à ce qu'il décrit : la structure
+  annoncée existe-t-elle vraiment, les noms sont-ils les bons.
+- **Des données** se recomptent, et on vérifie que les totaux et les ordres de
+  grandeur ont un sens.
+
+**La seconde passe porte sur le risque, et elle dépend elle aussi du produit :**
+
+- **Du code** appelle une lecture de sécurité : ce qui entre est-il validé, un
+  secret traîne-t-il, un accès est-il ouvert plus large que nécessaire, une
+  dépendance a-t-elle été ajoutée sans raison.
+- **Ce qui touche à des personnes, à de l'argent ou à du droit** appelle une
+  lecture de conformité : ce qui est collecté est-il nécessaire, ce qui est
+  affirmé est-il défendable, ce qui est publié engage-t-il quelqu'un.
+- **Ce qui part à l'extérieur** appelle les deux, plus une relecture de ce qu'on
+  n'aurait pas voulu montrer.
+
+Et dans tous les cas, **dire ce qui a été vérifié et ce qui ne l'a pas été.** Une
+vérification partielle annoncée comme telle est utile ; une vérification supposée
+est pire que pas de vérification, parce qu'elle transfère une confiance qui n'a
+pas été gagnée.
+
+**Pourquoi :** un assistant produit vite et produit du plausible. Sans passe de
+vérification, la vitesse ne fait que déplacer le travail vers celui qui relit, et
+le déplacer plus tard, quand la correction coûte le plus cher. C'est la
+contrepartie exacte du point 1 : on cadre avant, on éprouve après.
+
+**Le signe que ça manque :** des livraisons annoncées comme terminées qui
+reviennent, et des phrases comme « ça devrait marcher ».
+
 ---
 
 ## Ce que ça donne, résumé
 
 Cadrer avant de produire. Challenger une fois puis avancer. Ne pas inventer.
 Laisser de la place. Expliquer sans pontifier. Documenter pendant. Remonter à la
-source.
+source. Relire, vérifier, éprouver.
 
-Sept lignes qui tiennent sur un post-it, et qui valent plus que n'importe quelle
+Huit lignes qui tiennent sur un post-it, et qui valent plus que n'importe quelle
 arborescence.

@@ -13,16 +13,16 @@ AUJOURDHUI=$(date +%d/%m/%Y)
 usage() {
     cat <<'USAGE'
 Usage :
-  cairn.sh init [chemin]           crée un cairn (par défaut ~/cairn)
-  cairn.sh groupe <chemin>         ajoute un dossier de rangement avec son _commun
-  cairn.sh projet <chemin>         crée un projet et pose les 4 questions
-  cairn.sh ici [chemin]            rattache le DOSSIER COURANT à un projet du cairn
+  cairn.sh init [chemin]           rattache le DOSSIER COURANT à un projet du cairn
   cairn.sh ou                      dit à quel projet le dossier courant est rattaché
+  cairn.sh installer [chemin]      crée le cairn lui-même (une fois, par défaut ~/cairn)
+  cairn.sh groupe <chemin>         ajoute un dossier de rangement avec son _commun
+  cairn.sh projet <chemin>         crée un projet sans se placer dans son dossier
 
 Les chemins de projet sont relatifs à la racine du cairn, aussi profonds que voulu :
+  cd ~/travail/nouveau-site && cairn.sh init
   cairn.sh groupe clients/orsay-mutuelle
   cairn.sh projet clients/orsay-mutuelle/audit-conformite
-  cd ~/travail/nouveau-site && cairn.sh ici clients/orsay-mutuelle/refonte
 
 Le cairn utilisé est $CAIRN s'il est défini, sinon ~/cairn.
 USAGE
@@ -32,7 +32,7 @@ USAGE
 cairn_racine() {
     racine=${CAIRN:-$HOME/cairn}
     if [ ! -d "$racine" ]; then
-        echo "Pas de cairn dans $racine. Lancez d'abord : cairn.sh init" >&2
+        echo "Pas de cairn dans $racine. Créez-le d'abord : cairn.sh installer" >&2
         exit 1
     fi
     printf '%s' "$racine"
@@ -55,7 +55,7 @@ verifier_chemin() {
     esac
 }
 
-cmd_init() {
+cmd_installer() {
     racine=${1:-${CAIRN:-$HOME/cairn}}
     if [ -e "$racine" ]; then
         echo "$racine existe déjà. Rien n'a été touché." >&2
@@ -83,7 +83,7 @@ Trois choses à faire, dans cet ordre :
      Voir adaptateurs/ dans le dépôt de la méthode.
 
   3. Placez-vous dans un dossier de travail et lancez :
-     cairn.sh ici
+     cairn.sh init
 
 Pour l'historique et la sauvegarde, un git init dans $racine est une bonne idée
 dès maintenant : tout ce que vous ferez ensuite devient réversible.
@@ -242,11 +242,11 @@ cmd_ou() {
         echo "  mémoire    : $racine/$trouve"
     else
         echo "$ici n'est rattaché à aucun projet du cairn."
-        echo "Pour le rattacher : cairn.sh ici"
+        echo "Pour le rattacher : cairn.sh init"
     fi
 }
 
-cmd_ici() {
+cmd_init() {
     ici=$(pwd)
     racine=$(cairn_racine)
 
@@ -318,10 +318,11 @@ cmd_ici() {
 [ $# -ge 1 ] || usage
 commande=$1; shift
 case "$commande" in
-    init)   cmd_init "$@" ;;
-    groupe) cmd_groupe "$@" ;;
-    projet) cmd_projet "$@" ;;
-    ici)    cmd_ici "$@" ;;
-    ou)     cmd_ou "$@" ;;
-    *)      usage ;;
+    init)      cmd_init "$@" ;;
+    ou)        cmd_ou "$@" ;;
+    installer) cmd_installer "$@" ;;
+    groupe)    cmd_groupe "$@" ;;
+    projet)    cmd_projet "$@" ;;
+    ici)       echo "\"ici\" s'appelle désormais \"init\"." >&2; cmd_init "$@" ;;
+    *)         usage ;;
 esac
