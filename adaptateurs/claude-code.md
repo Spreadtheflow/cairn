@@ -116,7 +116,7 @@ rendre le travail pénible dans trois mois.
 ## Index
 
 Chaque dossier a un `index.md` avec **une ligne par souvenir** :
-`- [Titre](fichier.md) — la description`
+`- [Titre](fichier.md) · la description`
 
 Jamais deux lignes. Si ça déborde, découpe le souvenir.
 

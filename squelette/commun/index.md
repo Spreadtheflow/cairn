@@ -4,5 +4,5 @@
      ligne, ce n'est pas l'index qu'il faut agrandir, c'est le souvenir qu'il
      faut découper. -->
 
-- [Profil](profil.md) — qui je suis et comment je travaille
-- [Règles](regles.md) — les règles absolues, valables partout
+- [Profil](profil.md) · qui je suis et comment je travaille
+- [Règles](regles.md) · les règles absolues, valables partout

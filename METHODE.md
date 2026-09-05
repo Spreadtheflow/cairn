@@ -257,8 +257,13 @@ Chaque dossier qui contient des mémoires porte un `index.md` : une ligne par
 souvenir, au format
 
 ```
-- [Titre](fichier.md) — la description, telle quelle
+- [Titre](fichier.md) · la description, telle quelle
 ```
+
+Au-delà d'une trentaine d'entrées, un index peut être **groupé par thème** avec
+des sous-titres : c'est de la mise en ordre, pas de la description. Si le
+groupement lui-même devient difficile, c'est en général que le projet est devenu
+un groupe et que ses chantiers méritent d'être des projets distincts.
 
 **Une ligne. Jamais deux.** L'index est chargé en entier au démarrage d'une
 session ; s'il se met à résumer le contenu des fichiers, il devient un document
