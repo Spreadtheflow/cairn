@@ -93,6 +93,13 @@ dossier, parce que toutes les activités n'ont pas le même découpage : une age
 voudra peut-être `clients`, `interne` et `perso`, quelqu'un d'autre encore autre
 chose.
 
+**Votre propre structure est un domaine, pas un client.** L'erreur classique
+consiste à ranger sa propre agence, son association ou son équipe parmi les
+clients, parce que le dossier de travail est au même endroit sur le disque. Ce
+qui vous appartient n'a ni le même cycle de vie, ni la même diffusion, ni les
+mêmes interlocuteurs : c'est un domaine à part. Le contexte de production de
+votre propre parc n'a rien à faire dans le commun de vos clients.
+
 Les groupes, eux, ne cloisonnent rien : ils rangent. Le bon réflexe est de
 n'en créer un que lorsqu'il y a effectivement plusieurs projets à mettre dedans,
 et de laisser un projet seul à plat en attendant. Une arborescence profonde
