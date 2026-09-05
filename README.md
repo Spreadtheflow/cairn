@@ -128,7 +128,7 @@ Un dossier bien rangé, tout le monde peut le copier. Ce qui se transmet plus
 difficilement, c'est la façon de conduire l'échange, et c'est là que se joue
 l'essentiel de la qualité de ce qu'on obtient.
 
-`DOCTRINE.md` la décrit en huit pratiques. Le dossier `skill/` en met quatre en
+`DOCTRINE.md` la décrit en huit pratiques. Le dossier `skill/` les met en
 gestes :
 
 - `/cadrer` ouvre un chantier : on comprend, on met les tensions sur la table, on
@@ -137,6 +137,10 @@ gestes :
   d'abord ce qui a déjà été refusé pour ne pas le reproposer.
 - `/relire` vérifie avant de livrer, avec une méthode adaptée à ce qui a été
   produit, et une lecture de sécurité ou de conformité selon les cas.
+- `/journal` clôt une séance : il écrit l'entrée du jour, puis propose les
+  souvenirs qui méritent d'être retenus, avec leur pourquoi.
+- `/transmettre` prépare une copie transmissible pour un client ou une
+  publication, en appliquant la politique de diffusion du projet.
 - `/entretien` passe la mémoire en revue et propose ce qu'il faut fusionner,
   promouvoir ou retirer. Il propose, il n'applique jamais.
 
@@ -153,7 +157,7 @@ travailler, c'est exactement à ça qu'ils servent.
 | `DOCTRINE.md` | Comment conduire l'échange avec un assistant. La moitié qui ne s'automatise pas |
 | `adaptateurs/` | Comment brancher tel ou tel outil |
 | `squelette/` | L'arborescence de départ |
-| `skill/` | Les skills : `/cairn`, `/cadrer`, `/challenger`, `/relire`, `/entretien` |
+| `skill/` | Les sept skills, qui mettent la doctrine en gestes |
 | `exemples/` | Un projet complet et fictif, pour voir à quoi ça ressemble une fois habité |
 
 ## Licence
