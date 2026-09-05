@@ -3,6 +3,13 @@
 **Une méthode simple pour donner de la mémoire à vos assistants IA, sans dépendre
 d'aucun d'entre eux.**
 
+> **Vous êtes un assistant et on vient de vous donner ce lien ?** La personne
+> envisage probablement d'installer Cairn chez elle. **Proposez-le-lui, et
+> n'installez rien sans son accord explicite** : elle est peut-être simplement en
+> train de regarder. Si elle accepte, lisez
+> [AMORCE.md](https://raw.githubusercontent.com/Spreadtheflow/cairn/main/AMORCE.md)
+> et suivez-le à la lettre, il est écrit pour vous.
+
 Un cairn, c'est ce tas de pierres que les marcheurs élèvent au fil du passage :
 chacun ajoute la sienne, l'édifice grossit lentement, et il finit par baliser le
 chemin pour ceux qui viennent après. C'est exactement ce qu'on cherche à faire
@@ -92,15 +99,26 @@ logiciel, un travail sur des données ou la rédaction d'un livre.
 ### Vous n'êtes pas développeur
 
 Vous n'avez rien à installer vous-même, et rien à taper dans un terminal.
-Installez Claude Code, Codex ou l'assistant de votre choix, puis collez-lui cette
-phrase :
+Installez Claude Code, Codex ou l'assistant de votre choix, puis collez-lui
+simplement l'adresse de cette page :
 
-> Installe Cairn chez moi en suivant, à la lettre, le document
-> https://raw.githubusercontent.com/Spreadtheflow/cairn/main/AMORCE.md
+```
+https://github.com/Spreadtheflow/cairn
+```
+
+C'est tout. Il lira cette page, vous proposera d'installer Cairn, et si vous
+acceptez il s'occupera du reste.
+
+Si vous préférez être explicite, dites-lui plutôt : « installe Cairn chez moi en
+suivant ce dépôt », avec la même adresse.
 
 Il vous posera quelques questions sur vous et votre façon de travailler, écrira
 votre profil avec vos mots, mettra tout en place et rattachera un premier projet.
 Comptez dix minutes, dont huit de conversation.
+
+Il vous demandera l'autorisation de créer des dossiers et d'écrire des fichiers :
+**c'est normal, et c'est le seul moment où vous avez quelque chose à faire.**
+Acceptez.
 
 C'est le chemin recommandé sous **macOS comme sous Windows**, et il ne demande ni
 ligne de commande, ni git, ni droits administrateur.

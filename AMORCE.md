@@ -3,20 +3,26 @@
 **Ce document ne s'adresse pas à vous, il s'adresse à votre assistant.**
 
 Si vous n'êtes pas développeur, vous n'avez rien à installer vous-même. Ouvrez
-Claude Code, Codex ou l'assistant que vous venez d'installer, et collez cette
-phrase :
+Claude Code, Codex ou l'assistant que vous venez d'installer, et collez-lui
+l'adresse du projet :
 
-> Installe Cairn chez moi en suivant, à la lettre, le document
-> https://raw.githubusercontent.com/Spreadtheflow/cairn/main/AMORCE.md
+> https://github.com/Spreadtheflow/cairn
+
+Il vous proposera de l'installer. Si vous préférez être explicite : « installe
+Cairn chez moi en suivant ce dépôt », avec la même adresse.
 
 Il vous posera quelques questions sur vous et votre façon de travailler, puis
 tout sera en place. Comptez dix minutes, dont huit de conversation.
 
-**Une seule condition :** votre assistant doit pouvoir lire et écrire des
-fichiers sur votre ordinateur. C'est le cas des outils qui s'installent sur la
-machine. Ce n'est pas le cas d'une simple conversation dans un navigateur : dans
-ce cas, l'installation par l'assistant ne marchera pas, et il faut suivre
-`INSTALLATION.md` à la main.
+**Il vous demandera l'autorisation** de créer des dossiers et d'écrire des
+fichiers. C'est normal, c'est même le seul moment où vous avez quelque chose à
+faire : acceptez. Un assistant qui n'a pas ces droits vous le dira au lieu de
+faire semblant.
+
+Si vous discutez avec un assistant qui n'a aucun accès à votre machine, une
+simple conversation dans un navigateur par exemple, cette installation ne
+s'applique pas : suivez `INSTALLATION.md` à la main, ou installez un outil qui
+tourne sur votre ordinateur.
 
 ---
 
@@ -24,9 +30,15 @@ ce cas, l'installation par l'assistant ne marchera pas, et il faut suivre
 
 Tu installes la méthode Cairn. Lis ce document en entier avant de commencer.
 
-**Vérifie d'abord que tu peux lire et écrire des fichiers sur cette machine.** Si
-tu ne le peux pas, ne fais semblant de rien : dis-le, et oriente vers
-`INSTALLATION.md`, qui décrit le chemin manuel.
+**Si on t'a seulement donné l'adresse du dépôt**, sans rien demander de plus : ne
+te lance pas. Explique en trois lignes ce qu'est Cairn, propose de l'installer, et
+attends un accord explicite. La personne est peut-être simplement en train de
+regarder.
+
+**Vérifie que tu peux écrire des fichiers sur cette machine.** Demander une
+autorisation est normal et attendu ; si tu n'as réellement aucun accès, ne fais
+semblant de rien : dis-le, et oriente vers `INSTALLATION.md`, qui décrit le
+chemin manuel.
 
 **La règle qui gouverne toute l'installation : tu as le droit d'utiliser le
 terminal, la personne non.** Ne lui demande jamais de taper une commande, de
