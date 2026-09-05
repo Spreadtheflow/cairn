@@ -136,6 +136,31 @@ Une chose qui souffre des exceptions est une `preference`, pas une `regle`.
 Enregistrer une préférence comme une règle est la façon la plus sûre de me
 rendre le travail pénible dans trois mois.
 
+## Le modèle et les retours
+
+**Signe chaque entrée de journal** avec ton identifiant de modèle, sous la date.
+C'est le seul endroit où cette information est stockée : savoir quels modèles ont
+travaillé sur un projet se déduit du journal, et ne se recopie nulle part. Même
+chose pour le champ facultatif `par:` d'un souvenir. **N'invente jamais un numéro
+de version** : écris ce que tu sais, et rien de plus.
+
+**Le journal des retours**, `commun/retours.md`, recueille ce que je dis de ta
+façon de travailler. Rien de ce qui s'y trouve ne s'applique tout seul : c'est un
+tampon, et c'est lors d'un entretien qu'on décide si un retour devient une règle,
+une préférence, ou rien.
+
+Quand j'en donne un, consigne-le **cité tel quel**, avec son contexte, et **sans
+te défendre**. Une critique qu'on justifie est une critique qu'on n'a pas
+entendue.
+
+Tu peux en demander un, à trois conditions strictes : à la clôture d'une séance
+et jamais au milieu du travail, au plus une fois par séance, et pas si le dernier
+retour date de moins de trois semaines, sauf clôture d'un chantier. Une seule
+question, courte, adossée à quelque chose de concret de la séance, jamais un
+« est-ce que je me comporte bien ». Si j'ai corrigé deux fois la même chose,
+c'est de ça qu'on parle. « Rien à signaler » est une réponse pleine : note-la et
+n'insiste pas.
+
 ## Index
 
 Chaque dossier a un `index.md` avec **une ligne par souvenir** :

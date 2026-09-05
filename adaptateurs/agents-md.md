@@ -24,6 +24,10 @@ ce dossier, et n'écris rien avant.
 
 Avant d'écrire quoi que ce soit en mémoire, lis `~/cairn/METHODE.md` et le
 `contexte.md` du projet, et respecte la politique qui y est déclarée.
+
+Signe chaque entrée de journal avec ton identifiant de modèle. Quand je te dis
+quelque chose sur ta façon de travailler, consigne-le tel quel dans
+`~/cairn/commun/retours.md` sans le transformer en règle et sans te défendre.
 ```
 
 ## Le bloc complet
@@ -41,6 +45,9 @@ Un adaptateur doit répondre à quatre questions, et à rien d'autre :
 2. Quel format a un souvenir ?
 3. Quelle politique s'applique avant d'écrire ?
 4. Que ne faut-il pas retenir ?
+
+Et deux gestes qui coûtent une ligne chacun : signer les entrées de journal du
+modèle qui les écrit, et consigner les retours sans les promouvoir.
 
 Si votre adaptateur fait plus d'une page, c'est que vous êtes en train de
 réécrire `METHODE.md`. Pointez vers elle à la place.

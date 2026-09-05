@@ -23,7 +23,7 @@ Markdown avec un en-tête structuré, et rien de plus exotique.
 naturel de tout système de mémoire : chaque préférence enregistrée se transforme
 en loi, chaque correction ponctuelle devient une règle permanente, et au bout de
 quelques mois l'assistant n'assiste plus, il fait la police. La section 9 décrit
-les quatre garde-fous qui existent uniquement pour empêcher ça.
+les cinq garde-fous qui existent uniquement pour empêcher ça.
 
 ## 2. Structure
 
@@ -32,6 +32,7 @@ cairn/
   commun/                  (réservé) le socle global
     profil.md              qui je suis, comment je travaille
     regles.md              les règles absolues, plafonnées à 12
+    retours.md             ce que je dis de la façon de travailler de l'agent
     index.md
     *.md                   faits et repères valables partout
   archive/                 (réservé) périmé mais pas jeté
@@ -243,6 +244,12 @@ Deux choses vivent hors de la mémoire :
 - le **journal** (`journal.md`), qui répond à « que s'est-il passé » ;
 - le **contexte** (`contexte.md`), la fiche d'identité du projet.
 
+**Chaque entrée de journal nomme qui l'a écrite**, sous sa date : un identifiant
+de modèle, ou un nom de personne. C'est le seul endroit où l'information est
+stockée ; savoir quels modèles ont travaillé sur un projet se déduit ensuite d'une
+lecture du journal, et n'a donc pas à être recopié ailleurs. Un dérivé ne se
+maintient pas, il se recalcule.
+
 La mémoire, elle, répond à « que dois-je savoir ». Confondre les deux est
 l'erreur la plus commune : un état de chantier qui bouge à chaque séance n'est
 pas un souvenir, c'est une entrée de journal, et le mettre en mémoire fait
@@ -261,6 +268,7 @@ portee: mon-client-x
 cree: 05/09/2026
 maj: 05/09/2026
 statut: actif
+par: claude-opus-5        # facultatif
 ---
 
 Le fait, la décision ou la règle, énoncé en clair.
@@ -281,6 +289,11 @@ Champs :
 - `cree`, `maj` : en JJ/MM/AAAA.
 - `statut` : `actif`, `perime`, ou `remplace` (auquel cas le corps pointe vers
   ce qui l'a remplacé).
+- `par` : facultatif. Qui a écrit ce souvenir : un identifiant de modèle, ou un
+  nom de personne. Sert à repérer ce qui mérite d'être revérifié avant d'être
+  promu, un souvenir écrit par un modèle ancien n'ayant pas la même solidité
+  qu'un souvenir récent. Ne jamais inventer un numéro de version : écrire ce
+  qu'on sait, et rien de plus.
 
 **Le Pourquoi est obligatoire.** Un souvenir qui dit « fais X » sans dire
 pourquoi ne peut être appliqué qu'aveuglément. Un souvenir qui dit « fais X
@@ -311,7 +324,7 @@ session ; s'il se met à résumer le contenu des fichiers, il devient un documen
 d'index ne tient plus en une ligne, ce n'est pas l'index qu'il faut agrandir,
 c'est le souvenir qu'il faut découper.
 
-## 9. Les quatre garde-fous
+## 9. Les cinq garde-fous
 
 Ils existent pour une seule raison : empêcher la mémoire de se transformer en
 carcan.
@@ -349,6 +362,39 @@ Une règle méta, à inscrire au socle de tout cairn :
 
 > Une objection se formule une fois, clairement, puis on avance avec la décision
 > de l'humain.
+
+### 9.5 Le journal des retours
+
+`commun/retours.md` recueille ce que vous dites de la **façon de travailler** de
+votre assistant : ce qui vous agace, ce qui vous convient, ce que vous voudriez
+qu'il change. Chronologique, daté, et **cité tel quel**.
+
+**Pourquoi c'est un garde-fou et pas un simple carnet.** Sans lui, une correction
+n'a que deux destins : être perdue, ou devenir une règle immédiatement. Le second
+est précisément ce qui transforme un assistant en contrôleur au bout de quelques
+mois, puisque chaque remarque de passage se retrouve gravée. Le journal des
+retours est le **tampon** : la correction est gardée sans être promue, et ne
+devient une règle ou une préférence que par un arbitrage explicite, lors d'un
+entretien.
+
+C'est exactement la relation entre le journal et la mémoire, appliquée au
+comportement plutôt qu'au projet : on garde ce qui s'est dit, on distille
+ensuite.
+
+**Comment il se remplit.** De deux façons. Quand vous le dites spontanément, et
+quand l'assistant le demande, ce qui obéit à trois règles :
+
+- **au plus une fois par séance**, et jamais au milieu du travail : à la
+  clôture ;
+- **jamais si le dernier retour est récent**, quelques semaines au moins, sauf
+  clôture d'un chantier ;
+- **une question concrète, adossée à quelque chose de la séance**, pas un « est-ce
+  que je me comporte bien ». Si vous avez corrigé deux fois la même chose,
+  c'est de ça qu'on parle.
+
+« Rien à signaler » est une réponse pleine : elle se note, et elle repousse la
+question d'autant. Une question à laquelle il est coûteux de ne pas répondre est
+une question mal posée.
 
 ## 10. Cycle de vie d'un souvenir
 

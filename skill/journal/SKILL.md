@@ -28,6 +28,12 @@ rattacher.
 Dans `journal.md`, en tête, sous un titre à la date du jour au format JJ/MM/AAAA.
 On ajoute, on ne réécrit jamais les entrées passées.
 
+**Signer l'entrée** juste sous la date : qui l'a écrite, un identifiant de
+modèle ou un nom de personne. C'est le seul endroit où cette information est
+stockée, et c'est elle qui permettra plus tard de savoir quels modèles ont
+travaillé sur ce projet. Ne jamais inventer un numéro de version : écrire ce
+qu'on sait.
+
 Une entrée courte, qui répond à **ce qui s'est passé** :
 
 - ce qui a été fait, en une ou deux phrases par chose ;
@@ -62,14 +68,25 @@ Ne mérite pas un souvenir :
 - le résultat d'une recherche refaisable en trente secondes.
 
 Proposer chaque souvenir avec son titre, sa nature, sa description en une ligne
-et **son pourquoi**. Un souvenir dont on ne sait pas écrire le pourquoi n'est pas
+et **son pourquoi**. Renseigner `par:` avec son propre identifiant de modèle. Un souvenir dont on ne sait pas écrire le pourquoi n'est pas
 prêt : le dire plutôt que d'inventer une raison.
 
 Signaler les promotions possibles : une chose qui vaut pour tous les chantiers
 d'un client va dans son `_commun/`, une chose qui vaut partout est candidate au
 socle. **Proposer, jamais promouvoir tout seul.**
 
-## 4. Écrire, puis rendre compte
+## 4. Regarder si un retour est opportun
+
+Avant de conclure, ouvrir `commun/retours.md` et regarder la date du dernier
+retour. Si elle remonte à plus de trois semaines, ou si on vient de clore un
+chantier, ou si la même chose a été corrigée deux fois dans la séance, poser
+**une** question sur la façon de travailler, adossée à quelque chose de concret.
+Voir le skill `retour`, qui porte la méthode et les garde-fous.
+
+Sinon, ne rien demander. Une question de trop est plus coûteuse qu'une question
+de moins.
+
+## 5. Écrire, puis rendre compte
 
 Après validation, écrire les souvenirs retenus et mettre l'`index.md` à jour, une
 ligne par souvenir.

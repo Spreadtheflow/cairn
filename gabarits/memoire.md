@@ -6,10 +6,13 @@ portee: nom-du-projet
 cree: 05/09/2026
 maj: 05/09/2026
 statut: actif
+par:
 ---
 
 <!-- nature : decision | regle | preference | fait | repere
-     statut : actif | perime | remplace -->
+     statut : actif | perime | remplace
+     par    : facultatif. Qui a écrit ce souvenir : identifiant de modèle ou nom
+              de personne. Ne jamais inventer un numéro de version. -->
 
 Le fait, la décision ou la règle, énoncé en clair et en peu de mots.
 

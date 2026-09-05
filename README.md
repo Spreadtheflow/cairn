@@ -62,7 +62,8 @@ tient pas. C'est toute la différence entre une mémoire et un règlement.
 systèmes : à force d'accumuler, chaque préférence devient une loi, et
 l'assistant finit par vous opposer votre propre jurisprudence à chaque phrase.
 Cairn plafonne le nombre de règles, distingue les règles absolues des simples
-habitudes, et propose régulièrement d'en retirer.
+habitudes, propose régulièrement d'en retirer, et garde vos remarques dans un
+journal à part d'où elles ne sortent que si vous le décidez.
 
 ## Vous décidez de ce qui est retenu
 
@@ -139,6 +140,9 @@ gestes :
   produit, et une lecture de sécurité ou de conformité selon les cas.
 - `/journal` clôt une séance : il écrit l'entrée du jour, puis propose les
   souvenirs qui méritent d'être retenus, avec leur pourquoi.
+- `/retour` recueille ce que vous dites de sa façon de travailler et le consigne
+  **sans en faire une règle**. C'est le tampon qui empêche chaque correction de
+  passage de devenir une loi.
 - `/transmettre` prépare une copie transmissible pour un client ou une
   publication, en appliquant la politique de diffusion du projet.
 - `/entretien` passe la mémoire en revue et propose ce qu'il faut fusionner,
@@ -157,7 +161,7 @@ travailler, c'est exactement à ça qu'ils servent.
 | `DOCTRINE.md` | Comment conduire l'échange avec un assistant. La moitié qui ne s'automatise pas |
 | `adaptateurs/` | Comment brancher tel ou tel outil |
 | `squelette/` | L'arborescence de départ |
-| `skill/` | Les sept skills, qui mettent la doctrine en gestes |
+| `skill/` | Les huit skills, qui mettent la doctrine en gestes |
 | `exemples/` | Un projet complet et fictif, pour voir à quoi ça ressemble une fois habité |
 
 ## Licence

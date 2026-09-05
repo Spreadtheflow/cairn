@@ -46,16 +46,46 @@ d'avancement et sa longueur. Il appartient au `journal.md`.
 déborde, ne pas proposer d'ajout : proposer une fusion ou un retrait. La
 contrainte de taille est ce qui force l'arbitrage.
 
-## 3. Chercher aussi ce qui manque
+## 3. Dépouiller le journal des retours
+
+Ouvrir `commun/retours.md`, et le `retours.md` de chaque projet s'il en existe.
+C'est **la matière la plus précieuse de l'entretien**, et la seule qui ne se
+déduit d'aucun autre fichier.
+
+Pour chaque retour dont la ligne « Suite » est encore vide, proposer l'un de ces
+quatre sorts, avec une raison :
+
+- **une règle**, si c'est absolu et sans exception. Rare. Se heurte au plafond de
+  douze, donc oblige à sortir autre chose.
+- **une préférence**, si c'est un défaut dont on s'écarte selon le contexte.
+  C'est le cas le plus fréquent, et **c'est le sort par défaut en cas de doute**.
+- **rien**, si c'était propre à un moment ou à un sujet. Un retour classé « rien »
+  n'est pas perdu : il reste au journal, et sa répétition finira par le
+  qualifier.
+- **un rappel**, si le même retour revient pour la troisième fois alors qu'une
+  règle existe déjà : ce n'est pas la mémoire qui manque, c'est la règle qui
+  n'est pas appliquée. Le signaler comme tel.
+
+Attention au sens de lecture : **un retour formulé une fois n'est pas une règle.**
+Deux occurrences du même retour à des dates éloignées, oui. C'est la répétition
+qui fait la règle, pas l'intensité.
+
+Renseigner la ligne « Suite » de chaque retour traité, dans le fichier de
+retours, une fois l'arbitrage rendu.
+
+## 4. Chercher aussi ce qui manque
 
 Deux vérifications qui rapportent plus qu'elles ne coûtent :
 
+- **Des souvenirs écrits par un modèle ancien**, repérables au champ `par:`. Ils
+  ne sont pas faux par principe, mais ils méritent une vérification avant d'être
+  promus au socle.
 - **Des souvenirs sans pourquoi.** Ils ne peuvent être appliqués qu'aveuglément.
   Proposer de le reconstituer, ou de retirer le souvenir s'il est introuvable.
 - **Des règles qui sont en fait des préférences.** Une contrainte qui souffre des
   exceptions n'est pas une règle. C'est la source numéro un de la rigidification.
 
-## 4. Écrire les propositions
+## 5. Écrire les propositions
 
 Dans `commun/propositions-JJ-MM-AAAA.md`, groupées par nature d'action, chacune
 avec : le ou les fichiers concernés, ce qui est proposé, et **la raison en une
@@ -65,7 +95,7 @@ Terminer par un compte : combien de souvenirs, combien de propositions d'ajout,
 de fusion, de promotion, de retrait. Un entretien qui ne propose que des ajouts
 est un entretien raté.
 
-## 5. Rendre compte, puis s'arrêter
+## 6. Rendre compte, puis s'arrêter
 
 Résumer en quelques lignes et **s'arrêter**. Attendre l'arbitrage. N'appliquer que
 ce qui est explicitement retenu, et déplacer ce qui sort vers `archive/` plutôt

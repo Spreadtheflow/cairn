@@ -6,3 +6,6 @@
 
 - [Profil](profil.md) · qui je suis et comment je travaille
 - [Règles](regles.md) · les règles absolues, valables partout
+
+<!-- `retours.md` n'est pas un souvenir, c'est un journal : il n'a pas sa place
+     dans cet index. -->

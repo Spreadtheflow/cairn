@@ -12,4 +12,7 @@
 
 ## 05/09/2026
 
+*Séance : qui a écrit cette entrée. Un identifiant de modèle, ou un nom de
+personne. C'est le seul endroit où l'information est stockée.*
+
 Ce qui a été fait, décidé, découvert. Court.

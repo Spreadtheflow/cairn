@@ -14,8 +14,8 @@ Pour Claude Code, tout d'un coup :
 mkdir -p ~/.claude/skills && cp -R skill/* ~/.claude/skills/
 ```
 
-Puis `/cairn`, `/cadrer`, `/challenger`, `/relire`, `/journal`, `/transmettre`,
-`/entretien`.
+Puis `/cairn`, `/cadrer`, `/challenger`, `/relire`, `/journal`, `/retour`,
+`/transmettre`, `/entretien`.
 
 Pour un autre outil, ce sont des fichiers Markdown : leur contenu se colle en
 instruction, ou se garde ouvert à côté. Aucun n'est nécessaire au fonctionnement
@@ -30,6 +30,7 @@ de la méthode.
 | `challenger` | Passe un projet au crible, une fois, sans bloquer | 2 |
 | `relire` | Vérifie avant de livrer, selon la nature du produit, sécurité et conformité comprises | 8 |
 | `journal` | Clôt une séance : entrée datée, puis souvenirs proposés avec leur pourquoi | 6 |
+| `retour` | Recueille un retour sur la façon de travailler, et le consigne sans le promouvoir | Les garde-fous |
 | `transmettre` | Prépare une copie transmissible en appliquant la politique de diffusion | La transmission |
 | `entretien` | Passe le cairn en revue, propose fusions, promotions et retraits | Les garde-fous |
 
@@ -38,9 +39,10 @@ Ils suivent le cycle d'un chantier. `cadrer` l'ouvre, `relire` le ferme, et
 que c'est frais. `challenger` s'utilise sur de l'existant, `transmettre` quand la
 mémoire doit sortir, et `entretien` sur la mémoire elle-même.
 
-Deux d'entre eux rendent **exécutable** ce qui n'était qu'une déclaration :
-`transmettre` applique le champ `diffusion` de `contexte.md`, et `entretien`
-applique le plafond de douze règles du socle.
+Trois d'entre eux rendent **exécutable** ce qui n'était qu'une déclaration :
+`transmettre` applique le champ `diffusion` de `contexte.md`, `entretien` applique
+le plafond de douze règles du socle, et `retour` alimente le tampon qui empêche
+une correction de passage de devenir une loi.
 
 ## Écrire le vôtre
 
