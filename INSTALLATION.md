@@ -35,14 +35,36 @@ Voir le dossier `adaptateurs/` :
 
 ## Étape 4 : votre premier projet
 
+Placez-vous dans votre dossier de travail et rattachez-le :
+
 ```sh
-./cairn.sh projet pro mon-projet   # depuis le dépôt cloné, ou à la main
+cd /vers/mon/projet
+/chemin/vers/cairn.sh ici
 ```
 
-Quatre questions, une seule fois, et le projet est prêt. Remplissez
-`contexte.md`, c'est ce qui sera lu en premier à chaque session.
+Quatre questions, une seule fois. Le projet est créé dans le cairn, le chemin de
+travail y est noté, et un petit fichier `.cairn` est posé dans votre dossier.
+
+**Vous pouvez aussi ne rien faire du tout.** Lancez simplement votre assistant
+depuis le dossier : il cherchera le projet correspondant, ne le trouvera pas, et
+vous posera les mêmes quatre questions. C'est la voie la plus courte, et celle à
+montrer à quelqu'un qui découvre.
+
+Pour savoir où vous en êtes, `cairn.sh ou` dit à quel projet le dossier courant
+est rattaché.
 
 Puis travaillez normalement. Les souvenirs viendront tout seuls.
+
+### Le skill, pour se passer du terminal
+
+Le dossier `skill/cairn/` du dépôt contient un skill Claude Code :
+
+```sh
+mkdir -p ~/.claude/skills && cp -R skill/cairn ~/.claude/skills/
+```
+
+Tapez ensuite `/cairn` dans n'importe quel dossier, il fait la même chose en
+conversation.
 
 ---
 
