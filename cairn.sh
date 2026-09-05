@@ -13,6 +13,7 @@ AUJOURDHUI=$(date +%d/%m/%Y)
 usage() {
     cat <<'USAGE'
 Usage :
+  cairn.sh aide                    rappelle comment ça marche, et l'état du cairn
   cairn.sh init [chemin]           rattache le DOSSIER COURANT à un projet du cairn
   cairn.sh ou                      dit à quel projet le dossier courant est rattaché
   cairn.sh installer [chemin]      crée le cairn lui-même (une fois, par défaut ~/cairn)
@@ -64,7 +65,7 @@ cmd_installer() {
     mkdir -p "$racine"
     cp -R "$SOURCE/squelette/." "$racine/"
     cp -R "$SOURCE/gabarits" "$racine/gabarits"
-    cp "$SOURCE/METHODE.md" "$SOURCE/DOCTRINE.md" "$racine/"
+    cp "$SOURCE/METHODE.md" "$SOURCE/DOCTRINE.md" "$SOURCE/AIDE.md" "$racine/"
 
     for f in "$racine/commun/profil.md" "$racine/commun/regles.md"; do
         remplacer '05/09/2026' "$AUJOURDHUI" "$f"
@@ -84,6 +85,8 @@ Trois choses à faire, dans cet ordre :
 
   3. Placez-vous dans un dossier de travail et lancez :
      cairn.sh init
+
+Pour revoir comment ça marche à tout moment : cairn.sh aide
 
 Pour l'historique et la sauvegarde, un git init dans $racine est une bonne idée
 dès maintenant : tout ce que vous ferez ensuite devient réversible.
@@ -232,6 +235,35 @@ chemin_de() {
     sed -n 's/^chemin: *//p' "$racine/$1/contexte.md" 2>/dev/null | head -1
 }
 
+cmd_aide() {
+    racine=$(cairn_racine)
+    if [ -f "$racine/AIDE.md" ]; then
+        cat "$racine/AIDE.md"
+    else
+        echo "AIDE.md est absent du cairn." >&2
+        echo "Récupérez-le sur https://github.com/Spreadtheflow/cairn" >&2
+    fi
+    domaines=$(find "$racine" -maxdepth 1 -mindepth 1 -type d -not -name '.*' \
+        -not -name commun -not -name archive -not -name gabarits \
+        -exec basename {} \; 2>/dev/null | sort | tr '\n' ' ')
+    projets=$(find "$racine" -name contexte.md -not -path "*/gabarits/*" 2>/dev/null | wc -l | tr -d ' ')
+    echo
+    echo "---"
+    echo
+    echo "## Votre cairn"
+    echo
+    echo "- ici        : $racine"
+    echo "- domaines   : ${domaines:-aucun}"
+    echo "- projets    : $projets"
+    trouve=$(resoudre "$(pwd)")
+    if [ -n "$trouve" ]; then
+        echo "- dossier courant rattaché à : $trouve"
+    else
+        echo "- dossier courant : non rattaché (cairn.sh init pour le rattacher)"
+    fi
+    echo
+}
+
 cmd_ou() {
     ici=$(pwd)
     trouve=$(resoudre "$ici")
@@ -318,6 +350,7 @@ cmd_init() {
 [ $# -ge 1 ] || usage
 commande=$1; shift
 case "$commande" in
+    aide)      cmd_aide "$@" ;;
     init)      cmd_init "$@" ;;
     ou)        cmd_ou "$@" ;;
     installer) cmd_installer "$@" ;;

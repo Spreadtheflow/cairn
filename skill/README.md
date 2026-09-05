@@ -14,8 +14,8 @@ Pour Claude Code, tout d'un coup :
 mkdir -p ~/.claude/skills && cp -R skill/* ~/.claude/skills/
 ```
 
-Puis `/cairn`, `/cadrer`, `/challenger`, `/relire`, `/journal`, `/retour`,
-`/transmettre`, `/entretien`.
+Puis `/cairn-aide` pour voir ce que ça vous a donné, et `/cairn`, `/cadrer`,
+`/challenger`, `/relire`, `/journal`, `/retour`, `/transmettre`, `/entretien`.
 
 Pour un autre outil, ce sont des fichiers Markdown : leur contenu se colle en
 instruction, ou se garde ouvert à côté. Aucun n'est nécessaire au fonctionnement
@@ -26,6 +26,7 @@ de la méthode.
 | Skill | Ce qu'il fait | Point de doctrine |
 |---|---|---|
 | `cairn` | Rattache un dossier de travail à sa mémoire, ou crée le projet | La méthode |
+| `cairn-aide` | Rappelle comment ça marche, confronté à l'état réel du cairn | La méthode |
 | `cadrer` | Ouvre un chantier : échange en prose, tensions, phases | 1 |
 | `challenger` | Passe un projet au crible, une fois, sans bloquer | 2 |
 | `relire` | Vérifie avant de livrer, selon la nature du produit, sécurité et conformité comprises | 8 |

@@ -95,7 +95,7 @@ Copie dans `<dossier personnel>/cairn` :
 
 - le contenu de `squelette/`, qui donne `commun/`, `archive/`, `pro/`, `perso/` ;
 - le dossier `gabarits/` ;
-- `METHODE.md` et `DOCTRINE.md`.
+- `METHODE.md`, `DOCTRINE.md` et `AIDE.md`.
 
 Puis remplace les dates d'exemple des fichiers du socle par la date du jour, au
 format JJ/MM/AAAA.
@@ -173,19 +173,24 @@ Si elle n'a rien sous la main, saute cette étape et explique qu'il suffira de
 lancer l'assistant depuis un dossier de travail : il proposera de le rattacher
 tout seul.
 
-### 9. Vérifie, puis rends compte
+### 9. Vérifie, puis présente
 
 Vérifie que le profil est rempli, que le fichier d'instructions est en place,
 que les skills sont présents, et que le premier projet est rattaché si tu en as
 créé un.
 
-Puis, en une dizaine de lignes maximum : où est son cairn, ce qu'il contient,
-comment y revenir, et **une seule chose à faire ensuite**. Pas de liste de
-douze prochaines étapes.
+Puis **affiche l'aide**, en suivant le skill `cairn-aide` que tu viens
+d'installer : lis `AIDE.md` dans le cairn, confronte-le à ce qui existe
+réellement, et présente le tout. Ne récite pas un raccourci que tu n'as pas
+installé.
 
-Termine par la phrase qui compte : elle n'a rien à faire de particulier pour que
-ça serve. Elle travaille normalement, et son assistant retient ce qui mérite de
-l'être.
+Termine par **une seule chose à faire**, pas une liste. Si le profil est resté
+maigre, c'est celle-là. Sinon, c'est de lui dire « on s'arrête là » en fin de
+prochaine séance.
+
+Et par la phrase qui compte : elle n'a rien à faire de particulier pour que ça
+serve. Elle travaille normalement, et son assistant retient ce qui mérite de
+l'être. Elle peut revoir cette page à tout moment avec `/cairn-aide`.
 
 ## Ce que tu ne dois pas faire
 
@@ -197,3 +202,4 @@ l'être.
   cas de doute c'est une préférence.
 - Toucher à un cairn qui existe déjà.
 - Terminer sur une liste de choses à faire. Une seule.
+- Expliquer la méthode. Elle n'a pas besoin de la connaître pour s'en servir.

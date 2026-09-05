@@ -62,9 +62,12 @@ est rattaché.
 
 Puis travaillez normalement. Les souvenirs viendront tout seuls.
 
+Pour revoir comment ça marche à tout moment : `cairn.sh aide`, ou `/cairn-aide`
+si vous avez installé les skills.
+
 ### Les skills
 
-Le dossier `skill/` du dépôt contient huit skills Claude Code :
+Le dossier `skill/` du dépôt contient neuf skills Claude Code :
 
 ```sh
 mkdir -p ~/.claude/skills && cp -R skill/* ~/.claude/skills/

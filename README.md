@@ -113,8 +113,11 @@ Si vous préférez être explicite, dites-lui plutôt : « installe Cairn chez m
 suivant ce dépôt », avec la même adresse.
 
 Il vous posera quelques questions sur vous et votre façon de travailler, écrira
-votre profil avec vos mots, mettra tout en place et rattachera un premier projet.
-Comptez dix minutes, dont huit de conversation.
+votre profil avec vos mots, mettra tout en place, rattachera un premier projet et
+finira par vous expliquer en une page comment vous en servir. Comptez dix
+minutes, dont huit de conversation.
+
+Cette page se réaffiche à tout moment avec `/cairn-aide`.
 
 Il vous demandera l'autorisation de créer des dossiers et d'écrire des fichiers :
 **c'est normal, et c'est le seul moment où vous avez quelque chose à faire.**
@@ -193,12 +196,13 @@ travailler, c'est exactement à ça qu'ils servent.
 |---|---|
 | `README.md` | Vous êtes ici |
 | `AMORCE.md` | **Pour installer sans rien taper** : à faire lire à votre assistant |
+| `AIDE.md` | Comment s'en servir, en une page. Réaffichable avec `/cairn-aide` |
 | `INSTALLATION.md` | Pour mettre en place à la main, dix minutes |
 | `METHODE.md` | La spécification complète, si vous voulez comprendre le détail |
 | `DOCTRINE.md` | Comment conduire l'échange avec un assistant. La moitié qui ne s'automatise pas |
 | `adaptateurs/` | Comment brancher tel ou tel outil |
 | `squelette/` | L'arborescence de départ |
-| `skill/` | Les huit skills, qui mettent la doctrine en gestes |
+| `skill/` | Les neuf skills, qui mettent la doctrine en gestes |
 | `exemples/` | Un projet complet et fictif, pour voir à quoi ça ressemble une fois habité |
 
 ## Licence
