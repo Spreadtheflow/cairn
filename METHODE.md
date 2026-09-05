@@ -34,37 +34,70 @@ cairn/
     regles.md              les règles absolues, plafonnées à 12
     index.md
     *.md                   faits et repères valables partout
-  archive/                 (réservé) ce qui est périmé mais qu'on ne jette pas
-  pro/                     un domaine
+  archive/                 (réservé) périmé mais pas jeté
+  gabarits/                (réservé) les modèles de fichiers
+  clients/                 un domaine
     _commun/               ce qui vaut pour tout le domaine
-    mon-client-x/          un projet
-      contexte.md          identité du projet et politique de capture
-      index.md             une ligne par mémoire, jamais plus
-      journal.md           chronologique, on ajoute, on ne réécrit pas
-      *.md                 les mémoires
+    orsay-mutuelle/        un groupe : pas de contexte.md
+      _commun/             la fiche client, les interlocuteurs
+      audit-conformite/    un projet : il a un contexte.md
+        contexte.md        identité du projet et politique de capture
+        index.md           une ligne par mémoire, jamais plus
+        journal.md         chronologique, on ajoute, on ne réécrit pas
+        *.md               les mémoires
+      refonte-intranet/    un autre projet du même client
   perso/                   un autre domaine
-    _commun/
-    mon-serveur/
+    ma-maison/
 ```
 
-`commun` et `archive` sont des noms réservés. Tout autre dossier à la racine est
-un domaine.
+Trois sortes de dossiers, et une seule règle pour les distinguer.
+
+- Un **domaine** est un dossier à la racine. C'est un cloisonnement de vie.
+- Un **projet** est un dossier qui contient un `contexte.md`. C'est là que
+  vivent les souvenirs. Un projet ne contient pas d'autre projet.
+- Un **groupe** est un dossier intermédiaire sans `contexte.md` : un client, une
+  gamme, une année, ce que votre activité réclame. Il sert à ranger.
+
+Les groupes s'imbriquent librement, aussi profond que nécessaire. `commun`,
+`archive` et `gabarits` sont des noms réservés à la racine.
+
+Chaque dossier peut porter un `_commun/`, qui contient ce qui vaut pour tout ce
+qui se trouve en dessous de lui et pas au-delà. La fiche d'un client, ses
+interlocuteurs et ses conventions vont là, une seule fois, plutôt que d'être
+recopiées dans chacun de ses projets.
+
+**Un projet qui grossit devient un groupe.** Le jour où un chantier se scinde en
+plusieurs, créez un sous-dossier et descendez-y le `contexte.md` : le dossier
+parent cesse d'être un projet et devient un groupe, avec son `_commun/`. Rien
+d'autre ne bouge. C'est la seule opération de restructuration que la méthode
+demande de connaître.
 
 Un projet est identifié par un **nom stable** en minuscules avec des tirets
-(`mon-client-x`), jamais par son chemin sur le disque. Le chemin est une simple
-ligne de `contexte.md` : déplacer ou renommer le dossier de travail ne casse
-rien, il suffit de corriger cette ligne.
+(`audit-conformite`), jamais par son chemin sur le disque de travail. Ce chemin
+est une simple ligne de `contexte.md` : déplacer ou renommer le dossier de
+travail ne casse rien, il suffit de corriger cette ligne.
 
-## 3. Domaines
+Cette indirection n'est pas théorique. Les outils qui rangent leur mémoire par
+chemin de travail perdent la trace au premier renommage, et un chemin encodé
+dans un identifiant est souvent irrécupérable : rien ne distingue un dossier
+`mon projet` d'un dossier `mon-projet` une fois l'espace remplacé par un tiret.
+
+## 3. Domaines et groupes
 
 Un domaine est un cloisonnement physique, pas une étiquette décorative. C'est ce
 qui permet d'exporter, de partager ou de sauvegarder une partie sans le reste, et
 de ne pas mélanger deux vies dans le même sac.
 
 La méthode livre `pro` et `perso` par défaut. Un domaine s'ajoute en créant un
-dossier, parce que toutes les activités n'ont pas le même découpage : un
-consultant voudra peut-être `clients` et `interne`, quelqu'un d'autre encore
-autre chose.
+dossier, parce que toutes les activités n'ont pas le même découpage : une agence
+voudra peut-être `clients`, `interne` et `perso`, quelqu'un d'autre encore autre
+chose.
+
+Les groupes, eux, ne cloisonnent rien : ils rangent. Le bon réflexe est de
+n'en créer un que lorsqu'il y a effectivement plusieurs projets à mettre dedans,
+et de laisser un projet seul à plat en attendant. Une arborescence profonde
+construite à l'avance pour des projets qui n'existent pas encore est une
+arborescence qu'on abandonne.
 
 Le domaine est le grain du partage **souple**. Pour un cloisonnement **dur**, par
 exemple le serveur d'un client qui ne doit rien contenir d'autre, la réponse
@@ -197,7 +230,7 @@ Champs :
   décider si ce souvenir est pertinent. Soignez-la, c'est souvent la seule chose
   qui sera lue.
 - `nature` : une des cinq de la section 6.
-- `portee` : `commun`, le nom d'un domaine, ou le nom stable d'un projet.
+- `portee` : `commun`, ou le nom d'un domaine, d'un groupe ou d'un projet.
 - `cree`, `maj` : en JJ/MM/AAAA.
 - `statut` : `actif`, `perime`, ou `remplace` (auquel cas le corps pointe vers
   ce qui l'a remplacé).
@@ -280,9 +313,10 @@ savoir pourquoi on a changé d'avis vaut souvent plus que la décision elle-mêm
 **Péremption.** Le souvenir ne sert plus. `statut: perime`, puis déplacement
 vers `archive/` lors d'un entretien.
 
-**Promotion.** La même chose apparaît dans plusieurs projets d'un domaine : elle
-monte dans le `_commun` du domaine. Dans plusieurs domaines : elle monte dans
-`commun/`. Une promotion se propose, elle ne s'applique pas toute seule.
+**Promotion.** Un souvenir monte d'un cran quand il vaut pour plus que son
+projet : dans le `_commun/` du dossier parent s'il concerne tous les chantiers
+d'un client, puis dans celui du domaine, puis dans `commun/` s'il vaut partout.
+Une promotion se propose, elle ne s'applique jamais toute seule.
 
 ## 11. Ce qu'on n'écrit pas
 

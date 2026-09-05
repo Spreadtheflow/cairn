@@ -14,7 +14,7 @@ du projet dans votre cairn.
 # ~/.claude/projects/<slug>/ où <slug> est le chemin de travail avec des tirets
 # exemple : /mnt/work/Clients/X  ->  -mnt-work-Clients-X
 SLUG=-mnt-work-Clients-X
-PROJET=~/cairn/pro/client-x
+PROJET=~/cairn/clients/mon-client/le-chantier
 
 mkdir -p "$PROJET"
 rm -rf ~/.claude/projects/$SLUG/memory        # vérifiez d'abord ce qu'il contient
@@ -71,6 +71,14 @@ projet, est-ce qu'on capture de la mémoire ici, et où pourra finir ce qui sera
 Ne rejoue jamais ce rituel ensuite. Un assistant qui redemande sa politique à
 chaque ouverture est aussi pénible qu'un assistant qui n'en a pas.
 
+## Où ça vit
+
+Un dossier qui contient un `contexte.md` est un projet ; les dossiers
+intermédiaires ne servent qu'à ranger et peuvent porter un `_commun/` valable
+pour tout ce qui est en dessous. Écris les souvenirs dans le dossier du projet.
+Quand une chose vaut pour tous les chantiers d'un client, propose-la pour le
+`_commun/` du dossier client au lieu de la recopier.
+
 ## Format d'un souvenir
 
 Un fichier, un souvenir, dans le dossier du projet.
@@ -79,7 +87,7 @@ Un fichier, un souvenir, dans le dossier du projet.
 titre: Titre lisible
 description: une ligne, sert à l'index et au rappel
 nature: decision | regle | preference | fait | repere
-portee: commun | <domaine> | <nom-du-projet>
+portee: commun | <domaine> | <groupe> | <projet>
 cree: JJ/MM/AAAA
 maj: JJ/MM/AAAA
 statut: actif | perime | remplace

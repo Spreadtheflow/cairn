@@ -25,12 +25,18 @@ Un dossier. Des fichiers texte. C'est tout.
 
 ```
 cairn/
-  commun/           ce qui vaut pour tout ce que vous faites
-  pro/
-    client-x/       un projet
+  commun/               ce qui vaut pour tout ce que vous faites
+  clients/
+    orsay-mutuelle/     un client
+      audit-conformite/   un projet
+      refonte-intranet/   un autre projet du même client
   perso/
-    ma-maison/      un autre
+    ma-maison/
 ```
+
+Vous rangez comme vous voulez, aussi profond que nécessaire. Un dossier qui
+contient une fiche `contexte.md` est un projet, les autres ne servent qu'à
+ranger.
 
 Chaque projet a ses souvenirs, son journal et sa fiche d'identité, en Markdown
 ordinaire. Vous les ouvrez avec n'importe quel éditeur de texte, ou dans Obsidian

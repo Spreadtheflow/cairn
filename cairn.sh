@@ -13,9 +13,13 @@ AUJOURDHUI=$(date +%d/%m/%Y)
 usage() {
     cat <<'USAGE'
 Usage :
-  cairn.sh init [chemin]              crée un cairn (par défaut ~/cairn)
-  cairn.sh domaine <nom>              ajoute un domaine
-  cairn.sh projet <domaine> <nom>     crée un projet et pose les 4 questions
+  cairn.sh init [chemin]           crée un cairn (par défaut ~/cairn)
+  cairn.sh groupe <chemin>         ajoute un dossier de rangement avec son _commun
+  cairn.sh projet <chemin>         crée un projet et pose les 4 questions
+
+Les chemins sont relatifs à la racine du cairn, aussi profonds que voulu :
+  cairn.sh groupe clients/orsay-mutuelle
+  cairn.sh projet clients/orsay-mutuelle/audit-conformite
 
 Le cairn utilisé est $CAIRN s'il est défini, sinon ~/cairn.
 USAGE
@@ -66,7 +70,7 @@ Trois choses à faire, dans cet ordre :
      Voir adaptateurs/ dans le dépôt de la méthode.
 
   3. Créez votre premier projet :
-     cairn.sh projet pro mon-premier-projet
+     cairn.sh projet pro/mon-premier-projet
 
 Pour l'historique et la sauvegarde, un git init dans $racine est une bonne idée
 dès maintenant : tout ce que vous ferez ensuite devient réversible.
@@ -74,32 +78,55 @@ dès maintenant : tout ce que vous ferez ensuite devient réversible.
 TERMINE
 }
 
-cmd_domaine() {
+cmd_groupe() {
     [ $# -eq 1 ] || usage
-    nom=$1
-    case "$nom" in
-        commun|archive|gabarits)
-            echo "\"$nom\" est un nom réservé." >&2; exit 1 ;;
+    chemin=$1
+    case "$chemin" in
+        commun|archive|gabarits|commun/*|archive/*|gabarits/*)
+            echo "\"$chemin\" est un emplacement réservé." >&2; exit 1 ;;
+        /*|*/../*|../*)
+            echo "Donnez un chemin relatif à la racine du cairn." >&2; exit 1 ;;
     esac
     racine=$(cairn_racine)
-    [ ! -d "$racine/$nom" ] || { echo "Le domaine $nom existe déjà." >&2; exit 1; }
-    mkdir -p "$racine/$nom/_commun"
-    printf '# Commun du domaine %s\n\n<!-- Ce qui vaut pour tous les projets de ce domaine. Une ligne par fichier. -->\n' \
-        "$nom" > "$racine/$nom/_commun/index.md"
-    echo "Domaine créé : $racine/$nom"
+    [ ! -d "$racine/$chemin" ] || { echo "$chemin existe déjà." >&2; exit 1; }
+    [ ! -f "$racine/$chemin/contexte.md" ] || {
+        echo "$chemin est un projet, pas un groupe." >&2; exit 1; }
+
+    mkdir -p "$racine/$chemin/_commun"
+    printf '# Commun de %s\n\n<!-- Ce qui vaut pour tout ce qui se trouve en dessous, et pas au-delà.\n     Une ligne par fichier. -->\n' \
+        "$chemin" > "$racine/$chemin/_commun/index.md"
+    echo "Groupe créé : $racine/$chemin"
 }
 
 cmd_projet() {
-    [ $# -eq 2 ] || usage
-    domaine=$1 nom=$2
+    [ $# -eq 1 ] || usage
+    chemin=$1
+    case "$chemin" in
+        commun|archive|gabarits|commun/*|archive/*|gabarits/*)
+            echo "\"$chemin\" est un emplacement réservé." >&2; exit 1 ;;
+        /*|*/../*|../*)
+            echo "Donnez un chemin relatif à la racine du cairn." >&2; exit 1 ;;
+        */*) : ;;
+        *)  echo "Un projet vit dans un domaine. Essayez : $chemin/quelque-chose" >&2
+            exit 1 ;;
+    esac
     racine=$(cairn_racine)
+    projet="$racine/$chemin"
+    nom=$(basename "$chemin")
+    domaine=$(printf '%s' "$chemin" | cut -d/ -f1)
 
-    [ -d "$racine/$domaine" ] || {
-        echo "Le domaine $domaine n'existe pas. Créez-le : cairn.sh domaine $domaine" >&2
-        exit 1
-    }
-    projet="$racine/$domaine/$nom"
-    [ ! -d "$projet" ] || { echo "Le projet $nom existe déjà dans $domaine." >&2; exit 1; }
+    [ ! -d "$projet" ] || { echo "$chemin existe déjà." >&2; exit 1; }
+
+    # Un projet ne vit pas dans un autre projet.
+    parent=$(dirname "$chemin")
+    while [ "$parent" != "." ] && [ "$parent" != "/" ]; do
+        if [ -f "$racine/$parent/contexte.md" ]; then
+            echo "$parent est déjà un projet ; un projet n'en contient pas d'autre." >&2
+            echo "Transformez-le en groupe : déplacez son contexte.md dans un sous-dossier." >&2
+            exit 1
+        fi
+        parent=$(dirname "$parent")
+    done
 
     # Le rituel d'ouverture. Une seule fois, à la création.
     echo
@@ -107,8 +134,8 @@ cmd_projet() {
     echo
 
     printf 'Où se trouve le dossier de travail ? [aucun] : '
-    read -r chemin || chemin=""
-    [ -n "$chemin" ] || chemin="(aucun)"
+    read -r travail || travail=""
+    [ -n "$travail" ] || travail="(aucun)"
 
     printf 'On capture de la mémoire ici ? (oui / non / a-la-demande) [oui] : '
     read -r capture || capture=""
@@ -128,14 +155,14 @@ cmd_projet() {
     cp "$racine/gabarits/journal.md"  "$projet/journal.md"
     cp "$racine/gabarits/index.md"    "$projet/index.md"
 
-    remplacer 'nom-stable-du-projet' "$nom"       "$projet/contexte.md"
-    remplacer '^domaine: pro$'       "domaine: $domaine" "$projet/contexte.md"
-    remplacer '^chemin: .*$'         "chemin: $chemin"   "$projet/contexte.md"
-    remplacer '^capture: .*$'        "capture: $capture" "$projet/contexte.md"
+    remplacer 'nom-stable-du-projet' "$nom"                  "$projet/contexte.md"
+    remplacer '^domaine: .*$'        "domaine: $domaine"     "$projet/contexte.md"
+    remplacer '^chemin: .*$'         "chemin: $travail"      "$projet/contexte.md"
+    remplacer '^capture: .*$'        "capture: $capture"     "$projet/contexte.md"
     remplacer '^diffusion: .*$'      "diffusion: $diffusion" "$projet/contexte.md"
-    remplacer '05/09/2026'           "$AUJOURDHUI"       "$projet/contexte.md"
-    remplacer '05/09/2026'           "$AUJOURDHUI"       "$projet/journal.md"
-    remplacer '# Nom du projet'      "# $nom"            "$projet/index.md"
+    remplacer '05/09/2026'           "$AUJOURDHUI"           "$projet/contexte.md"
+    remplacer '05/09/2026'           "$AUJOURDHUI"           "$projet/journal.md"
+    remplacer '# Nom du projet'      "# $nom"                "$projet/index.md"
 
     echo
     echo "Projet créé : $projet"
@@ -151,8 +178,8 @@ cmd_projet() {
 [ $# -ge 1 ] || usage
 commande=$1; shift
 case "$commande" in
-    init)    cmd_init "$@" ;;
-    domaine) cmd_domaine "$@" ;;
-    projet)  cmd_projet "$@" ;;
+    init)   cmd_init "$@" ;;
+    groupe) cmd_groupe "$@" ;;
+    projet) cmd_projet "$@" ;;
     *)       usage ;;
 esac
