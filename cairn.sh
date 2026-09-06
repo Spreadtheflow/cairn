@@ -19,6 +19,7 @@ Usage :
   cairn.sh installer [chemin]      crée le cairn lui-même (une fois, par défaut ~/cairn)
   cairn.sh groupe <chemin>         ajoute un dossier de rangement avec son _commun
   cairn.sh projet <chemin>         crée un projet sans se placer dans son dossier
+  cairn.sh methode [--appliquer]   dit si la méthode installée est en retard, et l'aligne
 
 Les chemins de projet sont relatifs à la racine du cairn, aussi profonds que voulu :
   cd ~/travail/nouveau-site && cairn.sh init
@@ -66,6 +67,9 @@ cmd_installer() {
     cp -R "$SOURCE/squelette/." "$racine/"
     cp -R "$SOURCE/gabarits" "$racine/gabarits"
     cp "$SOURCE/METHODE.md" "$SOURCE/DOCTRINE.md" "$SOURCE/AIDE.md" "$racine/"
+    if command -v git >/dev/null 2>&1 && [ -d "$SOURCE/.git" ]; then
+        noter_source "$(git -C "$SOURCE" rev-parse HEAD)"
+    fi
 
     for f in "$racine/commun/profil.md" "$racine/commun/regles.md"; do
         remplacer '05/09/2026' "$AUJOURDHUI" "$f"
@@ -255,6 +259,11 @@ cmd_aide() {
     echo "- ici        : $racine"
     echo "- domaines   : ${domaines:-aucun}"
     echo "- projets    : $projets"
+    if [ -f "$ETAT_METHODE" ]; then
+        echo "- méthode    : alignée sur le dépôt le $(cut -d' ' -f2 < "$ETAT_METHODE")"
+    else
+        echo "- méthode    : jamais vérifiée (cairn.sh methode)"
+    fi
     trouve=$(resoudre "$(pwd)")
     if [ -n "$trouve" ]; then
         echo "- dossier courant rattaché à : $trouve"
@@ -347,6 +356,162 @@ cmd_init() {
     echo
 }
 
+# ---------------------------------------------------------------------------
+# La méthode se recalcule, la mémoire jamais.
+#
+# Un cairn installé contient des copies du dépôt : METHODE.md, DOCTRINE.md,
+# AIDE.md, les gabarits, les skills, et ce script. Ce sont des dérivés, et un
+# dérivé ne se maintient pas, il se recalcule. Cette commande est le recalcul.
+#
+# Elle ne touche jamais commun/, ni un projet, ni un journal, ni un contexte.md.
+# Ces fichiers-là n'ont pas de source ailleurs : ils sont la mémoire.
+# ---------------------------------------------------------------------------
+
+DEPOT_METHODE=${CAIRN_DEPOT:-https://github.com/Spreadtheflow/cairn.git}
+CACHE_METHODE="${XDG_CACHE_HOME:-$HOME/.cache}/cairn-methode"
+ETAT_METHODE="${XDG_STATE_HOME:-$HOME/.local/state}/cairn/methode-source"
+SKILLS_METHODE=${CAIRN_SKILLS:-$HOME/.claude/skills}
+SCRIPT=$SOURCE/$(basename -- "$0")
+
+# Note la version du dépôt d'où viennent les copies actuelles.
+noter_source() {
+    mkdir -p "$(dirname "$ETAT_METHODE")"
+    printf '%s %s\n' "$1" "$AUJOURDHUI" > "$ETAT_METHODE"
+}
+
+source_notee() { [ -f "$ETAT_METHODE" ] && cut -d' ' -f1 < "$ETAT_METHODE" || true; }
+
+# Récupère ou rafraîchit la copie de référence, dans le cache.
+cache_methode() {
+    if ! command -v git >/dev/null 2>&1; then
+        echo "git est nécessaire pour vérifier la méthode." >&2
+        echo "Sans lui, récupérez les fichiers à la main sur $DEPOT_METHODE" >&2
+        exit 1
+    fi
+    if [ -d "$CACHE_METHODE/.git" ]; then
+        if git -C "$CACHE_METHODE" fetch -q origin 2>/dev/null; then
+            git -C "$CACHE_METHODE" reset -q --hard FETCH_HEAD
+        else
+            echo "Dépôt injoignable, on compare avec la copie en cache." >&2
+        fi
+    else
+        mkdir -p "$(dirname "$CACHE_METHODE")"
+        git clone -q "$DEPOT_METHODE" "$CACHE_METHODE" || {
+            echo "Impossible de récupérer $DEPOT_METHODE" >&2; exit 1; }
+    fi
+}
+
+# Les couples "chemin dans le dépôt|chemin sur le disque".
+couples_methode() {
+    racine=$1
+    for f in METHODE.md DOCTRINE.md AIDE.md; do
+        printf '%s|%s\n' "$f" "$racine/$f"
+    done
+    for f in "$CACHE_METHODE"/gabarits/*.md; do
+        [ -e "$f" ] || continue
+        n=$(basename "$f"); printf 'gabarits/%s|%s\n' "$n" "$racine/gabarits/$n"
+    done
+    if [ -d "$SKILLS_METHODE" ]; then
+        for d in "$CACHE_METHODE"/skill/*/; do
+            [ -d "$d" ] || continue
+            n=$(basename "$d")
+            printf 'skill/%s/SKILL.md|%s\n' "$n" "$SKILLS_METHODE/$n/SKILL.md"
+        done
+    fi
+    [ -f "$SCRIPT" ] && printf 'cairn.sh|%s\n' "$SCRIPT"
+}
+
+# ajour, absent, retard (la copie est restée à la version notée), ou modifie.
+etat_fichier() {
+    ref="$CACHE_METHODE/$1"; dst=$2
+    [ -f "$ref" ] || { echo inconnu; return; }
+    [ -f "$dst" ] || { echo absent; return; }
+    cmp -s "$ref" "$dst" && { echo ajour; return; }
+    base=$(source_notee)
+    if [ -n "$base" ] && git -C "$CACHE_METHODE" cat-file -e "$base:$1" 2>/dev/null; then
+        tmp=$(mktemp)
+        git -C "$CACHE_METHODE" show "$base:$1" > "$tmp" 2>/dev/null || true
+        if cmp -s "$tmp" "$dst"; then rm -f "$tmp"; echo retard; return; fi
+        rm -f "$tmp"
+    fi
+    echo modifie
+}
+
+# Copie en passant par un temporaire : ce script peut être sa propre cible.
+poser() {
+    mkdir -p "$(dirname "$2")"
+    tmp="$2.cairn-tmp.$$"
+    cp "$1" "$tmp"
+    [ -x "$2" ] && chmod +x "$tmp"
+    mv "$tmp" "$2"
+}
+
+cmd_methode() {
+    appliquer=0 forcer=0
+    for a in "$@"; do
+        case "$a" in
+            --appliquer) appliquer=1 ;;
+            --forcer)    appliquer=1; forcer=1 ;;
+            *) echo "Option inconnue : $a" >&2
+               echo "Usage : cairn.sh methode [--appliquer] [--forcer]" >&2; exit 1 ;;
+        esac
+    done
+    racine=$(cairn_racine)
+    cache_methode
+    tete=$(git -C "$CACHE_METHODE" rev-parse HEAD)
+    liste=$(mktemp); couples_methode "$racine" > "$liste"
+
+    ajour=0 retard=0 modifie=0 absent=0 pose=0 laisse=0
+    echo
+    echo "Méthode : dépôt à $(git -C "$CACHE_METHODE" rev-parse --short HEAD), $DEPOT_METHODE"
+    [ -n "$(source_notee)" ] || echo "Aucune version notée : ce qui diffère est signalé, jamais supposé en retard."
+    echo
+    while IFS='|' read -r src dst; do
+        [ -n "$src" ] || continue
+        case $(etat_fichier "$src" "$dst") in
+            ajour)  ajour=$((ajour+1)) ;;
+            absent) absent=$((absent+1))
+                    echo "  absent               $dst"
+                    [ "$appliquer" = 1 ] && { poser "$CACHE_METHODE/$src" "$dst"; pose=$((pose+1)); } ;;
+            retard) retard=$((retard+1))
+                    echo "  en retard            $dst"
+                    [ "$appliquer" = 1 ] && { poser "$CACHE_METHODE/$src" "$dst"; pose=$((pose+1)); } ;;
+            modifie) modifie=$((modifie+1))
+                    echo "  modifié sur place    $dst"
+                    if [ "$forcer" = 1 ]; then
+                        cp "$dst" "$dst.avant-maj"
+                        poser "$CACHE_METHODE/$src" "$dst"; pose=$((pose+1))
+                        echo "                       ancienne version gardée en $dst.avant-maj"
+                    else
+                        laisse=$((laisse+1))
+                    fi ;;
+        esac
+    done < "$liste"
+    rm -f "$liste"
+
+    echo
+    echo "  à jour $ajour, en retard $retard, modifié sur place $modifie, absent $absent"
+    echo
+    if [ "$appliquer" = 1 ]; then
+        echo "$pose fichier(s) posé(s)."
+        [ "$laisse" = 0 ] || echo "$laisse laissé(s) : modifiés sur place. --forcer les écrase, en gardant une copie."
+    elif [ $((retard + absent)) -gt 0 ]; then
+        echo "cairn.sh methode --appliquer pour aligner ce qui est en retard ou absent."
+    elif [ "$modifie" -gt 0 ]; then
+        echo "Rien en retard. Ce qui diffère a été modifié sur place : à reporter dans le dépôt, ou à écraser avec --forcer."
+    else
+        echo "Tout est à jour."
+    fi
+    # On ne note la version que si le disque lui correspond vraiment : sinon la
+    # passe suivante prendrait un retard pour une modification locale.
+    if [ "$appliquer" = 1 ]; then
+        [ "$laisse" = 0 ] && noter_source "$tete"
+    else
+        [ $((retard + absent + modifie)) -eq 0 ] && noter_source "$tete"
+    fi
+    echo
+}
+
 [ $# -ge 1 ] || usage
 commande=$1; shift
 case "$commande" in
@@ -356,6 +521,7 @@ case "$commande" in
     installer) cmd_installer "$@" ;;
     groupe)    cmd_groupe "$@" ;;
     projet)    cmd_projet "$@" ;;
+    methode)   cmd_methode "$@" ;;
     ici)       echo "\"ici\" s'appelle désormais \"init\"." >&2; cmd_init "$@" ;;
     *)         usage ;;
 esac

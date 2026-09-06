@@ -56,6 +56,20 @@ Dans votre cairn :
 Et dans chaque projet, `contexte.md` dit de quoi il s'agit et ce qu'on a le droit
 d'y retenir.
 
+## Garder la méthode à jour
+
+Votre cairn contient des copies de la méthode : `METHODE.md`, les gabarits, les
+skills, le script. Le projet évolue, ces copies non.
+
+```sh
+cairn.sh methode              # dit ce qui est en retard, ne touche à rien
+cairn.sh methode --appliquer  # aligne ce qui est en retard
+```
+
+Elle ne touche **jamais** votre mémoire : ni `commun/`, ni un projet, ni un
+journal. Elle ne recopie que ce qui vient du dépôt. Si vous avez modifié une de
+ces copies sur place, elle vous le dit et la laisse tranquille.
+
 ## Une bonne habitude, une seule
 
 En fin de séance, dites-lui « on s'arrête là ». Il notera ce qui s'est passé et

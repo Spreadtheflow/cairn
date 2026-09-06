@@ -168,6 +168,11 @@ cd cairn
 
 Puis lisez `INSTALLATION.md`, qui prend une dizaine de minutes.
 
+Le projet évolue, et votre cairn en contient des copies : la méthode, les
+gabarits, les skills, le script lui-même. `cairn.sh methode` dit lesquelles ont
+pris du retard, `--appliquer` les aligne. Elle ne touche jamais votre mémoire,
+seulement ce qui vient d'ici.
+
 Vous pouvez aussi tout faire à la main : copiez le dossier `squelette/`,
 renommez-le, et lisez `METHODE.md`. **La méthode fonctionne entièrement sans
 script, sans agent et sans Obsidian.** Ce sont des accélérateurs, pas des
