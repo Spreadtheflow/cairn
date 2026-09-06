@@ -123,6 +123,11 @@ Deux vérifications qui rapportent plus qu'elles ne coûtent :
   Proposer de le reconstituer, ou de retirer le souvenir s'il est introuvable.
 - **Des règles qui sont en fait des préférences.** Une contrainte qui souffre des
   exceptions n'est pas une règle. C'est la source numéro un de la rigidification.
+- **Un profil ou une voix encore au gabarit.** `commun/profil.md` et
+  `commun/voix.md` sont lus à chaque séance ; s'ils portent encore le texte du
+  gabarit, tout le reste travaille à l'aveugle. Le signaler en premier.
+- **Des index qui ont dérivé.** `cairn.sh index` compare les lignes aux
+  en-têtes ; le lancer et rapporter les écarts, sans les corriger ici.
 
 ## 7. Écrire les propositions
 

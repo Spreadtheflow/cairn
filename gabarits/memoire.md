@@ -2,7 +2,6 @@
 titre: Titre lisible
 description: une ligne, c'est elle qui part dans l'index et qui sert au rappel
 nature: decision
-portee: nom-du-projet
 cree: 05/09/2026
 maj: 05/09/2026
 statut: actif
@@ -11,6 +10,8 @@ par:
 
 <!-- nature : decision | regle | preference | fait | repere
      statut : actif | perime | remplace
+     portee : facultatif, presque toujours absent. Le dossier où vit le fichier
+              dit déjà sa portée ; on ne l'écrit que si elle doit en différer.
      par    : facultatif. Qui a écrit ce souvenir : identifiant de modèle ou nom
               de personne. Ne jamais inventer un numéro de version. -->
 

@@ -105,7 +105,7 @@ Si `git` est disponible, propose un `git init` et un premier commit dans le
 cairn, en expliquant en une phrase à quoi ça sert : pouvoir revenir en arrière
 si quelque chose est écrit de travers. **Propose, n'impose pas.**
 
-### 5. Écris le profil en l'interrogeant
+### 5. Écris le profil et la voix en l'interrogeant
 
 **C'est l'étape la plus importante, et la seule que tu ne peux pas faire seul.**
 Un fichier `commun/profil.md` vide ou générique ne sert à rien ; c'est lui qui
@@ -134,15 +134,30 @@ préférence. Explique-lui la différence en une phrase : une règle ne souffre
 aucune exception, une préférence est un défaut dont on s'écarte quand le contexte
 le demande.
 
+**Puis sa voix.** Le profil dit qui elle est ; `commun/voix.md` dit comment elle
+écrit, et c'est ce qui fera que ce que tu rédigeras en son nom lui ressemblera,
+quel que soit le modèle qui tourne. Demande-lui, en une fois, trois ou quatre
+textes qu'elle a écrits elle-même : un mail, un message à un proche, un article
+ou un post, du code si elle en écrit. Ne lui demande pas de décrire son style,
+la réponse serait fausse. Observe ce qui revient, écris `voix.md` depuis
+`gabarits/voix.md` avec un extrait cité pour chaque trait, et relis-le-lui. Le
+skill `voix` porte la méthode. Si elle n'a rien sous la main, dis-lui qu'on
+pourra le faire plus tard en disant « voix », et laisse le gabarit.
+
 ### 6. Pose le fichier d'instructions
 
-Copie le bloc de la section 1 de `adaptateurs/claude-code.md` dans le fichier
+Copie le bloc de la section 1 de `adaptateurs/claude-code.md`, **marqueurs
+`<!-- cairn:debut -->` et `<!-- cairn:fin -->` compris**, dans le fichier
 d'instructions global de l'assistant :
 
 - Claude Code : `CLAUDE.md` dans le dossier de configuration.
-- Un outil qui lit un `AGENTS.md` : suis `adaptateurs/agents-md.md`.
-- Un outil non couvert : le bloc est autonome, place-le là où cet outil lit ses
-  instructions permanentes.
+- Tout autre outil : `adaptateurs/agents-md.md` donne le chemin exact pour
+  chacun, et la phrase à adapter sur sa mémoire intégrée.
+
+**Si ce fichier existe déjà, ajoute le bloc à la fin. N'efface rien**, et ne le
+remplace pas : il contient d'autres instructions que la personne a voulues. Les
+marqueurs sont ce qui permettra plus tard de recalculer le bloc sans toucher au
+reste.
 
 Adapte le chemin du cairn dans le bloc si ce n'est pas `~/cairn`.
 
@@ -152,13 +167,14 @@ d'indispensable.
 
 ### 7. Installe les skills
 
-Copie chaque dossier de `skill/` dans le dossier `skills/` de la configuration de
-l'assistant, en le créant s'il n'existe pas. Ce sont des fichiers Markdown, une
-copie suffit.
+Copie chaque dossier de `skill/` dans le dossier de skills de l'assistant, en le
+créant s'il n'existe pas : `~/.claude/skills/` pour Claude Code, `~/.agents/skills/`
+pour la plupart des autres, voir `adaptateurs/agents-md.md`. Ce sont des
+fichiers Markdown, une copie suffit.
 
-Dis-lui en trois lignes ce qu'elle vient de gagner, sans réciter la liste :
-`/cairn` rattache un dossier de travail, `/cadrer` ouvre un chantier, `/relire`
-vérifie avant de livrer.
+Dis-lui en trois lignes ce qu'elle vient de gagner, sans réciter la liste : deux
+mots, « pierre » pour retenir tout de suite et « fin » pour clore une séance, et
+des raccourcis pour cadrer, relire, faire le ménage.
 
 ### 8. Rattache un premier projet
 
@@ -191,7 +207,9 @@ prochaine séance.
 
 Et par la phrase qui compte : elle n'a rien à faire de particulier pour que ça
 serve. Elle travaille normalement, et son assistant retient ce qui mérite de
-l'être. Elle peut revoir cette page à tout moment avec `/cairn-aide`.
+l'être. Deux mots suffisent, « pierre » et « fin ». Elle peut revoir cette page
+à tout moment avec `/cairn-aide`, et lui demander de « mettre Cairn à jour »
+quand la méthode aura évolué : c'est lui qui le fera.
 
 ## Ce que tu ne dois pas faire
 
@@ -201,6 +219,9 @@ l'être. Elle peut revoir cette page à tout moment avec `/cairn-aide`.
   question, ou écris moins mais juste.
 - Remplir `commun/regles.md` de tout ce qu'elle a dit. Douze au maximum, et en
   cas de doute c'est une préférence.
-- Toucher à un cairn qui existe déjà.
+- Toucher à un cairn qui existe déjà, ou écraser un fichier d'instructions
+  qui existe déjà.
+- Écrire quoi que ce soit dans ta propre mémoire intégrée : le cairn la
+  remplace.
 - Terminer sur une liste de choses à faire. Une seule.
 - Expliquer la méthode. Elle n'a pas besoin de la connaître pour s'en servir.

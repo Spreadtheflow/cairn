@@ -19,7 +19,8 @@ cd cairn
 ```
 
 Ou à la main, ce qui revient exactement au même : copiez le dossier `squelette/`
-sous le nom `~/cairn`, ajoutez-y `gabarits/`, `METHODE.md` et `DOCTRINE.md`.
+sous le nom `~/cairn`, ajoutez-y `gabarits/`, `METHODE.md`, `DOCTRINE.md` et
+`AIDE.md`.
 
 ## Étape 2 : remplir le profil
 
@@ -30,6 +31,11 @@ au maximum, parce que ce fichier sera lu au début de chaque session.
 C'est l'étape que tout le monde saute et c'est celle qui rapporte le plus. Un
 assistant qui sait que vous êtes juriste et pas développeur, que vous décidez
 vite et détestez les listes d'options, ne produit pas le même travail.
+
+Puis `~/cairn/commun/voix.md` : comment vous écrivez. Ne le remplissez pas de
+tête. Prenez trois ou quatre textes de vous, un mail, un message, un article,
+du code si vous en écrivez, et notez ce qui revient, avec un extrait cité pour
+chaque trait. Le skill `/voix` le fait avec vous si vous préférez.
 
 ## Étape 3 : brancher votre assistant
 
@@ -58,7 +64,11 @@ vous posera les mêmes quatre questions. C'est la voie la plus courte, et celle 
 montrer à quelqu'un qui découvre.
 
 Pour savoir où vous en êtes, `cairn.sh ou` dit à quel projet le dossier courant
-est rattaché.
+est rattaché, et `cairn.sh init --aucun` déclare qu'un dossier n'aura jamais de
+mémoire, pour que la question ne revienne pas.
+
+`cairn.sh verifier` dit ce qui manque encore : profil, voix, instructions,
+skills, index.
 
 Puis travaillez normalement. Les souvenirs viendront tout seuls.
 
@@ -67,15 +77,20 @@ si vous avez installé les skills.
 
 ### Les skills
 
-Le dossier `skill/` du dépôt contient dix skills Claude Code :
+Le dossier `skill/` du dépôt contient douze skills au format Agent Skills, lu
+par Claude Code et par la plupart des autres outils :
 
 ```sh
 mkdir -p ~/.claude/skills && cp -R skill/* ~/.claude/skills/
 ```
 
-`/cairn` rattache un dossier sans passer par le terminal. `/cadrer`,
-`/challenger`, `/relire`, `/journal`, `/retour`, `/transmettre`, `/entretien` et
-`/arbitrer` mettent la doctrine en gestes : voir `skill/README.md`. Aucun n'est nécessaire au
+Pour un autre outil, le dossier est en général `~/.agents/skills/`, voir
+`adaptateurs/agents-md.md`.
+
+`/cairn` rattache un dossier sans passer par le terminal, `/pierre` retient tout
+de suite, `/journal` clôt la séance. `/cadrer`, `/challenger`, `/relire`,
+`/retour`, `/voix`, `/transmettre`, `/entretien` et `/arbitrer` mettent la
+doctrine en gestes : voir `skill/README.md`. Aucun n'est nécessaire au
 fonctionnement de la méthode.
 
 ---
@@ -137,6 +152,9 @@ selon votre rythme, relisez et arbitrez :
 - des états de chantier qui traînent en mémoire au lieu d'être au journal
 - des choses qui reviennent dans plusieurs projets et méritent de monter dans
   le socle commun
+
+Les index se recalculent depuis les en-têtes avec `cairn.sh index`, et
+`--appliquer` les réécrit en gardant vos intertitres.
 
 Vous pouvez confier ce passage en revue à un agent, à une condition : **qu'il
 propose et n'applique pas**. Faites-lui écrire ses propositions dans un fichier

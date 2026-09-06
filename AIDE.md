@@ -17,6 +17,22 @@ questions une seule fois et le rattache.
 journal à part. Elles ne deviennent des consignes permanentes que si vous le
 décidez. C'est ce qui l'empêche de se rigidifier avec le temps.
 
+**Il écrit avec votre voix.** Un mail, un article, un message rédigé en votre
+nom suit la façon dont vous écrivez, notée une fois dans un fichier à vous, et
+qui ne dépend d'aucun outil.
+
+## Deux mots à connaître
+
+**« pierre »** : retenir tout de suite ce qu'on vient de dire ou de décider. Il
+le fait aussi tout seul quand une décision est nette, et vous le dit en une
+ligne.
+
+**« fin »** : clore la séance. Il note ce qui s'est passé et vous propose ce qui
+mérite d'être retenu. Il vous le proposera de lui-même quand la conversation se
+termine.
+
+Rien d'autre à retenir. Le reste, c'est lui qui s'en charge.
+
 ## Ce que vous n'avez pas à faire
 
 Ranger, classer, ouvrir un fichier, taper une commande, lui rappeler le contexte
@@ -32,23 +48,27 @@ gagner du temps sur des gestes qui reviennent.
 
 | | |
 |---|---|
-| `/cairn` | Rattacher le dossier courant à sa mémoire, ou en créer une |
-| `/cairn-aide` | Réafficher cette page |
+| `/cairn` | Rattacher le dossier courant à sa mémoire, ou dire qu'il n'en aura jamais |
+| `/cairn-aide` | Réafficher cette page, et mettre Cairn à jour |
+| `/pierre` | Retenir tout de suite une chose, avec sa raison. Le mot : « pierre » |
+| `/journal` | Clore une séance : noter ce qui s'est passé, retenir ce qui compte. Le mot : « fin » |
 | `/cadrer` | Ouvrir un chantier : comprendre, arbitrer, découper avant de produire |
 | `/challenger` | Faire critiquer un projet ou une idée, une fois, sans blocage |
 | `/relire` | Vérifier avant de livrer, selon ce qui a été produit |
-| `/journal` | Clore une séance : noter ce qui s'est passé, retenir ce qui compte |
 | `/retour` | Dire ce qui vous convient ou non dans sa façon de travailler |
+| `/voix` | Établir votre façon d'écrire, à partir de textes de vous |
 | `/transmettre` | Préparer une copie à donner à quelqu'un, ou à publier |
 | `/entretien` | Faire le ménage : il repère et propose, il ne touche à rien |
 | `/arbitrer` | Trancher ces propositions : ce que vous gardez est appliqué |
 
-## Les trois fichiers qui comptent
+## Les quatre fichiers qui comptent
 
 Dans votre cairn :
 
 - `commun/profil.md` : qui vous êtes et comment vous travaillez. Lu à chaque
   séance. Si une seule chose mérite d'être corrigée à la main, c'est celui-là.
+- `commun/voix.md` : comment vous écrivez. Établi à partir de vos textes, pas
+  de ce que vous en dites.
 - `commun/regles.md` : vos règles absolues. **Douze au maximum**, volontairement.
   Au-delà, il faut en retirer une pour en ajouter une.
 - `commun/retours.md` : ce que vous dites de sa façon de travailler.
@@ -59,22 +79,20 @@ d'y retenir.
 ## Garder la méthode à jour
 
 Votre cairn contient des copies de la méthode : `METHODE.md`, les gabarits, les
-skills, le script. Le projet évolue, ces copies non.
+skills, les instructions de votre assistant. Le projet évolue, ces copies non.
 
-```sh
-cairn.sh methode              # dit ce qui est en retard, ne touche à rien
-cairn.sh methode --appliquer  # aligne ce qui est en retard
-```
+Dites-lui « **mets Cairn à jour** ». Il compare, vous dit ce qui a changé, et
+aligne ce que vous acceptez. Il ne touche **jamais** votre mémoire : ni
+`commun/`, ni un projet, ni un journal. Ce que vous avez adapté vous-même est
+fusionné, ou laissé tranquille s'il ne sait pas faire.
 
-Elle ne touche **jamais** votre mémoire : ni `commun/`, ni un projet, ni un
-journal. Elle ne recopie que ce qui vient du dépôt. Si vous avez modifié une de
-ces copies sur place, elle vous le dit et la laisse tranquille.
+Avec un terminal, c'est `cairn.sh methode`, puis `cairn.sh methode --appliquer`.
+Et `cairn.sh verifier` dit en une commande ce qui manque encore.
 
 ## Une bonne habitude, une seule
 
-En fin de séance, dites-lui « on s'arrête là ». Il notera ce qui s'est passé et
-vous proposera ce qu'il vaut la peine de retenir. C'est le geste qui fait la
-différence sur la durée.
+Dites « fin » avant de fermer. C'est le geste qui fait la différence sur la
+durée, et c'est le seul qu'on vous demande.
 
 ## Pour aller plus loin
 

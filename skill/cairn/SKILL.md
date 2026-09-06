@@ -16,7 +16,9 @@ Le cairn se trouve dans `$CAIRN` si la variable est définie, sinon dans `~/cair
 Chercher, dans cet ordre :
 
 1. Un fichier `.cairn` à la racine du dossier de travail ou d'un de ses parents.
-   Il porte `cairn:` et `projet:`. S'il existe, la question est réglée.
+   Il porte `cairn:` et `projet:`. S'il existe, la question est réglée. Si
+   `projet: aucun`, ce dossier a été déclaré **sans mémoire** : ne rien proposer,
+   ne rien demander, s'arrêter là. Seul le socle `commun/` s'applique.
 2. Sinon, parmi les `contexte.md` du cairn, celui dont le champ `chemin` est le
    dossier courant ou l'un de ses parents :
    `grep -rl "^chemin: " ~/cairn --include=contexte.md` puis comparer les valeurs.
@@ -29,13 +31,24 @@ large, une racine de travail ou un répertoire personnel, ne doit pas avaler les
 projets rangés en dessous de lui.
 
 
-Si un projet est trouvé, annoncer où il est, lire son `contexte.md`, son
-`index.md` et le socle `commun/`, puis **s'arrêter là**. Ne rien créer.
+Si un projet est trouvé, annoncer où il est en une ligne, puis lire dans cet
+ordre : le socle `commun/`, le `_commun/` de chaque dossier parent du projet dans
+le cairn, du plus haut au plus proche, puis son `contexte.md` et son `index.md`.
+Puis **s'arrêter là**. Ne rien créer.
 
-## 2. Si rien ne correspond, jouer le rituel
+## 2. Si rien ne correspond, proposer, puis jouer le rituel
 
-Poser les quatre questions **en une seule fois, en prose**, jamais en
-questionnaire à choix multiples :
+Proposer d'abord, en une phrase : rattacher ce dossier à une mémoire, ou le
+déclarer sans mémoire pour ne plus jamais poser la question ici. Un dossier
+personnel, un bureau, un dossier de téléchargements ne sont pas des projets, et
+la bonne réponse y est souvent « jamais ici ».
+
+Si c'est « jamais ici », écrire à la racine du dossier un `.cairn` de deux
+lignes, `cairn:` avec le chemin du cairn et `projet: aucun`, dire en une ligne
+que c'est fait et comment revenir dessus (supprimer ce fichier), et s'arrêter.
+
+Si c'est oui, poser les quatre questions **en une seule fois, en prose**, jamais
+en questionnaire à choix multiples :
 
 1. De quel domaine ça relève ? (annoncer les domaines existants, qui sont les
    dossiers à la racine du cairn hors `commun`, `archive`, `gabarits` et
@@ -89,14 +102,15 @@ gouvernera toute la suite.
 
 ## Si le script est disponible
 
-`cairn.sh ou` et `cairn.sh init` font exactement ce qui précède. Les utiliser
-plutôt que de refaire le travail à la main. Ils ne sont pas nécessaires : la
-méthode fonctionne entièrement sans eux.
+`cairn.sh ou`, `cairn.sh init` et `cairn.sh init --aucun` font exactement ce qui
+précède. Les utiliser plutôt que de refaire le travail à la main. Ils ne sont pas
+nécessaires : la méthode fonctionne entièrement sans eux.
 
 ## Ce qu'il ne faut pas faire
 
 - Créer un projet sans avoir posé les quatre questions.
 - Écrire quoi que ce soit en mémoire avant que `contexte.md` existe.
-- Rejouer le rituel sur un projet déjà rattaché.
+- Rejouer le rituel sur un projet déjà rattaché, ou reposer la question dans un
+  dossier déclaré sans mémoire.
 - Inventer un `chemin` : c'est le dossier de travail réel, tel qu'il est
   aujourd'hui sur le disque.

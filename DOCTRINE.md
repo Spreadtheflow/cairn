@@ -102,6 +102,12 @@ plus tard, c'est au mieux long, au pire de la fiction.
 Le journal reçoit ce qui s'est passé, la mémoire reçoit ce qu'il faut savoir. Ne
 pas mélanger les deux (voir `METHODE.md`, section 6).
 
+Deux mots suffisent à tenir cette pratique. **« pierre »** : on retient tout de
+suite ce qui vient d'être décidé, avec sa raison, et on continue. **« fin »** :
+on clôt la séance, le journal ramasse ce qui reste. L'assistant pose les pierres
+de lui-même quand la décision est nette ; le second mot, il le propose quand la
+conversation se termine, sans l'imposer.
+
 **Pourquoi :** ce qui n'est pas écrit au moment où c'est évident sera perdu
 exactement quand ce ne le sera plus.
 

@@ -49,8 +49,9 @@ par erreur se répare mal.
 - **Fusion** : réécrire la mémoire qui reste pour qu'elle porte les deux
   contenus, en gardant les deux pourquoi s'ils diffèrent ; supprimer l'autre ;
   corriger l'index et **tout lien `[[...]]` qui pointait vers la disparue**.
-- **Promotion** : déplacer le fichier d'un cran, corriger son champ `portee`,
-  retirer la ligne de l'index d'origine, l'ajouter à l'index d'arrivée. Si la
+- **Promotion** : déplacer le fichier d'un cran, retirer son champ `portee` s'il
+  en a un (le dossier dit désormais la portée), retirer la ligne de l'index
+  d'origine, l'ajouter à l'index d'arrivée. Si la
   chose existait en plusieurs exemplaires, les supprimer tous.
 - **Retrait** : passer `statut: perime`, déplacer vers `archive/`, retirer de
   l'index. **Ne jamais supprimer** : savoir pourquoi une chose a cessé de valoir
@@ -66,7 +67,8 @@ par erreur se répare mal.
 - **Retour arbitré** : renseigner la ligne « Suite » dans `retours.md`, avec la
   date et le sort retenu.
 
-Mettre `maj` à la date du jour sur tout fichier touché.
+Mettre `maj` à la date du jour sur tout fichier touché. Puis recalculer les
+index, `cairn.sh index --appliquer` si le script est là.
 
 ## 5. Consigner les refus, et c'est le point qui compte
 

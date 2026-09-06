@@ -2,7 +2,7 @@
 
 Ce document est la spécification. Il décrit ce qu'est un cairn, comment il est
 rangé, ce qu'on y écrit et ce qu'on n'y écrit pas. Pour une présentation courte,
-voir `LISEZMOI.md`. Pour les pratiques d'échange avec un agent, voir `DOCTRINE.md`.
+voir `README.md`. Pour les pratiques d'échange avec un agent, voir `DOCTRINE.md`.
 
 ## 1. Principes
 
@@ -31,6 +31,7 @@ les cinq garde-fous qui existent uniquement pour empêcher ça.
 cairn/
   commun/                  (réservé) le socle global
     profil.md              qui je suis, comment je travaille
+    voix.md                comment j'écris et je parle
     regles.md              les règles absolues, plafonnées à 12
     retours.md             ce que je dis de la façon de travailler de l'agent
     ecartes.md             les propositions d'entretien refusées, avec leur raison
@@ -106,6 +107,27 @@ d'attendre.
 Le reste n'est qu'adaptateurs, tous interchangeables : un dossier synchronisé, un
 connecteur, un partage réseau, une pièce jointe. La méthode n'en impose aucun et
 n'en dépend d'aucun.
+
+### Le profil et la voix
+
+Deux fichiers du socle décrivent la personne, et ils ne se confondent pas.
+
+`profil.md` dit **qui** elle est : métier, niveau technique, façon de décider,
+ce qui lui fait perdre son temps. Il gouverne la manière dont l'assistant
+travaille avec elle.
+
+`voix.md` dit **comment elle sonne** : registre, rythme des phrases, mots qu'elle
+emploie et mots qu'elle n'emploierait jamais, forme de ses messages, style de son
+code. Il gouverne tout ce que l'assistant rédige **en son nom**, un mail, un
+article, un message, un commentaire de code, et rien de ce qui se discute entre
+eux. Il s'établit en observant des textes qu'elle a réellement écrits, jamais
+d'après la description qu'elle ferait d'elle-même, et chaque trait y est
+illustré d'un extrait cité tel quel.
+
+**Pourquoi la voix est dans le cairn et pas dans l'outil :** c'est la partie de
+la mémoire qui coûte le plus cher à reconstruire et qui se perd à chaque
+changement de modèle ou de fournisseur. Écrite une fois dans un fichier à elle,
+elle suit la personne partout.
 
 ## 3. Domaines et groupes
 
@@ -220,12 +242,32 @@ recouvrent, et un humain qui ouvre le dossier et doit voir d'un coup d'œil qu'u
 mémoire existe. Comme il voyage avec le dossier, il survit à un déplacement là où
 le `chemin` de `contexte.md` devient faux.
 
+**Le marqueur sait aussi dire non.** Un `.cairn` dont la ligne `projet:` vaut
+`aucun` déclare que ce dossier, et tout ce qu'il contient, n'a pas de mémoire et
+n'en aura pas : l'assistant n'y propose rien et n'y demande rien, le socle seul
+s'applique. C'est la réponse au dossier personnel, aux téléchargements, au
+bureau, à tout endroit où l'on ouvre un assistant sans être sur un projet. Sans
+lui, la question « on rattache ? » reviendrait à chaque ouverture, et une
+question qui revient est un carcan.
+
+### Ce qui est lu à l'ouverture
+
+Une fois le projet trouvé, l'assistant lit, dans cet ordre : le socle `commun/`,
+qui vaut partout ; le `_commun/` de chaque dossier parent du projet dans le
+cairn, du plus haut au plus proche, parce que la fiche d'un client vit là et pas
+dans chacun de ses chantiers ; puis le `contexte.md` et l'`index.md` du projet.
+Les souvenirs eux-mêmes ne sont pas chargés d'avance : l'index sert à savoir
+lesquels ouvrir, et **on les ouvre avant d'agir sur leur sujet**, pas après.
+
 ### Le rituel
 
-Quand la résolution ne trouve rien, l'assistant ne se tait pas : **il joue le
-rituel**. C'est là qu'est l'automatisation. Personne n'a à créer un dossier dans
-le cairn avant de commencer à travailler ; on crée son dossier de travail, on
-lance son assistant, et il constate qu'il ne connaît pas l'endroit.
+Quand la résolution ne trouve rien, l'assistant ne se tait pas : **il propose**,
+en une phrase, de rattacher le dossier ou de le déclarer sans mémoire. Si c'est
+oui, il joue le rituel. Si c'est « jamais ici », il pose un marqueur `projet:
+aucun` et n'y revient plus. C'est là qu'est l'automatisation. Personne n'a à
+créer un dossier dans le cairn avant de commencer à travailler ; on crée son
+dossier de travail, on lance son assistant, et il constate qu'il ne connaît pas
+l'endroit.
 
 À la première session sur un projet qui n'a pas encore de `contexte.md`, quatre
 questions, une seule fois :
@@ -295,7 +337,6 @@ Un fichier, un souvenir. En-tête YAML, puis le corps.
 titre: Titre lisible
 description: une ligne, sert à l'index et au rappel
 nature: decision
-portee: mon-client-x
 cree: 05/09/2026
 maj: 05/09/2026
 statut: actif
@@ -316,7 +357,12 @@ Champs :
   décider si ce souvenir est pertinent. Soignez-la, c'est souvent la seule chose
   qui sera lue.
 - `nature` : une des cinq de la section 6.
-- `portee` : `commun`, ou le nom d'un domaine, d'un groupe ou d'un projet.
+- `portee` : facultatif, et le plus souvent absent. La portée d'un souvenir est
+  le dossier où il se trouve : un fichier dans `commun/` vaut partout, dans un
+  `_commun/` pour tout ce qui est en dessous, dans un projet pour ce projet. La
+  recopier dans l'en-tête, c'est tenir à la main une chose que le rangement dit
+  déjà, et qui ment dès qu'un fichier est promu sans être réédité. On ne l'écrit
+  que si elle doit différer du rangement, ce qui est rare et mérite d'être dit.
 - `cree`, `maj` : en JJ/MM/AAAA.
 - `statut` : `actif`, `perime`, ou `remplace` (auquel cas le corps pointe vers
   ce qui l'a remplacé).
@@ -355,6 +401,12 @@ session ; s'il se met à résumer le contenu des fichiers, il devient un documen
 d'index ne tient plus en une ligne, ce n'est pas l'index qu'il faut agrandir,
 c'est le souvenir qu'il faut découper.
 
+**L'index est un dérivé, et un dérivé se recalcule.** Chaque ligne recopie le
+titre et la description d'un en-tête ; elle finit donc par en diverger. C'est
+l'en-tête qui fait foi, et `cairn.sh index` recalcule les lignes depuis les
+en-têtes en gardant les intertitres et les commentaires. Si une ligne d'index
+paraît meilleure que la description, c'est la description qu'il faut corriger.
+
 ## 9. Les cinq garde-fous
 
 Ils existent pour une seule raison : empêcher la mémoire de se transformer en
@@ -385,7 +437,7 @@ n'a jamais de raison de dire non, donc il dit toujours oui, donc il étouffe.
 
 **Vingt souvenirs maximum** dans `commun/` : les faits, repères et préférences
 qui valent partout, sans compter les fichiers réservés du socle (`profil.md`,
-`regles.md`, `retours.md`, `ecartes.md`, `index.md`).
+`voix.md`, `regles.md`, `retours.md`, `ecartes.md`, `index.md`).
 
 Sans ce second plafond, le carcan ne disparaît pas, il se déplace. Les règles
 sont comptées et surveillées ; les préférences ne le sont pas, alors qu'elles
@@ -456,7 +508,12 @@ une question mal posée.
 ## 10. Cycle de vie d'un souvenir
 
 **Naissance.** Quelque chose a été appris qui ne se déduit ni du travail
-lui-même ni de son historique. On l'écrit, avec son pourquoi.
+lui-même ni de son historique. On l'écrit, avec son pourquoi, **sur le moment**
+et pas en fin de séance : le geste s'appelle **poser une pierre**, et le mot à
+dire est simplement « pierre ». L'assistant le fait aussi de lui-même, dès qu'une
+décision est prise avec sa raison ou qu'un piège est rencontré. Le journal de
+clôture, dont le mot est « fin », ramasse ce qui reste ; il ne remplace pas la
+pierre posée pendant.
 
 **Mise à jour.** Le fait change : on corrige le corps et on met `maj` à jour. On
 ne crée pas un second fichier sur le même sujet.

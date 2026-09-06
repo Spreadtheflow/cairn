@@ -1,15 +1,21 @@
 ---
 name: journal
-description: "Clore une séance de travail : écrire l'entrée de journal du jour dans le cairn du projet, puis proposer les souvenirs qui méritent d'être retenus, avec leur pourquoi. Distingue ce qui s'est passé de ce qu'il faut savoir. Utiliser en fin de session, quand l'utilisateur dit qu'on s'arrête, qu'on fait le point, qu'il faut noter ce qu'on a fait, ou avant de fermer un chantier. Déclencheurs : journal, on s'arrête là, fin de séance, noter ce qu'on a fait, faire le point, retiens ça."
+description: "Clore une séance de travail : écrire l'entrée de journal du jour dans le cairn du projet, puis proposer les souvenirs qui méritent d'être retenus, avec leur pourquoi. Distingue ce qui s'est passé de ce qu'il faut savoir. Utiliser en fin de session, quand l'utilisateur dit fin, stop, qu'on s'arrête, qu'on fait le point, ou avant de fermer un chantier ; et de sa propre initiative, en le proposant en une ligne, quand la conversation se termine visiblement. Déclencheurs : fin, journal, on s'arrête là, fin de séance, faire le point, on arrête, c'est bon pour aujourd'hui."
 ---
 
 # Clore une séance
 
-Ce skill applique le point 6 de la doctrine Cairn, documenter au fil de l'eau.
-C'est la pratique qu'on saute le plus souvent, parce qu'elle tombe au moment où
-l'on est fatigué. Elle est aussi celle dont l'absence coûte le plus cher : ce qui
-n'est pas écrit quand c'est évident sera perdu exactement quand ça ne le sera
-plus.
+Le mot est **« fin »**. Ce skill applique le point 6 de la doctrine Cairn,
+documenter au fil de l'eau. C'est la pratique qu'on saute le plus souvent, parce
+qu'elle tombe au moment où l'on est fatigué. Elle est aussi celle dont l'absence
+coûte le plus cher : ce qui n'est pas écrit quand c'est évident sera perdu
+exactement quand ça ne le sera plus.
+
+**L'assistant le propose de lui-même**, en une ligne, quand la conversation se
+termine visiblement : un merci, un « à demain », un « ok c'est bon ». Il ne
+l'impose pas, et il ne le propose qu'une fois. Les pierres posées pendant la
+séance avec le skill `pierre` ne se reproposent pas ici : le journal ramasse ce
+qui reste.
 
 ## 1. Vérifier la politique avant d'écrire
 
@@ -68,8 +74,10 @@ Ne mérite pas un souvenir :
 - le résultat d'une recherche refaisable en trente secondes.
 
 Proposer chaque souvenir avec son titre, sa nature, sa description en une ligne
-et **son pourquoi**. Renseigner `par:` avec son propre identifiant de modèle. Un souvenir dont on ne sait pas écrire le pourquoi n'est pas
-prêt : le dire plutôt que d'inventer une raison.
+et **son pourquoi**. Renseigner `par:` avec son propre identifiant de modèle. Un
+souvenir dont on ne sait pas écrire le pourquoi n'est pas prêt : le dire plutôt
+que d'inventer une raison. Ce qui a déjà été posé en pierre pendant la séance
+est cité, pas reproposé.
 
 Signaler les promotions possibles : une chose qui vaut pour tous les chantiers
 d'un client va dans son `_commun/`, une chose qui vaut partout est candidate au
@@ -89,7 +97,7 @@ de moins.
 ## 5. Écrire, puis rendre compte
 
 Après validation, écrire les souvenirs retenus et mettre l'`index.md` à jour, une
-ligne par souvenir.
+ligne par souvenir, avec `cairn.sh index --appliquer` si le script est là.
 
 Terminer par trois lignes : l'entrée écrite, les souvenirs créés, ce qui reste
 ouvert pour la prochaine fois.
