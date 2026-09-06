@@ -6,9 +6,10 @@ d'aucun d'entre eux.**
 > **Vous êtes un assistant et on vient de vous donner ce lien ?** La personne
 > envisage probablement d'installer Cairn chez elle. **Proposez-le-lui, et
 > n'installez rien sans son accord explicite** : elle est peut-être simplement en
-> train de regarder. Si elle accepte, lisez
-> [AMORCE.md](https://raw.githubusercontent.com/Spreadtheflow/cairn/main/AMORCE.md)
-> et suivez-le à la lettre, il est écrit pour vous.
+> train de regarder. Si elle accepte, les étapes sont plus bas, dans **« Ce que
+> l'assistant va faire »** : elles sont sur cette page, lisibles par elle comme
+> par vous. [AMORCE.md](https://raw.githubusercontent.com/Spreadtheflow/cairn/main/AMORCE.md)
+> les développe, mais n'y ajoute aucune étape.
 
 Un cairn, c'est ce tas de pierres que les marcheurs élèvent au fil du passage :
 chacun ajoute la sienne, l'édifice grossit lentement, et il finit par baliser le
@@ -126,6 +127,37 @@ Acceptez.
 C'est le chemin recommandé sous **macOS comme sous Windows**, et il ne demande ni
 ligne de commande, ni git, ni droits administrateur.
 
+### Ce que l'assistant va faire
+
+Neuf étapes, que vous pouvez lire avant de dire oui. C'est la liste que suit
+l'assistant, écrite ici plutôt que dans un fichier qu'il irait chercher ailleurs.
+
+1. Il annonce ce qu'il va faire, et attend votre accord.
+2. Il repère les chemins réels de votre machine, sans rien supposer. Si un cairn
+   existe déjà, il s'arrête et vous demande.
+3. Il récupère les fichiers de la méthode depuis ce dépôt.
+4. Il crée `cairn` dans votre dossier personnel : l'arborescence de départ, les
+   gabarits, `METHODE.md`, `DOCTRINE.md` et `AIDE.md`.
+5. Il vous interroge et écrit votre profil **avec vos mots**. C'est l'étape la
+   plus importante, et la seule qu'il ne peut pas faire seul.
+6. Il pose un fichier d'instructions dans la configuration de votre assistant,
+   pour que votre cairn soit retrouvé à chaque session.
+7. Il copie les dix skills.
+8. Il rattache un premier projet, si vous en avez un sous la main.
+9. Il vérifie, puis vous affiche l'aide en une page.
+
+**Ce qu'il ne fait jamais :** demander des droits administrateur, poser un lien
+symbolique, modifier votre PATH ou votre profil de shell, vous faire taper une
+commande, ni toucher à un cairn qui existe déjà.
+
+Rien de tout cela n'est difficile à défaire : c'est un dossier de fichiers texte,
+plus un fichier d'instructions dans la configuration de votre assistant. En
+revanche, ce que vous lui dictez passe par lui, comme le reste de vos
+conversations : le profil que vous écrivez ensemble n'y échappe pas.
+
+[AMORCE.md](AMORCE.md) développe chacune de ces étapes pour l'assistant. C'est du
+détail, pas une dixième étape cachée.
+
 ### Vous êtes à l'aise avec un terminal
 
 ```sh
@@ -198,7 +230,7 @@ travailler, c'est exactement à ça qu'ils servent.
 | Fichier | Pour qui |
 |---|---|
 | `README.md` | Vous êtes ici |
-| `AMORCE.md` | **Pour installer sans rien taper** : à faire lire à votre assistant |
+| `AMORCE.md` | Le détail des neuf étapes d'installation, écrit pour l'assistant |
 | `AIDE.md` | Comment s'en servir, en une page. Réaffichable avec `/cairn-aide` |
 | `INSTALLATION.md` | Pour mettre en place à la main, dix minutes |
 | `METHODE.md` | La spécification complète, si vous voulez comprendre le détail |
