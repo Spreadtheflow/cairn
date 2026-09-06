@@ -1,6 +1,6 @@
 ---
 name: entretien
-description: "Passer le cairn en revue et proposer ce qu'il faut fusionner, promouvoir au socle commun, ou retirer. Détecte les doublons entre projets, les règles jamais déclenchées, les décisions remplacées et les états de chantier restés en mémoire. Propose dans un fichier daté, n'applique jamais. Utiliser quand l'utilisateur demande de faire le ménage dans sa mémoire, de l'entretenir, de l'agréger, ou de repérer ce qui pourrait monter au socle commun. Déclencheurs : entretien du cairn, ménage mémoire, agréger, socle commun, doublons, ce qui a vieilli, faire le tri."
+description: "Passer le cairn en revue et proposer ce qu'il faut fusionner, promouvoir au socle commun, ou retirer. Détecte les doublons entre projets, les règles jamais déclenchées, les décisions remplacées et les états de chantier restés en mémoire. Propose dans un fichier daté, n'applique jamais. Utiliser quand l'utilisateur demande de faire le ménage dans sa mémoire, de l'entretenir, de l'agréger, ou de repérer ce qui pourrait monter au socle commun. Déclencheurs : entretien du cairn, ménage mémoire, agréger, socle commun, doublons, ce qui a vieilli, faire le tri. En anglais : maintenance, clean up memory, duplicates, what has aged."
 ---
 
 # Entretenir le cairn

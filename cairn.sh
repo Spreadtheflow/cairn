@@ -103,7 +103,7 @@ cmd_installer() {
     mkdir -p "$racine"
     cp -R "$SOURCE/squelette/." "$racine/"
     cp -R "$SOURCE/gabarits" "$racine/gabarits"
-    cp "$SOURCE/METHODE.md" "$SOURCE/DOCTRINE.md" "$SOURCE/AIDE.md" "$racine/"
+    cp "$SOURCE/METHODE.md" "$SOURCE/DOCTRINE.md" "$SOURCE/AIDE.md" "$SOURCE/AIDE.en.md" "$racine/"
     if command -v git >/dev/null 2>&1 && [ -d "$SOURCE/.git" ]; then
         noter_source "$(git -C "$SOURCE" rev-parse HEAD)"
     fi
@@ -610,7 +610,7 @@ cache_methode() {
 # Les couples "chemin dans le dépôt|chemin sur le disque".
 couples_methode() {
     racine=$1
-    for f in METHODE.md DOCTRINE.md AIDE.md; do
+    for f in METHODE.md DOCTRINE.md AIDE.md AIDE.en.md; do
         printf '%s|%s\n' "$f" "$racine/$f"
     done
     for f in "$CACHE_METHODE"/gabarits/*.md; do

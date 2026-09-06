@@ -1,6 +1,6 @@
 ---
 name: cairn-aide
-description: "Afficher l'aide de Cairn : comment ça marche, les raccourcis disponibles, où sont les fichiers, l'état réel du cairn de la personne, et mettre la méthode à jour depuis le dépôt quand elle a pris du retard. Utiliser quand elle demande comment ça marche, ce qu'elle peut faire, quels sont les raccourcis, où est sa mémoire, si Cairn est à jour, ou qu'elle semble perdue avec la méthode. Sert aussi à clore une installation. Déclencheurs : aide cairn, comment ça marche, à quoi ça sert, quels raccourcis, où est ma mémoire, je suis perdu, rappelle-moi, mets Cairn à jour, mise à jour de Cairn."
+description: "Afficher l'aide de Cairn : comment ça marche, les raccourcis disponibles, où sont les fichiers, l'état réel du cairn de la personne, et mettre la méthode à jour depuis le dépôt quand elle a pris du retard. Utiliser quand elle demande comment ça marche, ce qu'elle peut faire, quels sont les raccourcis, où est sa mémoire, si Cairn est à jour, ou qu'elle semble perdue avec la méthode. Sert aussi à clore une installation. Déclencheurs : aide cairn, comment ça marche, à quoi ça sert, quels raccourcis, où est ma mémoire, je suis perdu, rappelle-moi, mets Cairn à jour, mise à jour de Cairn. En anglais : help, how does it work, update Cairn."
 ---
 
 # Afficher l'aide
@@ -11,7 +11,8 @@ comment s'en servir. Il sert aussi de dernière étape à une installation.
 ## 1. Lire la partie stable
 
 Ouvrir `AIDE.md` à la racine du cairn. C'est le texte de référence, une page,
-écrit pour quelqu'un qui n'est pas développeur.
+écrit pour quelqu'un qui n'est pas développeur. Si la personne parle anglais,
+`AIDE.en.md` dit la même chose dans sa langue.
 
 S'il est absent, le récupérer depuis
 `https://raw.githubusercontent.com/Spreadtheflow/cairn/main/AIDE.md` et le

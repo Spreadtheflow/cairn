@@ -1,6 +1,6 @@
 ---
 name: cadrer
-description: "Ouvrir un chantier en cadrant avant de produire. Conduit un échange en prose pour comprendre le besoin, met les tensions sur la table, recommande, puis découpe en phases avec un livrable par phase. Utiliser quand l'utilisateur veut démarrer un projet, un module ou une refonte, quand une demande est vague ou grosse, ou quand il dit cadrer, réfléchir ensemble, avant de coder, on en parle. Déclencheurs : cadrer, nouveau chantier, on démarre, avant de produire, plan, découper en phases."
+description: "Ouvrir un chantier en cadrant avant de produire. Conduit un échange en prose pour comprendre le besoin, met les tensions sur la table, recommande, puis découpe en phases avec un livrable par phase. Utiliser quand l'utilisateur veut démarrer un projet, un module ou une refonte, quand une demande est vague ou grosse, ou quand il dit cadrer, réfléchir ensemble, avant de coder, on en parle. Déclencheurs : cadrer, nouveau chantier, on démarre, avant de produire, plan, découper en phases. En anglais : scope, plan, before coding, new project, break into phases."
 ---
 
 # Cadrer avant de produire

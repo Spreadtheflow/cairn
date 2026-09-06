@@ -1,6 +1,6 @@
 ---
 name: pierre
-description: "Poser une pierre au cairn : retenir tout de suite ce qui vient d'être dit ou décidé, un seul souvenir avec son pourquoi, sans clore la séance. Utiliser quand l'utilisateur dit pierre, retiens, note ça, garde ça, à retenir, ou de sa propre initiative dès qu'une décision est prise avec sa raison, qu'un piège est rencontré, ou qu'une règle ou une préférence est énoncée. Déclencheurs : pierre, retiens, note ça, garde ça, à retenir, souviens-toi, on retient."
+description: "Poser une pierre au cairn : retenir tout de suite ce qui vient d'être dit ou décidé, un seul souvenir avec son pourquoi, sans clore la séance. Utiliser quand l'utilisateur dit pierre, retiens, note ça, garde ça, à retenir, ou de sa propre initiative dès qu'une décision est prise avec sa raison, qu'un piège est rencontré, ou qu'une règle ou une préférence est énoncée. Déclencheurs : pierre, retiens, note ça, garde ça, à retenir, souviens-toi, on retient. En anglais : stone, remember this, keep this, note this."
 ---
 
 # Poser une pierre

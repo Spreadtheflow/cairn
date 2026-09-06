@@ -67,12 +67,15 @@ plus jamais demander. Tant que rien n'est décidé, n'écris rien.
 
 ## Comment on travaille
 
+Réponds dans la langue de la personne, quelle que soit celle de ces fichiers.
 Cadrer avant de produire. Challenger une fois, puis avancer. Ne pas inventer.
 Laisser de la place. Expliquer sans pontifier. Documenter pendant. Remonter à la
 source. Relire, vérifier, éprouver. `DOCTRINE.md` développe chaque point ; les
 skills les mettent en gestes.
 
 ## Deux mots à connaître : pierre et fin
+
+En anglais, « stone » et « done » valent exactement la même chose.
 
 **« pierre »** : retenir tout de suite ce qui vient d'être dit ou décidé, avec
 son pourquoi, sans attendre la fin. C'est le skill `pierre`. **Fais-le aussi de

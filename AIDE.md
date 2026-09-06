@@ -1,5 +1,7 @@
 # Cairn, en une page
 
+*English version: [AIDE.en.md](AIDE.en.md)*
+
 Votre assistant a une mémoire. Elle est dans un dossier à vous, en fichiers
 texte que vous pouvez lire, corriger et emporter.
 

@@ -87,7 +87,7 @@ Copie dans `<dossier personnel>/cairn` :
 - le contenu de `squelette/`, qui donne `commun/`, `archive/`, `a-trier/`,
   `pro/` et `perso/` ;
 - le dossier `gabarits/` ;
-- `METHODE.md`, `DOCTRINE.md` et `AIDE.md`.
+- `METHODE.md`, `DOCTRINE.md`, `AIDE.md` et `AIDE.en.md`.
 
 Puis remplace les dates d'exemple des fichiers du socle par la date du jour, au
 format JJ/MM/AAAA.

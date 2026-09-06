@@ -1,6 +1,6 @@
 ---
 name: voix
-description: "Établir ou affiner la voix de l'utilisateur, la façon dont il écrit et parle, à partir de textes qu'il a réellement écrits (mails, articles, posts, messages, code), et l'écrire dans commun/voix.md pour que ce qui est produit en son nom lui ressemble quel que soit le modèle. Utiliser à l'installation, quand voix.md est encore au gabarit, quand l'utilisateur dit que ça ne lui ressemble pas, ou qu'il veut que l'assistant écrive comme lui. Déclencheurs : voix, ma façon d'écrire, écris comme moi, ça ne me ressemble pas, mon style, mon ton."
+description: "Établir ou affiner la voix de l'utilisateur, la façon dont il écrit et parle, à partir de textes qu'il a réellement écrits (mails, articles, posts, messages, code), et l'écrire dans commun/voix.md pour que ce qui est produit en son nom lui ressemble quel que soit le modèle. Utiliser à l'installation, quand voix.md est encore au gabarit, quand l'utilisateur dit que ça ne lui ressemble pas, ou qu'il veut que l'assistant écrive comme lui. Déclencheurs : voix, ma façon d'écrire, écris comme moi, ça ne me ressemble pas, mon style, mon ton. En anglais : voice, my style, my tone, write like me, does not sound like me."
 ---
 
 # Établir la voix

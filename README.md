@@ -1,5 +1,7 @@
 # Cairn
 
+*English version: [README.en.md](README.en.md)*
+
 **Une mémoire pour vos assistants IA. Des fichiers texte, chez vous, qui ne
 dépendent d'aucun outil.**
 

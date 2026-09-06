@@ -1,6 +1,6 @@
 ---
 name: transmettre
-description: "Préparer une copie transmissible de la mémoire d'un projet, pour un client, un collègue ou une publication, en appliquant la politique de diffusion déclarée dans contexte.md. Anonymise si le projet est public, relit le ton s'il est partagé, et refuse de sortir tel quel un projet privé. Utiliser quand l'utilisateur veut transmettre, partager, exporter ou publier la mémoire d'un projet, ou la remettre à quelqu'un. Déclencheurs : transmettre, partager la mémoire, exporter le cairn, remettre au client, passation, publier."
+description: "Préparer une copie transmissible de la mémoire d'un projet, pour un client, un collègue ou une publication, en appliquant la politique de diffusion déclarée dans contexte.md. Anonymise si le projet est public, relit le ton s'il est partagé, et refuse de sortir tel quel un projet privé. Utiliser quand l'utilisateur veut transmettre, partager, exporter ou publier la mémoire d'un projet, ou la remettre à quelqu'un. Déclencheurs : transmettre, partager la mémoire, exporter le cairn, remettre au client, passation, publier. En anglais : hand over, share memory, export, publish."
 ---
 
 # Transmettre la mémoire d'un projet

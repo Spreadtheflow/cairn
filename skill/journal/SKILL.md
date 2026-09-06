@@ -1,6 +1,6 @@
 ---
 name: journal
-description: "Clore une séance de travail : écrire l'entrée de journal du jour dans le cairn du projet, puis proposer les souvenirs qui méritent d'être retenus, avec leur pourquoi. Distingue ce qui s'est passé de ce qu'il faut savoir. Utiliser en fin de session, quand l'utilisateur dit fin, stop, qu'on s'arrête, qu'on fait le point, ou avant de fermer un chantier ; et de sa propre initiative, en le proposant en une ligne, quand la conversation se termine visiblement. Déclencheurs : fin, journal, on s'arrête là, fin de séance, faire le point, on arrête, c'est bon pour aujourd'hui."
+description: "Clore une séance de travail : écrire l'entrée de journal du jour dans le cairn du projet, puis proposer les souvenirs qui méritent d'être retenus, avec leur pourquoi. Distingue ce qui s'est passé de ce qu'il faut savoir. Utiliser en fin de session, quand l'utilisateur dit fin, stop, qu'on s'arrête, qu'on fait le point, ou avant de fermer un chantier ; et de sa propre initiative, en le proposant en une ligne, quand la conversation se termine visiblement. Déclencheurs : fin, journal, on s'arrête là, fin de séance, faire le point, on arrête, c'est bon pour aujourd'hui. En anglais : done, end, wrap up, end of session, that is all for today."
 ---
 
 # Clore une séance
