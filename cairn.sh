@@ -37,7 +37,7 @@ Usage :
   cairn.sh installer [chemin]      crée le cairn lui-même (une fois, par défaut ~/cairn)
   cairn.sh groupe <chemin>         ajoute un dossier de rangement avec son _commun
   cairn.sh projet <chemin>         crée un projet sans se placer dans son dossier
-  cairn.sh index [--appliquer]     compare les index aux en-têtes, et les recalcule
+  cairn.sh index [--appliquer] [chemin]   compare les index aux en-têtes, et les recalcule
   cairn.sh methode [--appliquer]   dit si la méthode installée est en retard, et l'aligne
 
 Les chemins de projet sont relatifs à la racine du cairn, aussi profonds que voulu :
@@ -525,17 +525,24 @@ index_dossier() {
 }
 
 cmd_index() {
-    appliquer=0
+    appliquer=0 sous=""
     for a in "$@"; do
         case "$a" in
             --appliquer) appliquer=1 ;;
-            *) echo "Usage : cairn.sh index [--appliquer]" >&2; exit 1 ;;
+            -*) echo "Usage : cairn.sh index [--appliquer] [chemin]" >&2; exit 1 ;;
+            *) sous=$a ;;
         esac
     done
     racine=$(cairn_racine)
+    depart=$racine
+    if [ -n "$sous" ]; then
+        verifier_chemin "$sous"
+        depart="$racine/$sous"
+        [ -d "$depart" ] || { echo "$sous n'existe pas dans le cairn." >&2; exit 1; }
+    fi
     total=0
     liste=$(mktemp)
-    find "$racine" -name index.md -not -path "*/gabarits/*" -not -path "*/archive/*" 2>/dev/null | sort > "$liste"
+    find "$depart" -name index.md -not -path "*/gabarits/*" -not -path "*/archive/*" 2>/dev/null | sort > "$liste"
     echo
     while IFS= read -r i; do
         [ -n "$i" ] || continue

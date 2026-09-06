@@ -157,7 +157,7 @@ au format Agent Skills : `~/.agents/skills/` pour la plupart des outils,
 init [chemin|--aucun]   rattache le dossier courant, ou le déclare sans mémoire
 ou                      dit à quel projet le dossier courant est rattaché
 projet, groupe          créent sans se déplacer
-index [--appliquer]     compare les index aux en-têtes, les recalcule
+index [--appliquer] [chemin]   compare les index aux en-têtes, les recalcule
 methode [--appliquer]   compare les copies au dépôt, les aligne
 verifier                diagnostic : profil, voix, socle, instructions, skills, index
 ```

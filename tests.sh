@@ -178,6 +178,12 @@ verifie "recalcule la ligne"                    'fichier_contient "$P/index.md" 
 verifie "retire l'orpheline, garde l'intertitre" '! fichier_contient "$P/index.md" "disparu.md" && fichier_contient "$P/index.md" "## Un intertitre"'
 joue "$S" index
 verifie "puis ne trouve plus rien"              'sortie_contient "correspondent"'
+printf '\n- [Fantôme](encore.md) · orphelin\n' >> "$CAIRN/perso/tout/index.md"
+joue "$S" index --appliquer clients/machin
+verifie "se limite au dossier donné"            'fichier_contient "$CAIRN/perso/tout/index.md" "encore.md"'
+joue "$S" index --appliquer perso
+verifie "et recalcule celui qu'on lui donne"    '! fichier_contient "$CAIRN/perso/tout/index.md" "encore.md"'
+
 
 echo
 echo "methode"

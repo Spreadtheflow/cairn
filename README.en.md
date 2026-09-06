@@ -179,7 +179,7 @@ for Claude Code.
 init [path|--aucun]     attaches the current folder, or declares it without memory
 ou                      says which project the current folder is attached to
 projet, groupe          create without moving there
-index [--appliquer]     compares indexes to headers, recomputes them
+index [--appliquer] [path]     compares indexes to headers, recomputes them
 methode [--appliquer]   compares the copies to the repository, aligns them
 verifier                diagnosis: profile, voice, base, instructions, skills, indexes
 ```
