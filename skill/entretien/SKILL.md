@@ -19,7 +19,24 @@ chaque souvenir sa nature, sa portée, sa date de mise à jour et son statut.
 Respecter les cloisons : **un souvenir d'un domaine ne remonte jamais dans un
 autre**, et un projet en `capture: non` est ignoré.
 
-## 2. Chercher six choses
+## 2. Lire d'abord ce qui a déjà été refusé
+
+Ouvrir `commun/ecartes.md`, qui liste les propositions écartées lors des
+arbitrages passés, avec leur raison.
+
+**Ne jamais resoumettre une proposition qui y figure**, sauf si quelque chose a
+changé depuis, auquel cas le dire ainsi : « écartée le JJ/MM/AAAA parce que X ;
+ce qui a changé depuis est Y ».
+
+**Pourquoi :** un entretien qui repropose chaque semaine ce qui a été refusé la
+semaine d'avant devient un harcèlement, et on cesse de le lire. Le refus est une
+décision, il se respecte comme une décision.
+
+Regarder aussi `archive/propositions/` : un fichier de propositions non archivé
+signifie un arbitrage en attente, et il vaut mieux le signaler que d'en empiler
+un second.
+
+## 3. Chercher six choses
 
 **Les doublons et quasi-doublons.** Deux souvenirs qui disent la même chose, dans
 le même projet ou dans deux projets différents. Comparer le fond, pas les mots :
@@ -46,7 +63,7 @@ d'avancement et sa longueur. Il appartient au `journal.md`.
 déborde, ne pas proposer d'ajout : proposer une fusion ou un retrait. La
 contrainte de taille est ce qui force l'arbitrage.
 
-## 3. Dépouiller le journal des retours
+## 4. Dépouiller le journal des retours
 
 Ouvrir `commun/retours.md`, et le `retours.md` de chaque projet s'il en existe.
 C'est **la matière la plus précieuse de l'entretien**, et la seule qui ne se
@@ -73,7 +90,7 @@ qui fait la règle, pas l'intensité.
 Renseigner la ligne « Suite » de chaque retour traité, dans le fichier de
 retours, une fois l'arbitrage rendu.
 
-## 4. Chercher aussi ce qui manque
+## 5. Chercher aussi ce qui manque
 
 Deux vérifications qui rapportent plus qu'elles ne coûtent :
 
@@ -85,7 +102,7 @@ Deux vérifications qui rapportent plus qu'elles ne coûtent :
 - **Des règles qui sont en fait des préférences.** Une contrainte qui souffre des
   exceptions n'est pas une règle. C'est la source numéro un de la rigidification.
 
-## 5. Écrire les propositions
+## 6. Écrire les propositions
 
 Dans `commun/propositions-JJ-MM-AAAA.md`, groupées par nature d'action, chacune
 avec : le ou les fichiers concernés, ce qui est proposé, et **la raison en une
@@ -95,8 +112,9 @@ Terminer par un compte : combien de souvenirs, combien de propositions d'ajout,
 de fusion, de promotion, de retrait. Un entretien qui ne propose que des ajouts
 est un entretien raté.
 
-## 6. Rendre compte, puis s'arrêter
+## 7. Rendre compte, puis s'arrêter
 
-Résumer en quelques lignes et **s'arrêter**. Attendre l'arbitrage. N'appliquer que
+Résumer en quelques lignes et **s'arrêter**. L'arbitrage se fait avec le skill
+`arbitrer`, qui est la seule porte par laquelle la mémoire est modifiée. N'appliquer que
 ce qui est explicitement retenu, et déplacer ce qui sort vers `archive/` plutôt
 que de le supprimer.

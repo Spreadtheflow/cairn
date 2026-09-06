@@ -15,7 +15,7 @@ mkdir -p ~/.claude/skills && cp -R skill/* ~/.claude/skills/
 ```
 
 Puis `/cairn-aide` pour voir ce que ça vous a donné, et `/cairn`, `/cadrer`,
-`/challenger`, `/relire`, `/journal`, `/retour`, `/transmettre`, `/entretien`.
+`/challenger`, `/relire`, `/journal`, `/retour`, `/transmettre`, `/entretien`, `/arbitrer`.
 
 Pour un autre outil, ce sont des fichiers Markdown : leur contenu se colle en
 instruction, ou se garde ouvert à côté. Aucun n'est nécessaire au fonctionnement
@@ -34,11 +34,17 @@ de la méthode.
 | `retour` | Recueille un retour sur la façon de travailler, et le consigne sans le promouvoir | Les garde-fous |
 | `transmettre` | Prépare une copie transmissible en appliquant la politique de diffusion | La transmission |
 | `entretien` | Passe le cairn en revue, propose fusions, promotions et retraits | Les garde-fous |
+| `arbitrer` | Lit ces propositions, applique celles qu'on retient, consigne les refus | Les garde-fous |
 
 Ils suivent le cycle d'un chantier. `cadrer` l'ouvre, `relire` le ferme, et
 `journal` referme la séance : on cadre avant, on éprouve après, on note pendant
 que c'est frais. `challenger` s'utilise sur de l'existant, `transmettre` quand la
 mémoire doit sortir, et `entretien` sur la mémoire elle-même.
+
+`entretien` et `arbitrer` vont par paire et ne se remplacent pas : le premier
+propose sans jamais appliquer, le second est **la seule porte par laquelle la
+mémoire est modifiée**. Le second consigne aussi les refus, sans quoi le premier
+resoumettrait indéfiniment ce qu'on lui a déjà refusé.
 
 Trois d'entre eux rendent **exécutable** ce qui n'était qu'une déclaration :
 `transmettre` applique le champ `diffusion` de `contexte.md`, `entretien` applique

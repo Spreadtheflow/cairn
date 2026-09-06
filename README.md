@@ -186,6 +186,9 @@ gestes :
   publication, en appliquant la politique de diffusion du projet.
 - `/entretien` passe la mémoire en revue et propose ce qu'il faut fusionner,
   promouvoir ou retirer. Il propose, il n'applique jamais.
+- `/arbitrer` vous présente ces propositions, applique celles que vous retenez,
+  et **consigne celles que vous refusez avec leur raison**, pour qu'on ne vous
+  les repropose pas la semaine suivante.
 
 Ces skills sont **assumés comme opinionés**. Adaptez-les à votre façon de
 travailler, c'est exactement à ça qu'ils servent.
@@ -202,7 +205,7 @@ travailler, c'est exactement à ça qu'ils servent.
 | `DOCTRINE.md` | Comment conduire l'échange avec un assistant. La moitié qui ne s'automatise pas |
 | `adaptateurs/` | Comment brancher tel ou tel outil |
 | `squelette/` | L'arborescence de départ |
-| `skill/` | Les neuf skills, qui mettent la doctrine en gestes |
+| `skill/` | Les dix skills, qui mettent la doctrine en gestes |
 | `exemples/` | Un projet complet et fictif, pour voir à quoi ça ressemble une fois habité |
 
 ## Licence

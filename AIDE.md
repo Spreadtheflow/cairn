@@ -40,7 +40,8 @@ gagner du temps sur des gestes qui reviennent.
 | `/journal` | Clore une séance : noter ce qui s'est passé, retenir ce qui compte |
 | `/retour` | Dire ce qui vous convient ou non dans sa façon de travailler |
 | `/transmettre` | Préparer une copie à donner à quelqu'un, ou à publier |
-| `/entretien` | Faire le ménage : doublons, choses périmées, règles à retirer |
+| `/entretien` | Faire le ménage : il repère et propose, il ne touche à rien |
+| `/arbitrer` | Trancher ces propositions : ce que vous gardez est appliqué |
 
 ## Les trois fichiers qui comptent
 

@@ -33,6 +33,7 @@ cairn/
     profil.md              qui je suis, comment je travaille
     regles.md              les règles absolues, plafonnées à 12
     retours.md             ce que je dis de la façon de travailler de l'agent
+    ecartes.md             les propositions d'entretien refusées, avec leur raison
     index.md
     *.md                   faits et repères valables partout
   archive/                 (réservé) périmé mais pas jeté
@@ -357,6 +358,16 @@ n'a jamais de raison de dire non, donc il dit toujours oui, donc il étouffe.
 L'entretien d'un cairn propose des retraits autant que des ajouts : règles jamais
 déclenchées depuis des mois, chantiers clos depuis longtemps, décisions annulées
 par une décision plus récente. Ce qui sort va dans `archive/`, pas à la poubelle.
+
+**L'entretien propose, il n'applique jamais.** Il écrit dans un fichier daté, et
+c'est un humain qui tranche, dans un second geste. Les deux moitiés comptent
+autant l'une que l'autre.
+
+**Et ce qui est refusé se consigne**, dans `commun/ecartes.md`, avec sa raison.
+Sans cette trace, l'entretien suivant reproposerait la même chose, et celui
+d'après aussi : un assistant qui resoumet chaque semaine ce qu'on a refusé la
+semaine d'avant est un carcan sous une autre forme. **Un refus est une décision,
+il se conserve comme telle**, et l'entretien lit ce fichier avant de proposer.
 
 Une règle méta, à inscrire au socle de tout cairn :
 

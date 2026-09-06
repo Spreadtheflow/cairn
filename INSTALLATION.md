@@ -67,15 +67,15 @@ si vous avez installé les skills.
 
 ### Les skills
 
-Le dossier `skill/` du dépôt contient neuf skills Claude Code :
+Le dossier `skill/` du dépôt contient dix skills Claude Code :
 
 ```sh
 mkdir -p ~/.claude/skills && cp -R skill/* ~/.claude/skills/
 ```
 
 `/cairn` rattache un dossier sans passer par le terminal. `/cadrer`,
-`/challenger`, `/relire`, `/journal`, `/retour`, `/transmettre` et `/entretien`
-mettent la doctrine en gestes : voir `skill/README.md`. Aucun n'est nécessaire au
+`/challenger`, `/relire`, `/journal`, `/retour`, `/transmettre`, `/entretien` et
+`/arbitrer` mettent la doctrine en gestes : voir `skill/README.md`. Aucun n'est nécessaire au
 fonctionnement de la méthode.
 
 ---
