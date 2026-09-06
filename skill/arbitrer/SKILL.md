@@ -57,8 +57,12 @@ par erreur se répare mal.
   a de la valeur.
 - **Remplacement** : l'ancienne passe en `statut: remplace` et son corps pointe
   vers la nouvelle.
+- **Dépôt retenu** : écrire le souvenir à partir du fichier de `a-trier/`, avec
+  sa nature, sa portée et son pourquoi, puis déplacer le fichier source vers
+  `archive/a-trier/`.
 - **Reclassement règle vers préférence**, ou l'inverse : changer `nature`, sortir
-  la ligne de `regles.md` ou l'y ajouter, et vérifier le plafond de douze.
+  la ligne de `regles.md` ou l'y ajouter, et vérifier les deux plafonds : douze
+  règles, vingt souvenirs de socle.
 - **Retour arbitré** : renseigner la ligne « Suite » dans `retours.md`, avec la
   date et le sort retenu.
 
@@ -80,6 +84,10 @@ ressemblent mais servent deux publics » vaut mieux que « refusé ».
 ## 6. Clore
 
 Déplacer le fichier de propositions traité vers `archive/propositions/`.
+
+**Vider la boîte.** Tout fichier de `a-trier/` qui a été arbitré, retenu comme
+écarté, part dans `archive/a-trier/`. Ce qui reste dans la boîte est ce qui n'a
+pas encore été vu : sans ce geste, l'entretien suivant le reproposera.
 
 Rendre compte en quelques lignes : ce qui a été appliqué, ce qui a été écarté, ce
 qui reste en attente. Puis proposer un commit, sans le faire d'autorité.

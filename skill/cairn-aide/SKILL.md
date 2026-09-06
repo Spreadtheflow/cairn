@@ -22,8 +22,8 @@ déposer dans le cairn.
 **Ne pas réciter le texte tel quel : le confronter à ce qui existe vraiment.**
 
 - Où est le cairn, en chemin absolu.
-- Quels domaines existent : les dossiers à la racine, hors `commun`, `archive` et
-  `gabarits`.
+- Quels domaines existent : les dossiers à la racine, hors `commun`, `archive`,
+  `gabarits` et `a-trier`.
 - Combien de projets : le nombre de `contexte.md`.
 - Le dossier courant est-il rattaché, et à quel projet.
 - **Quels raccourcis sont réellement installés** : lister le dossier `skills/` de

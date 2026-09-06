@@ -38,7 +38,8 @@ Poser les quatre questions **en une seule fois, en prose**, jamais en
 questionnaire à choix multiples :
 
 1. De quel domaine ça relève ? (annoncer les domaines existants, qui sont les
-   dossiers à la racine du cairn hors `commun`, `archive` et `gabarits`)
+   dossiers à la racine du cairn hors `commun`, `archive`, `gabarits` et
+   `a-trier`)
 2. Comment appeler ce projet ? (minuscules et tirets ; proposer un nom déduit du
    dossier courant)
 3. Est-ce qu'on capture de la mémoire ici ? (`oui`, `non`, `a-la-demande` ;

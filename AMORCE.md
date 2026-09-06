@@ -93,7 +93,8 @@ la page du projet, puis de te dire où elle l'a mise.
 
 Copie dans `<dossier personnel>/cairn` :
 
-- le contenu de `squelette/`, qui donne `commun/`, `archive/`, `pro/`, `perso/` ;
+- le contenu de `squelette/`, qui donne `commun/`, `archive/`, `a-trier/`,
+  `pro/` et `perso/` ;
 - le dossier `gabarits/` ;
 - `METHODE.md`, `DOCTRINE.md` et `AIDE.md`.
 

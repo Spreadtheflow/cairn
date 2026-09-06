@@ -49,7 +49,7 @@ remplacer() {
 # Refuse les emplacements réservés et les chemins qui sortent du cairn.
 verifier_chemin() {
     case "$1" in
-        commun|archive|gabarits|commun/*|archive/*|gabarits/*)
+        commun|archive|gabarits|a-trier|commun/*|archive/*|gabarits/*|a-trier/*)
             echo "\"$1\" est un emplacement réservé." >&2; exit 1 ;;
         /*|*/../*|../*)
             echo "Donnez un chemin relatif à la racine du cairn." >&2; exit 1 ;;
@@ -244,7 +244,7 @@ cmd_aide() {
         echo "Récupérez-le sur https://github.com/Spreadtheflow/cairn" >&2
     fi
     domaines=$(find "$racine" -maxdepth 1 -mindepth 1 -type d -not -name '.*' \
-        -not -name commun -not -name archive -not -name gabarits \
+        -not -name commun -not -name archive -not -name gabarits -not -name a-trier \
         -exec basename {} \; 2>/dev/null | sort | tr '\n' ' ')
     projets=$(find "$racine" -name contexte.md -not -path "*/gabarits/*" 2>/dev/null | wc -l | tr -d ' ')
     echo
@@ -315,7 +315,7 @@ cmd_init() {
         echo
         echo "Ce dossier n'est rattaché à aucun projet."
         echo "Domaines existants : $(find "$racine" -maxdepth 1 -mindepth 1 -type d -not -name '.*' \
-            -not -name commun -not -name archive -not -name gabarits -exec basename {} \; | tr '\n' ' ')"
+            -not -name commun -not -name archive -not -name gabarits -not -name a-trier -exec basename {} \; | tr '\n' ' ')"
         printf 'Chemin du projet dans le cairn (ex. clients/machin/site) : '
         read -r chemin || chemin=""
         [ -n "$chemin" ] || { echo "Annulé." >&2; exit 1; }

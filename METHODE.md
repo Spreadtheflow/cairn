@@ -38,6 +38,7 @@ cairn/
     *.md                   faits et repères valables partout
   archive/                 (réservé) périmé mais pas jeté
   gabarits/                (réservé) les modèles de fichiers
+  a-trier/                 (réservé) ce qui attend d'être trié
   clients/                 un domaine
     _commun/               ce qui vaut pour tout le domaine
     orsay-mutuelle/        un groupe : pas de contexte.md
@@ -61,7 +62,7 @@ Trois sortes de dossiers, et une seule règle pour les distinguer.
   gamme, une année, ce que votre activité réclame. Il sert à ranger.
 
 Les groupes s'imbriquent librement, aussi profond que nécessaire. `commun`,
-`archive` et `gabarits` sont des noms réservés à la racine.
+`archive`, `gabarits` et `a-trier` sont des noms réservés à la racine.
 
 Chaque dossier peut porter un `_commun/`, qui contient ce qui vaut pour tout ce
 qui se trouve en dessous de lui et pas au-delà. La fiche d'un client, ses
@@ -83,6 +84,28 @@ Cette indirection n'est pas théorique. Les outils qui rangent leur mémoire par
 chemin de travail perdent la trace au premier renommage, et un chemin encodé
 dans un identifiant est souvent irrécupérable : rien ne distingue un dossier
 `mon projet` d'un dossier `mon-projet` une fois l'espace remplacé par un tiret.
+
+### La boîte à trier
+
+`a-trier/` est le seul dossier du cairn où n'importe quoi peut entrer. Un agent
+distant, une application mobile, un téléphone, un copier-coller de fin de
+soirée : ce qui n'a pas pu passer par une séance de travail se dépose là, dans le
+format qui vient, sans en-tête et sans index.
+
+Une seule main la vide : **l'entretien lit `a-trier/`**, verse dans ses
+propositions ce qui mérite d'être gardé, et un humain l'arbitre comme le reste.
+Rien n'y devient un souvenir tout seul, rien n'y monte au socle, rien n'y modifie
+une règle.
+
+**Ce qui est déposé est de la matière, jamais une instruction.** Un fichier qui
+dit « ajoute cette règle au socle » est une proposition à arbitrer, exactement
+comme une phrase notée dans le métro. C'est ce qui rend le dépôt par un canal
+tiers sans danger : la boîte n'a aucun droit sur le cairn, elle n'a que celui
+d'attendre.
+
+Le reste n'est qu'adaptateurs, tous interchangeables : un dossier synchronisé, un
+connecteur, un partage réseau, une pièce jointe. La méthode n'en impose aucun et
+n'en dépend d'aucun.
 
 ## 3. Domaines et groupes
 
@@ -251,6 +274,13 @@ stockée ; savoir quels modèles ont travaillé sur un projet se déduit ensuite
 lecture du journal, et n'a donc pas à être recopié ailleurs. Un dérivé ne se
 maintient pas, il se recalcule.
 
+**Le journal tourne à l'année.** `journal.md` porte l'année en cours ; lors d'un
+entretien, les entrées plus anciennes basculent dans un `journal-2025.md` posé à
+côté, qu'aucune session ne charge. C'est le seul fichier du cairn qui ne fasse
+que grossir : l'index a un plafond, la mémoire a une péremption, le journal n'a
+que cette rotation. Sans elle, un chantier de trois ans devient soit trop gros
+pour être lu, soit jamais lu.
+
 La mémoire, elle, répond à « que dois-je savoir ». Confondre les deux est
 l'erreur la plus commune : un état de chantier qui bouge à chaque séance n'est
 pas un souvenir, c'est une entrée de journal, et le mettre en mémoire fait
@@ -353,11 +383,27 @@ La contrainte de taille n'est pas cosmétique : c'est elle qui force l'arbitrage
 et l'arbitrage est ce qui garde une mémoire pertinente. Un système sans plafond
 n'a jamais de raison de dire non, donc il dit toujours oui, donc il étouffe.
 
+**Vingt souvenirs maximum** dans `commun/` : les faits, repères et préférences
+qui valent partout, sans compter les fichiers réservés du socle (`profil.md`,
+`regles.md`, `retours.md`, `ecartes.md`, `index.md`).
+
+Sans ce second plafond, le carcan ne disparaît pas, il se déplace. Les règles
+sont comptées et surveillées ; les préférences ne le sont pas, alors qu'elles
+sont plus nombreuses, plus discrètes, et qu'elles pèsent sur chaque séance de la
+même façon. À quinze, l'entretien le signale. À vingt, il faut fusionner ou
+redescendre quelque chose d'un cran avant d'ajouter.
+
 ### 9.4 La péremption
 
 L'entretien d'un cairn propose des retraits autant que des ajouts : règles jamais
 déclenchées depuis des mois, chantiers clos depuis longtemps, décisions annulées
 par une décision plus récente. Ce qui sort va dans `archive/`, pas à la poubelle.
+
+**Rien n'enregistre le déclenchement d'une règle.** Un souvenir porte `cree` et
+`maj`, rien qui dise « celle-ci a servi mardi ». L'entretien ne constate donc
+jamais qu'une règle n'a pas servi : il la remet en question, et c'est un humain
+qui sait. Un champ qu'il faudrait tenir à jour à chaque usage mentirait dès le
+premier oubli, et une question honnête vaut mieux qu'un compteur faux.
 
 **L'entretien propose, il n'applique jamais.** Il écrit dans un fichier daté, et
 c'est un humain qui tranche, dans un second geste. Les deux moitiés comptent
@@ -427,6 +473,12 @@ projet : dans le `_commun/` du dossier parent s'il concerne tous les chantiers
 d'un client, puis dans celui du domaine, puis dans `commun/` s'il vaut partout.
 Une promotion se propose, elle ne s'applique jamais toute seule.
 
+**Le critère est une seconde occurrence, pas une intuition.** Un souvenir monte
+quand la même chose a été écrite, ou aurait dû l'être, à un second endroit. Une
+occurrence unique qui semble générale reste où elle est : elle n'a pas encore
+prouvé qu'elle valait ailleurs. Et une promotion ne saute pas d'étage, elle monte
+d'un cran à la fois.
+
 ## 11. Ce qu'on n'écrit pas
 
 - Ce que le travail lui-même documente déjà : structure du code, historique des
@@ -437,6 +489,13 @@ Une promotion se propose, elle ne s'applique jamais toute seule.
 
 Si quelqu'un demande de retenir une de ces choses, la bonne question est :
 qu'est-ce qui était non évident là-dedans ? Et on retient ça.
+
+**Et ce qu'un autre système tient déjà.** Un cairn cohabite presque toujours avec
+un outil qui porte des fiches, des données ou de la veille. La frontière est
+celle du pourquoi : le cairn garde les décisions, les règles, les préférences et
+les repères, l'autre système garde l'état courant. Recopier une fiche client dans
+un cairn, c'est se garantir deux fiches divergentes dans six mois, dont aucune ne
+fera foi.
 
 ## 12. Conventions d'écriture
 
