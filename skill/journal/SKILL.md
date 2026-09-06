@@ -1,6 +1,6 @@
 ---
 name: journal
-description: Clore une séance de travail : écrire l'entrée de journal du jour dans le cairn du projet, puis proposer les souvenirs qui méritent d'être retenus, avec leur pourquoi. Distingue ce qui s'est passé de ce qu'il faut savoir. Utiliser en fin de session, quand l'utilisateur dit qu'on s'arrête, qu'on fait le point, qu'il faut noter ce qu'on a fait, ou avant de fermer un chantier. Déclencheurs : journal, on s'arrête là, fin de séance, noter ce qu'on a fait, faire le point, retiens ça.
+description: "Clore une séance de travail : écrire l'entrée de journal du jour dans le cairn du projet, puis proposer les souvenirs qui méritent d'être retenus, avec leur pourquoi. Distingue ce qui s'est passé de ce qu'il faut savoir. Utiliser en fin de session, quand l'utilisateur dit qu'on s'arrête, qu'on fait le point, qu'il faut noter ce qu'on a fait, ou avant de fermer un chantier. Déclencheurs : journal, on s'arrête là, fin de séance, noter ce qu'on a fait, faire le point, retiens ça."
 ---
 
 # Clore une séance

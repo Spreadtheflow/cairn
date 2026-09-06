@@ -1,6 +1,6 @@
 ---
 name: arbitrer
-description: Lire les propositions d'un entretien, les présenter de façon décidable, appliquer celles qui sont retenues et consigner celles qui sont écartées avec leur raison. Utiliser quand l'utilisateur veut traiter les propositions d'entretien, faire le tri, valider ou refuser, ou nettoyer sa mémoire. Déclencheurs : arbitrer, propositions, valider, trancher, traiter l'entretien, appliquer les propositions, faire le tri.
+description: "Lire les propositions d'un entretien, les présenter de façon décidable, appliquer celles qui sont retenues et consigner celles qui sont écartées avec leur raison. Utiliser quand l'utilisateur veut traiter les propositions d'entretien, faire le tri, valider ou refuser, ou nettoyer sa mémoire. Déclencheurs : arbitrer, propositions, valider, trancher, traiter l'entretien, appliquer les propositions, faire le tri."
 ---
 
 # Arbitrer les propositions d'un entretien

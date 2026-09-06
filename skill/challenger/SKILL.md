@@ -1,6 +1,6 @@
 ---
 name: challenger
-description: Passer un projet, un plan ou une décision au crible, une fois, avec des recommandations classées et sans bloquer. Lit d'abord ce qui a déjà été arbitré et refusé pour ne pas le reproposer. Utiliser quand l'utilisateur demande un regard critique, un avis, une revue de son approche, ce qui cloche, ou de challenger quelque chose d'existant. Déclencheurs : challenger, critiquer, regard critique, revue, qu'est-ce qui cloche, avis sur mon approche, trous dans le raisonnement.
+description: "Passer un projet, un plan ou une décision au crible, une fois, avec des recommandations classées et sans bloquer. Lit d'abord ce qui a déjà été arbitré et refusé pour ne pas le reproposer. Utiliser quand l'utilisateur demande un regard critique, un avis, une revue de son approche, ce qui cloche, ou de challenger quelque chose d'existant. Déclencheurs : challenger, critiquer, regard critique, revue, qu'est-ce qui cloche, avis sur mon approche, trous dans le raisonnement."
 ---
 
 # Challenger, une fois

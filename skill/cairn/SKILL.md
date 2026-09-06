@@ -1,6 +1,6 @@
 ---
 name: cairn
-description: Rattache le dossier de travail courant à un projet du cairn, ou crée ce projet s'il n'existe pas. Utiliser quand l'utilisateur demande de rattacher un dossier au cairn, de retrouver la mémoire d'un projet, de créer un projet dans le cairn, ou quand une session démarre dans un dossier de travail dont on ne sait pas s'il a une mémoire associée. Déclencheurs : cairn, rattacher, mémoire du projet, où est ma mémoire, nouveau projet.
+description: "Rattache le dossier de travail courant à un projet du cairn, ou crée ce projet s'il n'existe pas. Utiliser quand l'utilisateur demande de rattacher un dossier au cairn, de retrouver la mémoire d'un projet, de créer un projet dans le cairn, ou quand une session démarre dans un dossier de travail dont on ne sait pas s'il a une mémoire associée. Déclencheurs : cairn, rattacher, mémoire du projet, où est ma mémoire, nouveau projet."
 ---
 
 # Rattacher un dossier de travail à son cairn

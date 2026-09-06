@@ -1,6 +1,6 @@
 ---
 name: retour
-description: Recueillir un retour sur la façon de travailler de l'assistant et le consigner tel quel dans le journal des retours du cairn, sans le transformer en règle. Sert aussi à décider s'il est opportun de demander ce retour à la clôture d'une séance. Utiliser quand l'utilisateur veut dire quelque chose sur le comportement de l'agent, quand il corrige la même chose plusieurs fois, ou à la fin d'un chantier. Déclencheurs : retour, feedback, ta façon de faire, tu as tendance à, arrête de, j'aimerais que tu, comment je te trouve.
+description: "Recueillir un retour sur la façon de travailler de l'assistant et le consigner tel quel dans le journal des retours du cairn, sans le transformer en règle. Sert aussi à décider s'il est opportun de demander ce retour à la clôture d'une séance. Utiliser quand l'utilisateur veut dire quelque chose sur le comportement de l'agent, quand il corrige la même chose plusieurs fois, ou à la fin d'un chantier. Déclencheurs : retour, feedback, ta façon de faire, tu as tendance à, arrête de, j'aimerais que tu, comment je te trouve."
 ---
 
 # Recueillir un retour

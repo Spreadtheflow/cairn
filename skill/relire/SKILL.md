@@ -1,6 +1,6 @@
 ---
 name: relire
-description: Passer ce qui vient d'être produit au crible avant de le livrer, avec une méthode adaptée à sa nature (code exécuté, texte relu, page regardée, données recomptées), puis une lecture de sécurité ou de conformité selon ce dont il s'agit. Utiliser avant d'annoncer qu'une tâche est terminée, avant de livrer ou de partager quelque chose, ou quand l'utilisateur demande de relire, vérifier, tester, contrôler. Déclencheurs : relire, vérifier, tester, contrôler, avant de livrer, c'est bon ?, on est prêt ?, revue avant livraison.
+description: "Passer ce qui vient d'être produit au crible avant de le livrer, avec une méthode adaptée à sa nature (code exécuté, texte relu, page regardée, données recomptées), puis une lecture de sécurité ou de conformité selon ce dont il s'agit. Utiliser avant d'annoncer qu'une tâche est terminée, avant de livrer ou de partager quelque chose, ou quand l'utilisateur demande de relire, vérifier, tester, contrôler. Déclencheurs : relire, vérifier, tester, contrôler, avant de livrer, c'est bon ?, on est prêt ?, revue avant livraison."
 ---
 
 # Relire, vérifier, éprouver

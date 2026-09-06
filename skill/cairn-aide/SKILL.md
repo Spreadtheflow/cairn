@@ -1,6 +1,6 @@
 ---
 name: cairn-aide
-description: Afficher l'aide de Cairn : comment ça marche, les raccourcis disponibles, où sont les fichiers, et l'état réel du cairn de la personne. Utiliser quand elle demande comment ça marche, ce qu'elle peut faire, quels sont les raccourcis, où est sa mémoire, ou qu'elle semble perdue avec la méthode. Sert aussi à clore une installation. Déclencheurs : aide cairn, comment ça marche, à quoi ça sert, quels raccourcis, où est ma mémoire, je suis perdu, rappelle-moi.
+description: "Afficher l'aide de Cairn : comment ça marche, les raccourcis disponibles, où sont les fichiers, et l'état réel du cairn de la personne. Utiliser quand elle demande comment ça marche, ce qu'elle peut faire, quels sont les raccourcis, où est sa mémoire, ou qu'elle semble perdue avec la méthode. Sert aussi à clore une installation. Déclencheurs : aide cairn, comment ça marche, à quoi ça sert, quels raccourcis, où est ma mémoire, je suis perdu, rappelle-moi."
 ---
 
 # Afficher l'aide
