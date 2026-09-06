@@ -83,62 +83,20 @@ Sur un nouveau dossier, il s'aperçoit seul qu'il ne le connaît pas, et vous
 propose de le rattacher, ou de ne plus jamais poser la question ici. Quand la
 méthode évolue, dites-lui « mets Cairn à jour ».
 
-Les raccourcis, aucun obligatoire : `/cairn` rattache un dossier, `/pierre` et
-`/journal` sont les deux mots, `/cadrer` ouvre un chantier avant de produire,
-`/relire` vérifie avant de livrer, `/challenger` critique une fois sans bloquer,
-`/retour` recueille ce que vous pensez de sa façon de travailler, `/voix`
-établit votre façon d'écrire, `/transmettre` prépare une copie à donner,
-`/entretien` propose le ménage, `/arbitrer` l'applique. `/cairn-aide` réaffiche
-l'aide.
+Les raccourcis, aucun obligatoire :
 
-## Pour les initiés
-
-**Structure.** Un domaine est un dossier à la racine. Un projet est un dossier
-qui contient un `contexte.md`. Tout dossier intermédiaire est un groupe et peut
-porter un `_commun/` valable pour ce qui est en dessous. Réservés à la racine :
-`commun/`, `archive/`, `gabarits/`, `a-trier/`. La boîte `a-trier/` reçoit ce qui
-arrive hors séance, dans n'importe quel format ; seul l'entretien la vide.
-
-**Un souvenir** est un fichier : en-tête YAML (`titre`, `description`, `nature`,
-`cree`, `maj`, `statut`, `par` facultatif), un corps court, une ligne
-**Pourquoi :** obligatoire, des liens `[[voisin]]`. Cinq natures : `decision`,
-`regle`, `preference`, `fait`, `repere`. La portée se déduit du dossier.
-L'`index.md` d'un dossier tient une ligne par souvenir et se recalcule depuis
-les en-têtes.
-
-**Le raccordement** est un bloc d'instructions entre deux marqueurs, collé dans
-le fichier global de l'assistant. Il résout le projet depuis le dossier courant
-(marqueur `.cairn`, sinon le `chemin` déclaré dans `contexte.md`, le plus
-spécifique gagne), interdit la mémoire intégrée de l'outil, et porte la doctrine
-en huit lignes. [adaptateurs/](adaptateurs/) dit où le coller pour chaque outil.
-Les skills sont au format Agent Skills : `~/.agents/skills/` pour la plupart des
-outils, `~/.claude/skills/` pour Claude Code.
-
-**Le script.** `cairn.sh` est un raccourci, pas la méthode : tout se fait à la
-main.
-
-```
-init [chemin|--aucun]   rattache le dossier courant, ou le déclare sans mémoire
-ou                      dit à quel projet le dossier courant est rattaché
-projet, groupe          créent sans se déplacer
-index [--appliquer]     compare les index aux en-têtes, les recalcule
-methode [--appliquer]   compare les copies au dépôt, les aligne
-verifier                diagnostic : profil, voix, socle, instructions, skills, index
-```
-
-**Les copies se recalculent.** Votre cairn contient des copies du dépôt :
-méthode, gabarits, skills, bloc d'instructions, script. `methode` les compare à
-la version d'origine notée et au dépôt. Ce qui est en retard est posé ; ce que
-vous avez adapté sur place est fusionné à trois voies, ou laissé tel quel en cas
-de conflit. Il ne touche jamais `commun/`, un projet, un journal. Adaptez les
-skills, c'est prévu, ils survivront aux mises à jour.
-
-**Éprouver.** `sh tests.sh` joue le script dans un foyer jetable. Les skills se
-valident avec un parseur YAML strict : un deux-points dans une description non
-quotée casse l'en-tête sur GitHub sans rien casser en local.
-
-**Sans accès au disque**, web ou mobile : [adaptateurs/web-et-mobile.md](adaptateurs/web-et-mobile.md),
-avec ce qui est vérifié et ce qui reste à démontrer.
+- `/pierre` retient tout de suite une chose, avec sa raison
+- `/journal` clôt la séance
+- `/cairn` rattache le dossier courant, ou dit qu'il n'aura jamais de mémoire
+- `/cadrer` comprend et découpe avant de produire
+- `/relire` vérifie avant de livrer
+- `/challenger` critique un projet ou une idée, une fois, sans bloquer
+- `/retour` recueille ce que vous pensez de sa façon de travailler
+- `/voix` établit votre façon d'écrire, à partir de textes de vous
+- `/transmettre` prépare une copie à donner à quelqu'un
+- `/entretien` propose le ménage, sans rien toucher
+- `/arbitrer` applique ce que vous retenez
+- `/cairn-aide` réaffiche l'aide, met Cairn à jour
 
 ## Les documents
 
@@ -152,6 +110,67 @@ avec ce qui est vérifié et ce qui reste à démontrer.
 | [adaptateurs/](adaptateurs/) | Brancher chaque outil, et le web |
 | [skill/](skill/) | Les douze skills |
 | [exemples/](exemples/) | Un projet fictif, pour voir à quoi ça ressemble habité |
+
+## Pour les initiés
+
+### Structure
+
+Un domaine est un dossier à la racine. Un projet est un dossier qui contient un
+`contexte.md`. Tout dossier intermédiaire est un groupe et peut porter un
+`_commun/` valable pour ce qui est en dessous. Réservés à la racine : `commun/`,
+`archive/`, `gabarits/`, `a-trier/`. La boîte `a-trier/` reçoit ce qui arrive
+hors séance, dans n'importe quel format ; seul l'entretien la vide.
+
+### Un souvenir
+
+Un fichier : en-tête YAML (`titre`, `description`, `nature`, `cree`, `maj`,
+`statut`, `par` facultatif), un corps court, une ligne **Pourquoi :**
+obligatoire, des liens `[[voisin]]`. Cinq natures : `decision`, `regle`,
+`preference`, `fait`, `repere`. La portée se déduit du dossier. L'`index.md`
+d'un dossier tient une ligne par souvenir et se recalcule depuis les en-têtes.
+
+### Le raccordement
+
+Un bloc d'instructions entre deux marqueurs, collé dans le fichier global de
+l'assistant. Il résout le projet depuis le dossier courant (marqueur `.cairn`,
+sinon le `chemin` déclaré dans `contexte.md`, le plus spécifique gagne),
+interdit la mémoire intégrée de l'outil, et porte la doctrine en huit lignes.
+[adaptateurs/](adaptateurs/) dit où le coller pour chaque outil. Les skills sont
+au format Agent Skills : `~/.agents/skills/` pour la plupart des outils,
+`~/.claude/skills/` pour Claude Code.
+
+### Le script
+
+`cairn.sh` est un raccourci, pas la méthode : tout se fait à la main.
+
+```
+init [chemin|--aucun]   rattache le dossier courant, ou le déclare sans mémoire
+ou                      dit à quel projet le dossier courant est rattaché
+projet, groupe          créent sans se déplacer
+index [--appliquer]     compare les index aux en-têtes, les recalcule
+methode [--appliquer]   compare les copies au dépôt, les aligne
+verifier                diagnostic : profil, voix, socle, instructions, skills, index
+```
+
+### Les copies se recalculent
+
+Votre cairn contient des copies du dépôt : méthode, gabarits, skills, bloc
+d'instructions, script. `methode` les compare à la version d'origine notée et au
+dépôt. Ce qui est en retard est posé ; ce que vous avez adapté sur place est
+fusionné à trois voies, ou laissé tel quel en cas de conflit. Il ne touche
+jamais `commun/`, un projet, un journal. Adaptez les skills, c'est prévu, ils
+survivront aux mises à jour.
+
+### Éprouver
+
+`sh tests.sh` joue le script dans un foyer jetable. Les skills se valident avec
+un parseur YAML strict : un deux-points dans une description non quotée casse
+l'en-tête sur GitHub sans rien casser en local.
+
+### Sans accès au disque
+
+Web ou mobile : [adaptateurs/web-et-mobile.md](adaptateurs/web-et-mobile.md),
+avec ce qui est vérifié et ce qui reste à démontrer.
 
 ## Licence
 
