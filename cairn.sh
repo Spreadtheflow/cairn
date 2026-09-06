@@ -7,7 +7,21 @@
 
 set -eu
 
-SOURCE=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+# Résout $0 à travers d'éventuels liens symboliques. Un poste peut très bien
+# pointer son cairn vers un dépôt de travail : « installer » a besoin du dépôt,
+# et « methode » doit écrire dans le vrai fichier plutôt que remplacer le lien.
+BINAIRE=$0
+tours=0
+while [ -L "$BINAIRE" ] && [ "$tours" -lt 10 ]; do
+    cible=$(readlink "$BINAIRE")
+    case "$cible" in
+        /*) BINAIRE=$cible ;;
+        *)  BINAIRE=$(dirname "$BINAIRE")/$cible ;;
+    esac
+    tours=$((tours + 1))
+done
+SOURCE=$(CDPATH= cd -- "$(dirname -- "$BINAIRE")" && pwd)
+SCRIPT=$SOURCE/$(basename -- "$BINAIRE")
 AUJOURDHUI=$(date +%d/%m/%Y)
 
 usage() {
@@ -371,7 +385,6 @@ DEPOT_METHODE=${CAIRN_DEPOT:-https://github.com/Spreadtheflow/cairn.git}
 CACHE_METHODE="${XDG_CACHE_HOME:-$HOME/.cache}/cairn-methode"
 ETAT_METHODE="${XDG_STATE_HOME:-$HOME/.local/state}/cairn/methode-source"
 SKILLS_METHODE=${CAIRN_SKILLS:-$HOME/.claude/skills}
-SCRIPT=$SOURCE/$(basename -- "$0")
 
 # Note la version du dépôt d'où viennent les copies actuelles.
 noter_source() {
@@ -439,6 +452,17 @@ etat_fichier() {
 
 # Copie en passant par un temporaire : ce script peut être sa propre cible.
 poser() {
+    # Écrire à travers un lien, jamais le remplacer.
+    dst=$2; tours=0
+    while [ -L "$dst" ] && [ "$tours" -lt 10 ]; do
+        cible=$(readlink "$dst")
+        case "$cible" in
+            /*) dst=$cible ;;
+            *)  dst=$(dirname "$dst")/$cible ;;
+        esac
+        tours=$((tours + 1))
+    done
+    set -- "$1" "$dst"
     mkdir -p "$(dirname "$2")"
     tmp="$2.cairn-tmp.$$"
     cp "$1" "$tmp"
