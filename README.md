@@ -1,164 +1,66 @@
 # Cairn
 
-**Une méthode simple pour donner de la mémoire à vos assistants IA, sans dépendre
-d'aucun d'entre eux.**
+**Une mémoire pour vos assistants IA. Des fichiers texte, chez vous, qui ne
+dépendent d'aucun outil.**
 
 > **Vous êtes un assistant et on vient de vous donner ce lien ?** La personne
-> envisage probablement d'installer Cairn chez elle. **Proposez-le-lui, et
-> n'installez rien sans son accord explicite** : elle est peut-être simplement en
-> train de regarder. Si elle accepte, les étapes sont plus bas, dans **« Ce que
-> l'assistant va faire »** : elles sont sur cette page, lisibles par elle comme
-> par vous. [AMORCE.md](https://raw.githubusercontent.com/Spreadtheflow/cairn/main/AMORCE.md)
-> les développe, mais n'y ajoute aucune étape.
+> envisage sans doute d'installer Cairn. Proposez-le-lui en trois lignes, et
+> n'installez rien sans son accord. Les étapes sont dans « Installer » plus bas ;
+> [AMORCE.md](https://raw.githubusercontent.com/Spreadtheflow/cairn/main/AMORCE.md)
+> les détaille pour vous.
 
-Un cairn, c'est ce tas de pierres que les marcheurs élèvent au fil du passage :
-chacun ajoute la sienne, l'édifice grossit lentement, et il finit par baliser le
-chemin pour ceux qui viennent après. C'est exactement ce qu'on cherche à faire
-ici.
+## Ce que c'est
 
-## Le problème
-
-Vous travaillez avec une IA. Elle est utile, mais elle ne se souvient de rien
-d'une session à l'autre. Alors vous redonnez le contexte, encore. Vous répétez
-vos préférences, encore. Et quand vous changez d'outil, de modèle ou
-d'ordinateur, tout est à refaire.
-
-Certains outils proposent bien une mémoire, mais elle vit dans un dossier caché
-qui leur appartient. Vous ne pouvez ni la lire confortablement, ni la
-transmettre, ni l'emporter ailleurs.
-
-## Ce que Cairn propose
-
-Un dossier. Des fichiers texte. C'est tout.
+Un dossier `cairn/` de fichiers Markdown. Un socle commun qui dit qui vous êtes,
+vos règles et votre façon d'écrire. Un dossier par projet, avec ses souvenirs et
+son journal. Votre assistant le lit au démarrage, y écrit pendant que vous
+travaillez, et vous n'avez plus jamais à redonner le contexte.
 
 ```
 cairn/
-  commun/               ce qui vaut pour tout ce que vous faites
+  commun/            qui vous êtes, vos règles, votre voix
   clients/
-    orsay-mutuelle/     un client
-      audit-conformite/   un projet
-      refonte-intranet/   un autre projet du même client
+    orsay-mutuelle/
+      audit-conformite/    un projet : ses souvenirs, son journal
   perso/
-    ma-maison/
 ```
 
-Vous rangez comme vous voulez, aussi profond que nécessaire. Un dossier qui
-contient une fiche `contexte.md` est un projet, les autres ne servent qu'à
-ranger.
+Ça marche avec Claude Code, Codex, Gemini CLI, Cursor, Copilot et la plupart
+des autres. Changer d'outil, c'est changer un fichier de raccordement, pas votre
+mémoire. Tout se lit dans n'importe quel éditeur de texte, ou dans Obsidian.
 
-Chaque projet a ses souvenirs, son journal et sa fiche d'identité, en Markdown
-ordinaire. Vous les ouvrez avec n'importe quel éditeur de texte, ou dans Obsidian
-si vous voulez une vraie interface de lecture. Vos assistants s'y branchent par
-un petit fichier de raccordement, et si vous en changez demain, vous changez le
-raccordement, pas votre organisation.
+## Ce qui compte
 
-## Les quatre idées
+- **Chaque souvenir dit pourquoi.** Sans la raison, une consigne s'applique
+  aveuglément. Avec, l'assistant sait quand elle ne s'applique pas.
+- **Une règle n'est pas une préférence.** Les règles sont absolues et plafonnées
+  à douze. Le reste est un défaut dont on s'écarte quand le contexte le demande.
+- **Le journal dit ce qui s'est passé, la mémoire dit ce qu'il faut savoir.**
+  On ne mélange pas les deux.
+- **Rien ne devient une règle sans vous.** Vos remarques sont gardées à part et
+  ne montent que si vous le décidez. C'est ce qui empêche l'assistant de finir
+  par vous opposer votre propre jurisprudence.
 
-**Séparer ce qui vaut partout de ce qui vaut ici.** Votre façon d'écrire les
-dates ne concerne pas un projet en particulier : elle monte dans le socle commun
-et s'applique à tout. Le mot de passe wifi de votre client, non.
+## Installer
 
-**Séparer ce qu'il faut savoir de ce qui s'est passé.** La mémoire répond à
-« que dois-je savoir », le journal à « que s'est-il passé ». Mélanger les deux
-est l'erreur la plus commune, et c'est celle qui finit par tout engorger.
+### Sans terminal
 
-**Toujours écrire le pourquoi.** « Fais X » ne peut être appliqué
-qu'aveuglément. « Fais X parce que Y » permet de reconnaître les cas où Y ne
-tient pas. C'est toute la différence entre une mémoire et un règlement.
-
-**Empêcher la mémoire de devenir un carcan.** C'est le danger réel de ces
-systèmes : à force d'accumuler, chaque préférence devient une loi, et
-l'assistant finit par vous opposer votre propre jurisprudence à chaque phrase.
-Cairn plafonne le nombre de règles, distingue les règles absolues des simples
-habitudes, propose régulièrement d'en retirer, et garde vos remarques dans un
-journal à part d'où elles ne sortent que si vous le décidez.
-
-## Vous décidez de ce qui est retenu
-
-À la création d'un projet, quatre questions, une seule fois. Notamment : est-ce
-qu'on retient quelque chose ici, et où pourra finir ce qui sera écrit.
-
-Si le projet est privé, on écrit en clair, noms compris. C'est le but : ne plus
-jamais redonner le contexte. Si en revanche ce que vous écrivez est destiné à
-être publié ou remis à un tiers, on anonymise au moment d'écrire.
-
-À savoir, dit franchement : le contenu d'un cairn est stocké **en clair** sur
-votre disque, versionné si vous utilisez git, et synchronisé sur vos autres
-appareils si vous mettez ça en place. Cairn vous informe, il ne vous bloque pas.
-Une seule chose n'est jamais négociable : on n'écrit jamais la valeur d'un mot
-de passe ou d'une clé, seulement son nom et l'endroit où elle vit.
-
-## Ça marche pour quel genre de travail
-
-Tous. La méthode classe l'information par sa nature (une décision, une règle,
-une habitude, un fait, un lien) et non par le métier. Ces cinq catégories
-existent aussi bien dans un audit de conformité que dans un développement
-logiciel, un travail sur des données ou la rédaction d'un livre.
-
-## Commencer
-
-### Vous n'êtes pas développeur
-
-Vous n'avez rien à installer vous-même, et rien à taper dans un terminal.
-Installez Claude Code, Codex ou l'assistant de votre choix, puis collez-lui
-simplement l'adresse de cette page :
+Ouvrez Claude Code ou l'assistant de votre choix, et collez-lui cette adresse :
 
 ```
 https://github.com/Spreadtheflow/cairn
 ```
 
-C'est tout. Il lira cette page, vous proposera d'installer Cairn, et si vous
-acceptez il s'occupera du reste.
+Il vous proposera d'installer Cairn. Si vous acceptez, il crée le dossier,
+vous interroge pour écrire votre profil et votre voix, pose ses instructions,
+copie les raccourcis, rattache un premier projet et vous affiche l'aide. Dix
+minutes, dont huit de conversation. Il vous demandera l'autorisation d'écrire
+des fichiers : c'est normal, acceptez.
 
-Si vous préférez être explicite, dites-lui plutôt : « installe Cairn chez moi en
-suivant ce dépôt », avec la même adresse.
+Il ne demande jamais de droits administrateur, ne vous fait rien taper, et ne
+touche pas à un cairn qui existe déjà.
 
-Il vous posera quelques questions sur vous et votre façon de travailler, écrira
-votre profil avec vos mots, mettra tout en place, rattachera un premier projet et
-finira par vous expliquer en une page comment vous en servir. Comptez dix
-minutes, dont huit de conversation.
-
-Cette page se réaffiche à tout moment avec `/cairn-aide`.
-
-Il vous demandera l'autorisation de créer des dossiers et d'écrire des fichiers :
-**c'est normal, et c'est le seul moment où vous avez quelque chose à faire.**
-Acceptez.
-
-C'est le chemin recommandé sous **macOS comme sous Windows**, et il ne demande ni
-ligne de commande, ni git, ni droits administrateur.
-
-### Ce que l'assistant va faire
-
-Neuf étapes, que vous pouvez lire avant de dire oui. C'est la liste que suit
-l'assistant, écrite ici plutôt que dans un fichier qu'il irait chercher ailleurs.
-
-1. Il annonce ce qu'il va faire, et attend votre accord.
-2. Il repère les chemins réels de votre machine, sans rien supposer. Si un cairn
-   existe déjà, il s'arrête et vous demande.
-3. Il récupère les fichiers de la méthode depuis ce dépôt.
-4. Il crée `cairn` dans votre dossier personnel : l'arborescence de départ, les
-   gabarits, `METHODE.md`, `DOCTRINE.md` et `AIDE.md`.
-5. Il vous interroge et écrit votre profil **avec vos mots**. C'est l'étape la
-   plus importante, et la seule qu'il ne peut pas faire seul.
-6. Il pose un fichier d'instructions dans la configuration de votre assistant,
-   pour que votre cairn soit retrouvé à chaque session.
-7. Il copie les dix skills.
-8. Il rattache un premier projet, si vous en avez un sous la main.
-9. Il vérifie, puis vous affiche l'aide en une page.
-
-**Ce qu'il ne fait jamais :** demander des droits administrateur, poser un lien
-symbolique, modifier votre PATH ou votre profil de shell, vous faire taper une
-commande, ni toucher à un cairn qui existe déjà.
-
-Rien de tout cela n'est difficile à défaire : c'est un dossier de fichiers texte,
-plus un fichier d'instructions dans la configuration de votre assistant. En
-revanche, ce que vous lui dictez passe par lui, comme le reste de vos
-conversations : le profil que vous écrivez ensemble n'y échappe pas.
-
-[AMORCE.md](AMORCE.md) développe chacune de ces étapes pour l'assistant. C'est du
-détail, pas une dixième étape cachée.
-
-### Vous êtes à l'aise avec un terminal
+### Avec un terminal
 
 ```sh
 git clone https://github.com/Spreadtheflow/cairn.git
@@ -166,84 +68,90 @@ cd cairn
 ./cairn.sh installer ~/cairn
 ```
 
-Puis lisez `INSTALLATION.md`, qui prend une dizaine de minutes.
+Puis [INSTALLATION.md](INSTALLATION.md), dix minutes.
 
-Le projet évolue, et votre cairn en contient des copies : la méthode, les
-gabarits, les skills, le script lui-même. `cairn.sh methode` dit lesquelles ont
-pris du retard, `--appliquer` les aligne. Elle ne touche jamais votre mémoire,
-seulement ce qui vient d'ici.
+## Au quotidien
 
-Vous pouvez aussi tout faire à la main : copiez le dossier `squelette/`,
-renommez-le, et lisez `METHODE.md`. **La méthode fonctionne entièrement sans
-script, sans agent et sans Obsidian.** Ce sont des accélérateurs, pas des
-prérequis.
+Deux mots à connaître.
 
-## Et ensuite, sur un nouveau projet ?
+- **« pierre »** : retenir tout de suite ce qu'on vient de décider, avec sa
+  raison. L'assistant le fait aussi de lui-même quand une décision est nette.
+- **« fin »** : clore la séance. Il note ce qui s'est passé et propose ce qui
+  mérite d'être retenu.
 
-Rien à préparer. Vous créez votre dossier de travail, vous lancez votre
-assistant, et **il s'aperçoit tout seul qu'il ne connaît pas cet endroit** : il
-vous pose quatre questions et crée ce qu'il faut.
+Sur un nouveau dossier, il s'aperçoit seul qu'il ne le connaît pas, et vous
+propose de le rattacher, ou de ne plus jamais poser la question ici. Quand la
+méthode évolue, dites-lui « mets Cairn à jour ».
 
-Il le sait parce que chaque projet du cairn note le chemin de son dossier de
-travail. L'assistant cherche celui qui correspond ; s'il n'en trouve aucun, c'est
-que le projet est nouveau.
+Les raccourcis, aucun obligatoire : `/cairn` rattache un dossier, `/pierre` et
+`/journal` sont les deux mots, `/cadrer` ouvre un chantier avant de produire,
+`/relire` vérifie avant de livrer, `/challenger` critique une fois sans bloquer,
+`/retour` recueille ce que vous pensez de sa façon de travailler, `/voix`
+établit votre façon d'écrire, `/transmettre` prépare une copie à donner,
+`/entretien` propose le ménage, `/arbitrer` l'applique. `/cairn-aide` réaffiche
+l'aide.
 
-Si vous préférez garder la main, deux raccourcis :
+## Pour les initiés
 
-```sh
-cd /vers/mon/nouveau/projet
-cairn.sh init        # rattache ce dossier, en posant les quatre questions
-cairn.sh ou         # dit à quel projet ce dossier est rattaché
+**Structure.** Un domaine est un dossier à la racine. Un projet est un dossier
+qui contient un `contexte.md`. Tout dossier intermédiaire est un groupe et peut
+porter un `_commun/` valable pour ce qui est en dessous. Réservés à la racine :
+`commun/`, `archive/`, `gabarits/`, `a-trier/`. La boîte `a-trier/` reçoit ce qui
+arrive hors séance, dans n'importe quel format ; seul l'entretien la vide.
+
+**Un souvenir** est un fichier : en-tête YAML (`titre`, `description`, `nature`,
+`cree`, `maj`, `statut`, `par` facultatif), un corps court, une ligne
+**Pourquoi :** obligatoire, des liens `[[voisin]]`. Cinq natures : `decision`,
+`regle`, `preference`, `fait`, `repere`. La portée se déduit du dossier.
+L'`index.md` d'un dossier tient une ligne par souvenir et se recalcule depuis
+les en-têtes.
+
+**Le raccordement** est un bloc d'instructions entre deux marqueurs, collé dans
+le fichier global de l'assistant. Il résout le projet depuis le dossier courant
+(marqueur `.cairn`, sinon le `chemin` déclaré dans `contexte.md`, le plus
+spécifique gagne), interdit la mémoire intégrée de l'outil, et porte la doctrine
+en huit lignes. [adaptateurs/](adaptateurs/) dit où le coller pour chaque outil.
+Les skills sont au format Agent Skills : `~/.agents/skills/` pour la plupart des
+outils, `~/.claude/skills/` pour Claude Code.
+
+**Le script.** `cairn.sh` est un raccourci, pas la méthode : tout se fait à la
+main.
+
+```
+init [chemin|--aucun]   rattache le dossier courant, ou le déclare sans mémoire
+ou                      dit à quel projet le dossier courant est rattaché
+projet, groupe          créent sans se déplacer
+index [--appliquer]     compare les index aux en-têtes, les recalcule
+methode [--appliquer]   compare les copies au dépôt, les aligne
+verifier                diagnostic : profil, voix, socle, instructions, skills, index
 ```
 
-Et pour ceux qui ne veulent pas de terminal, le dossier `skill/` contient un
-skill Claude Code : copiez-le dans `~/.claude/skills/` et tapez `/cairn`.
+**Les copies se recalculent.** Votre cairn contient des copies du dépôt :
+méthode, gabarits, skills, bloc d'instructions, script. `methode` les compare à
+la version d'origine notée et au dépôt. Ce qui est en retard est posé ; ce que
+vous avez adapté sur place est fusionné à trois voies, ou laissé tel quel en cas
+de conflit. Il ne touche jamais `commun/`, un projet, un journal. Adaptez les
+skills, c'est prévu, ils survivront aux mises à jour.
 
-## La méthode de travail, pas seulement le rangement
+**Éprouver.** `sh tests.sh` joue le script dans un foyer jetable. Les skills se
+valident avec un parseur YAML strict : un deux-points dans une description non
+quotée casse l'en-tête sur GitHub sans rien casser en local.
 
-Un dossier bien rangé, tout le monde peut le copier. Ce qui se transmet plus
-difficilement, c'est la façon de conduire l'échange, et c'est là que se joue
-l'essentiel de la qualité de ce qu'on obtient.
-
-`DOCTRINE.md` la décrit en huit pratiques. Le dossier `skill/` les met en
-gestes :
-
-- `/cadrer` ouvre un chantier : on comprend, on met les tensions sur la table, on
-  recommande, on découpe en phases. On ne produit rien.
-- `/challenger` passe un projet existant au crible, **une fois**, en lisant
-  d'abord ce qui a déjà été refusé pour ne pas le reproposer.
-- `/relire` vérifie avant de livrer, avec une méthode adaptée à ce qui a été
-  produit, et une lecture de sécurité ou de conformité selon les cas.
-- `/journal` clôt une séance : il écrit l'entrée du jour, puis propose les
-  souvenirs qui méritent d'être retenus, avec leur pourquoi.
-- `/retour` recueille ce que vous dites de sa façon de travailler et le consigne
-  **sans en faire une règle**. C'est le tampon qui empêche chaque correction de
-  passage de devenir une loi.
-- `/transmettre` prépare une copie transmissible pour un client ou une
-  publication, en appliquant la politique de diffusion du projet.
-- `/entretien` passe la mémoire en revue et propose ce qu'il faut fusionner,
-  promouvoir ou retirer. Il propose, il n'applique jamais.
-- `/arbitrer` vous présente ces propositions, applique celles que vous retenez,
-  et **consigne celles que vous refusez avec leur raison**, pour qu'on ne vous
-  les repropose pas la semaine suivante.
-
-Ces skills sont **assumés comme opinionés**. Adaptez-les à votre façon de
-travailler, c'est exactement à ça qu'ils servent.
+**Sans accès au disque**, web ou mobile : [adaptateurs/web-et-mobile.md](adaptateurs/web-et-mobile.md),
+avec ce qui est vérifié et ce qui reste à démontrer.
 
 ## Les documents
 
-| Fichier | Pour qui |
+| Fichier | Pour quoi |
 |---|---|
-| `README.md` | Vous êtes ici |
-| `AMORCE.md` | Le détail des neuf étapes d'installation, écrit pour l'assistant |
-| `AIDE.md` | Comment s'en servir, en une page. Réaffichable avec `/cairn-aide` |
-| `INSTALLATION.md` | Pour mettre en place à la main, dix minutes |
-| `METHODE.md` | La spécification complète, si vous voulez comprendre le détail |
-| `DOCTRINE.md` | Comment conduire l'échange avec un assistant. La moitié qui ne s'automatise pas |
-| `adaptateurs/` | Comment brancher tel ou tel outil |
-| `squelette/` | L'arborescence de départ |
-| `skill/` | Les dix skills, qui mettent la doctrine en gestes |
-| `exemples/` | Un projet complet et fictif, pour voir à quoi ça ressemble une fois habité |
+| [AIDE.md](AIDE.md) | S'en servir, une page. `/cairn-aide` la réaffiche |
+| [INSTALLATION.md](INSTALLATION.md) | Installer à la main |
+| [AMORCE.md](AMORCE.md) | Les étapes d'installation, écrites pour l'assistant |
+| [METHODE.md](METHODE.md) | La spécification |
+| [DOCTRINE.md](DOCTRINE.md) | Comment conduire l'échange avec un assistant |
+| [adaptateurs/](adaptateurs/) | Brancher chaque outil, et le web |
+| [skill/](skill/) | Les douze skills |
+| [exemples/](exemples/) | Un projet fictif, pour voir à quoi ça ressemble habité |
 
 ## Licence
 

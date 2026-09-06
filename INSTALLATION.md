@@ -1,16 +1,10 @@
-# Installation
+# Installation à la main
 
-**Vous n'êtes pas développeur ?** Ne lisez pas ce document. Ouvrez `AMORCE.md` :
-il contient une phrase à copier dans votre assistant, et c'est lui qui installe
-tout, en vous posant quelques questions. Aucun terminal, aucun git, aucun droit
-administrateur, sous macOS comme sous Windows.
+**Pas à l'aise avec un terminal ?** Collez l'adresse du dépôt à votre assistant,
+il installe tout. Voir `AMORCE.md`. Ce qui suit est pour ceux qui préfèrent
+faire eux-mêmes. Dix minutes.
 
-Ce qui suit est le chemin manuel, pour ceux qui préfèrent faire eux-mêmes.
-
-Comptez dix minutes pour le socle. Les accélérateurs viennent après, quand vous
-en aurez envie, et aucun n'est obligatoire.
-
-## Étape 1 : créer le cairn
+## 1. Créer le cairn
 
 ```sh
 git clone https://github.com/Spreadtheflow/cairn.git
@@ -18,155 +12,68 @@ cd cairn
 ./cairn.sh installer ~/cairn
 ```
 
-Ou à la main, ce qui revient exactement au même : copiez le dossier `squelette/`
-sous le nom `~/cairn`, ajoutez-y `gabarits/`, `METHODE.md`, `DOCTRINE.md` et
-`AIDE.md`.
+À la main, c'est pareil : copier `squelette/` sous le nom `~/cairn`, y ajouter
+`gabarits/`, `METHODE.md`, `DOCTRINE.md` et `AIDE.md`.
 
-## Étape 2 : remplir le profil
+## 2. Le profil et la voix
 
-Ouvrez `~/cairn/commun/profil.md` et remplacez le contenu par le vôtre : qui
-vous êtes, ce que vous faites, comment vous travaillez. Une trentaine de lignes
-au maximum, parce que ce fichier sera lu au début de chaque session.
+`~/cairn/commun/profil.md` : qui vous êtes, ce que vous faites, comment vous
+travaillez. Une trentaine de lignes, lues à chaque session. C'est l'étape que
+tout le monde saute et celle qui rapporte le plus.
 
-C'est l'étape que tout le monde saute et c'est celle qui rapporte le plus. Un
-assistant qui sait que vous êtes juriste et pas développeur, que vous décidez
-vite et détestez les listes d'options, ne produit pas le même travail.
+`~/cairn/commun/voix.md` : comment vous écrivez. Pas de tête : prenez trois ou
+quatre textes de vous, notez ce qui revient, un extrait par trait. Le skill
+`/voix` le fait avec vous.
 
-Puis `~/cairn/commun/voix.md` : comment vous écrivez. Ne le remplissez pas de
-tête. Prenez trois ou quatre textes de vous, un mail, un message, un article,
-du code si vous en écrivez, et notez ce qui revient, avec un extrait cité pour
-chaque trait. Le skill `/voix` le fait avec vous si vous préférez.
+## 3. Brancher l'assistant
 
-## Étape 3 : brancher votre assistant
+Coller le bloc de `adaptateurs/claude-code.md` à la fin de `~/.claude/CLAUDE.md`,
+marqueurs compris. Pour un autre outil, `adaptateurs/agents-md.md` donne le
+fichier de chacun. Une mémoire Claude Code à récupérer : `adaptateurs/migration-depuis-claude.md`.
 
-Voir le dossier `adaptateurs/` :
-
-- `claude-code.md` pour Claude Code
-- `agents-md.md` pour les outils qui lisent un `AGENTS.md` ou équivalent, et
-  pour les interfaces web
-- `migration-depuis-claude.md` si vous avez déjà une mémoire à récupérer
-
-## Étape 4 : votre premier projet
-
-Placez-vous dans votre dossier de travail et rattachez-le :
-
-```sh
-cd /vers/mon/projet
-/chemin/vers/cairn.sh init
-```
-
-Quatre questions, une seule fois. Le projet est créé dans le cairn, le chemin de
-travail y est noté, et un petit fichier `.cairn` est posé dans votre dossier.
-
-**Vous pouvez aussi ne rien faire du tout.** Lancez simplement votre assistant
-depuis le dossier : il cherchera le projet correspondant, ne le trouvera pas, et
-vous posera les mêmes quatre questions. C'est la voie la plus courte, et celle à
-montrer à quelqu'un qui découvre.
-
-Pour savoir où vous en êtes, `cairn.sh ou` dit à quel projet le dossier courant
-est rattaché, et `cairn.sh init --aucun` déclare qu'un dossier n'aura jamais de
-mémoire, pour que la question ne revienne pas.
-
-`cairn.sh verifier` dit ce qui manque encore : profil, voix, instructions,
-skills, index.
-
-Puis travaillez normalement. Les souvenirs viendront tout seuls.
-
-Pour revoir comment ça marche à tout moment : `cairn.sh aide`, ou `/cairn-aide`
-si vous avez installé les skills.
-
-### Les skills
-
-Le dossier `skill/` du dépôt contient douze skills au format Agent Skills, lu
-par Claude Code et par la plupart des autres outils :
+Les skills :
 
 ```sh
 mkdir -p ~/.claude/skills && cp -R skill/* ~/.claude/skills/
 ```
 
-Pour un autre outil, le dossier est en général `~/.agents/skills/`, voir
-`adaptateurs/agents-md.md`.
+Pour la plupart des autres outils, `~/.agents/skills/` à la place.
 
-`/cairn` rattache un dossier sans passer par le terminal, `/pierre` retient tout
-de suite, `/journal` clôt la séance. `/cadrer`, `/challenger`, `/relire`,
-`/retour`, `/voix`, `/transmettre`, `/entretien` et `/arbitrer` mettent la
-doctrine en gestes : voir `skill/README.md`. Aucun n'est nécessaire au
-fonctionnement de la méthode.
+## 4. Un premier projet
+
+```sh
+cd /vers/mon/projet
+cairn.sh init
+```
+
+Quatre questions, une seule fois. Ou ne rien faire : l'assistant, lancé depuis
+le dossier, s'apercevra qu'il ne le connaît pas et proposera de le rattacher.
+`cairn.sh init --aucun` déclare qu'un dossier n'aura jamais de mémoire.
+
+Puis `cairn.sh verifier` dit ce qui manque encore, et `cairn.sh aide` rappelle
+comment ça marche.
 
 ---
 
-# Les accélérateurs
+## Facultatif
 
-Tout ce qui suit est optionnel. Le cairn fonctionne sans.
+**Git.** Recommandé dès le premier jour : vous voyez ce que l'assistant écrit,
+et vous annulez une mauvaise écriture d'une commande. `git init` dans `~/cairn`,
+un dépôt distant privé si vous voulez. Un cairn est stocké en clair, ce n'est
+pas un coffre.
 
-## Un historique, avec git
+**Obsidian.** Ouvrez `~/cairn` comme coffre, rien à convertir. Un réglage : dans
+Fichiers et liens, format de lien sur « chemin absolu dans le coffre ».
 
-Fortement recommandé dès le premier jour, surtout si un agent écrit dans votre
-cairn : vous voyez ce qui a changé, et vous annulez une mauvaise écriture d'une
-commande.
+**Téléphone.** Obsidian mobile veut une copie locale : Syncthing sur Android, sans
+service tiers ; Obsidian Sync ou LiveSync sur iOS. Si vous utilisez git et un
+synchroniseur sur le même dossier, excluez `.git/` du synchroniseur.
 
-```sh
-cd ~/cairn
-git init
-git add -A && git commit -m "Premier cairn"
-```
+**Entretien.** Une fois par semaine ou par mois, `/entretien` puis `/arbitrer` :
+doublons, règles jamais déclenchées, décisions remplacées, états de chantier
+restés en mémoire. `cairn.sh index` recale les index sur les en-têtes. Un
+entretien automatisé doit proposer et ne jamais appliquer.
 
-Pour un dépôt distant, un dépôt **privé** chez un hébergeur ou un dépôt nu sur
-votre propre serveur font aussi bien l'affaire. Rappel de la section 4 de
-`METHODE.md` : un cairn est stocké en clair, ce n'est pas un coffre.
-
-## Une vraie interface de lecture, avec Obsidian
-
-Ouvrez `~/cairn` comme coffre. Il n'y a rien à convertir : les en-têtes
-deviennent des propriétés et les `[[liens]]` fonctionnent nativement.
-
-Un réglage à faire, dans Fichiers et liens : passez le format de lien sur
-**chemin absolu dans le coffre**. Sans ça, deux projets qui auraient chacun un
-fichier au même nom rendraient les liens ambigus.
-
-## Le consulter depuis un téléphone
-
-Obsidian mobile travaille sur une copie locale de l'appareil : il ne sait pas
-ouvrir un dossier distant. Il faut donc un mécanisme de synchronisation.
-
-Sur Android, **Syncthing** fait ça très bien, sans service tiers, et il peut
-passer par un serveur toujours allumé pour que le téléphone se synchronise même
-quand l'ordinateur est éteint. Sur iOS, Syncthing n'est pas praticable : les
-solutions sont Obsidian Sync, ou Obsidian LiveSync avec une base CouchDB si vous
-auto-hébergez.
-
-**Un piège à éviter :** si vous utilisez git *et* un synchroniseur temps réel sur
-le même dossier, excluez `.git/` du synchroniseur (`.stignore` pour Syncthing).
-Sinon deux machines qui commitent chacune de leur côté finiront par corrompre le
-dépôt. Git porte l'historique sur les ordinateurs, le synchroniseur porte les
-notes vers le téléphone, et les deux ne se marchent pas dessus.
-
-## Un entretien régulier
-
-Un cairn qui n'est jamais relu s'encrasse. Une fois par semaine ou par mois,
-selon votre rythme, relisez et arbitrez :
-
-- des souvenirs en double, ou qui disent presque la même chose
-- des règles jamais déclenchées depuis longtemps
-- des décisions annulées par une décision plus récente
-- des états de chantier qui traînent en mémoire au lieu d'être au journal
-- des choses qui reviennent dans plusieurs projets et méritent de monter dans
-  le socle commun
-
-Les index se recalculent depuis les en-têtes avec `cairn.sh index`, et
-`--appliquer` les réécrit en gardant vos intertitres.
-
-Vous pouvez confier ce passage en revue à un agent, à une condition : **qu'il
-propose et n'applique pas**. Faites-lui écrire ses propositions dans un fichier
-daté que vous relisez. Un entretien automatique qui modifie la mémoire sans
-arbitrage humain, c'est le carcan par la porte de service, et c'est précisément
-ce que les garde-fous de la section 9 de `METHODE.md` cherchent à empêcher.
-
-## Faire le ménage dans les traces de vos outils
-
-Beaucoup d'assistants conservent l'intégralité des conversations sur le disque.
-Ce ne sont pas des souvenirs, ce sont des traces : elles se comptent vite en
-centaines de mégaoctets et personne ne les relit jamais.
-
-Fixez-vous une rétention, quelques mois par exemple, et purgez. Ce qui méritait
-d'être retenu est déjà dans le cairn.
+**Mise à jour.** `cairn.sh methode` compare vos copies de la méthode au dépôt,
+`--appliquer` les aligne, sans toucher à votre mémoire. Ce que vous avez adapté
+est fusionné, ou laissé tel quel en cas de conflit.

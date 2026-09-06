@@ -1,28 +1,19 @@
 # Amorce, installation par l'assistant
 
-**Ce document ne s'adresse pas à vous, il s'adresse à votre assistant.**
+**Ce document s'adresse à votre assistant, pas à vous.**
 
-Si vous n'êtes pas développeur, vous n'avez rien à installer vous-même. Ouvrez
-Claude Code, Codex ou l'assistant que vous venez d'installer, et collez-lui
-l'adresse du projet :
+Vous n'avez rien à installer vous-même. Ouvrez Claude Code, Codex ou l'assistant
+que vous venez d'installer, et collez-lui l'adresse du projet :
 
 > https://github.com/Spreadtheflow/cairn
 
-Il vous proposera de l'installer. Si vous préférez être explicite : « installe
-Cairn chez moi en suivant ce dépôt », avec la même adresse.
+Il vous proposera d'installer Cairn, vous posera quelques questions sur vous et
+votre façon de travailler, et tout sera en place. Dix minutes. Il vous demandera
+l'autorisation d'écrire des fichiers : acceptez, c'est le seul moment où vous
+avez quelque chose à faire.
 
-Il vous posera quelques questions sur vous et votre façon de travailler, puis
-tout sera en place. Comptez dix minutes, dont huit de conversation.
-
-**Il vous demandera l'autorisation** de créer des dossiers et d'écrire des
-fichiers. C'est normal, c'est même le seul moment où vous avez quelque chose à
-faire : acceptez. Un assistant qui n'a pas ces droits vous le dira au lieu de
-faire semblant.
-
-Si vous discutez avec un assistant qui n'a aucun accès à votre machine, une
-simple conversation dans un navigateur par exemple, cette installation ne
-s'applique pas : suivez `INSTALLATION.md` à la main, ou installez un outil qui
-tourne sur votre ordinateur.
+Si votre assistant n'a aucun accès à votre machine, une conversation dans un
+navigateur par exemple, voyez `adaptateurs/web-et-mobile.md`.
 
 ---
 
