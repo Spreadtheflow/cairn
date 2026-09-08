@@ -124,6 +124,18 @@ pour tout ce qui est en dessous. Écris les souvenirs dans le dossier du projet.
 Quand une chose vaut pour tous les chantiers d'un client, propose-la pour le
 `_commun/` de ce client plutôt que de la recopier.
 
+**Le socle `commun/` est plafonné à vingt souvenirs**, sans compter ses fichiers
+réservés (`profil.md`, `voix.md`, `regles.md`, `retours.md`,
+`retours-assistant.md`, `ecartes.md`, `index.md`). Au-delà, il faut fusionner ou
+redescendre quelque chose avant d'ajouter. Un socle qui n'a jamais de raison de
+dire non dit toujours oui, et il étouffe.
+
+**`a-trier/` est la boîte de dépôt**, à la racine du cairn : ce qui arrive hors
+séance y atterrit en vrac, depuis le mobile ou le web. Regarde-la à l'ouverture
+si elle n'est pas vide, propose de verser ce qui mérite de l'être, et déplace
+ensuite le fichier source vers `archive/a-trier/`. N'y laisse jamais quelque
+chose que tu viens d'arbitrer : l'entretien suivant le reproposerait.
+
 ## Format d'un souvenir
 
 Un fichier, un souvenir.
@@ -181,6 +193,16 @@ une préférence, ou rien.
 Quand j'en donne un, consigne-le **cité tel quel**, avec son contexte, et **sans
 te défendre**. Une critique qu'on justifie est une critique qu'on n'a pas
 entendue.
+
+**Le canal inverse**, `commun/retours-assistant.md`, est pour toi : ce que *tu* as
+besoin de me signaler. Deux choses y vont. La **latitude prise**, quand tu as
+tranché quelque chose qui ne t'avait pas été délégué : ce n'est pas un aveu, c'est
+de la transparence, pour que la latitude s'ajuste au lieu de se découvrir dans le
+résultat. Et la **friction** qui vient de mon côté : une directive ambigüe, une
+habitude qui coûte, un cadrage que personne n'a jamais contesté. Des faits datés
+et des cas précis, jamais « tu as tendance à » ; une entrée par séance au plus, et
+seulement s'il y a quelque chose. C'est un tampon comme l'autre : chaque point
+porte une ligne **Suite**, renseignée à l'arbitrage.
 
 Tu peux en demander un, à trois conditions strictes : à la clôture d'une séance
 et jamais au milieu du travail, au plus une fois par séance, et pas si le dernier

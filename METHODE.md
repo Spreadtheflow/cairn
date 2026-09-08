@@ -34,6 +34,7 @@ cairn/
     voix.md                comment j'écris et je parle
     regles.md              les règles absolues, plafonnées à 12
     retours.md             ce que je dis de la façon de travailler de l'agent
+    retours-assistant.md   ce que l'assistant a besoin de me signaler en retour
     ecartes.md             les propositions d'entretien refusées, avec leur raison
     index.md
     *.md                   faits et repères valables partout
@@ -437,7 +438,11 @@ n'a jamais de raison de dire non, donc il dit toujours oui, donc il étouffe.
 
 **Vingt souvenirs maximum** dans `commun/` : les faits, repères et préférences
 qui valent partout, sans compter les fichiers réservés du socle (`profil.md`,
-`voix.md`, `regles.md`, `retours.md`, `ecartes.md`, `index.md`).
+`voix.md`, `regles.md`, `retours.md`, `retours-assistant.md`, `ecartes.md`,
+`index.md`) ni les `propositions-JJ-MM-AAAA.md` qui séjournent dans `commun/`
+avant d'être archivés. Aucun de ces fichiers n'est un souvenir : un plafond qui
+les compterait se déclencherait pour de mauvaises raisons, et le premier faux
+positif décrédibilise le garde-fou.
 
 Sans ce second plafond, le carcan ne disparaît pas, il se déplace. Les règles
 sont comptées et surveillées ; les préférences ne le sont pas, alors qu'elles
@@ -504,6 +509,37 @@ quand l'assistant le demande, ce qui obéit à trois règles :
 « Rien à signaler » est une réponse pleine : elle se note, et elle repousse la
 question d'autant. Une question à laquelle il est coûteux de ne pas répondre est
 une question mal posée.
+
+**Le canal inverse.** `commun/retours-assistant.md` est le même tampon dans
+l'autre sens : ce que l'**assistant** a besoin de signaler sur la façon dont on
+travaille ensemble. Deux choses y vont, et il ne faut pas les confondre. La
+**latitude prise** : quand il a tranché quelque chose qui ne lui avait pas été
+explicitement délégué. Ce n'est pas un aveu, c'est de la transparence, pour que
+la latitude accordée s'ajuste au lieu de se découvrir dans le résultat. Et la
+**friction** qui vient de l'autre côté : une directive ambigüe, une habitude qui
+coûte, un cadrage que personne n'a jamais contesté.
+
+Quatre garde-fous, qui comptent autant que le mécanisme :
+
+- **c'est un tampon**, comme `retours.md`. Rien ne s'y applique tout seul, et
+  c'est à l'entretien qu'on décide si une entrée devient une règle, une
+  préférence, ou rien du tout ;
+- **des faits datés et des cas précis**, jamais une appréciation générale.
+  « Tu as tendance à » n'a rien à faire ici ;
+- **le ton d'un collaborateur qui veut que ça marche mieux**, pas d'un outil qui
+  note son propriétaire ;
+- **une entrée par séance au plus**, et seulement s'il y a quelque chose. Un
+  canal qu'on remplit par devoir se ferme tout seul.
+
+Chaque point porte une ligne **Suite**, renseignée à l'arbitrage comme dans
+`retours.md`. Sans elle, le canal ne se dépouille pas : il s'accumule, et
+l'entretien suivant relit les mêmes points sans savoir ce qu'on en a fait.
+
+**Pourquoi ce canal existe.** Tout ce qui précède explique pourquoi une
+correction de l'humain doit passer par un tampon avant de devenir une loi, et
+ne dit rien du cas où c'est l'assistant qui a quelque chose à signaler. Un
+système qui ne bénéficie qu'à un seul côté finit par n'être tenu que par un
+seul côté.
 
 ## 10. Cycle de vie d'un souvenir
 

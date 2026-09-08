@@ -2,7 +2,6 @@
 titre: Voix
 description: Comment j'écris et je parle, pour que ce qui est produit en mon nom me ressemble
 nature: fait
-portee: commun
 cree: 05/09/2026
 maj: 05/09/2026
 statut: actif
