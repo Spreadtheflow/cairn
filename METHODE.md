@@ -32,6 +32,8 @@ cairn/
   commun/                  (réservé) le socle global
     profil.md              qui je suis, comment je travaille
     voix.md                comment j'écris et je parle
+    redaction.md           comment on écrit pour un lecteur, selon l'audience
+    observations.md        ce que l'assistant a remarqué de mon écriture, en attente
     regles.md              les règles absolues, plafonnées à 12
     retours.md             ce que je dis de la façon de travailler de l'agent
     retours-assistant.md   ce que l'assistant a besoin de me signaler en retour
@@ -110,9 +112,10 @@ Le reste n'est qu'adaptateurs, tous interchangeables : un dossier synchronisé, 
 connecteur, un partage réseau, une pièce jointe. La méthode n'en impose aucun et
 n'en dépend d'aucun.
 
-### Le profil et la voix
+### Le profil, la voix et la rédaction
 
-Deux fichiers du socle décrivent la personne, et ils ne se confondent pas.
+Trois fichiers du socle décrivent la personne et sa façon d'écrire, et ils ne se
+confondent pas.
 
 `profil.md` dit **qui** elle est : métier, niveau technique, façon de décider,
 ce qui lui fait perdre son temps. Il gouverne la manière dont l'assistant
@@ -125,6 +128,38 @@ article, un message, un commentaire de code, et rien de ce qui se discute entre
 eux. Il s'établit en observant des textes qu'elle a réellement écrits, jamais
 d'après la description qu'elle ferait d'elle-même, et chaque trait y est
 illustré d'un extrait cité tel quel.
+
+La voix a des **facettes** selon la relation : au moins une facette familière,
+pour les proches et les échanges de travail, et une facette pro, plus neutre,
+pour les clients et les inconnus. Chez certains elles se recoupent presque, chez
+d'autres non. Le fichier décrit une base, puis ce qui change d'une facette à
+l'autre, et rien de plus : une facette qui ne diffère pas n'a pas de section.
+
+`redaction.md` dit **comment on écrit pour un lecteur**, ce qui est une autre
+question : non pas « est-ce que ça sonne comme moi » mais « est-ce que ça sert
+celui qui lit ». Une base commune, puis une section par **audience** (un
+décideur qui n'est pas du métier, un technicien qui reprend le travail...).
+L'audience d'un projet se déclare dans son `contexte.md`, ou dans le `_commun/`
+d'un client ; le socle dit ce qu'elle implique. Les deux axes se croisent au
+moment d'écrire : un mail à un client novice, c'est la facette pro de la voix et
+l'audience pédagogue de la rédaction. Une audience n'a de section que lorsqu'elle
+a réellement servi.
+
+La rédaction s'apprend surtout **par les corrections**, et sa meilleure forme est
+la paire avant/après : « n'est pas qualifiable sans règle métier écrite »
+devient « on ne peut pas le vérifier sans règle précise ». Une correction se pose
+en pierre dans le projet où elle a eu lieu ; elle monte à `redaction.md` par la
+promotion ordinaire, à sa seconde occurrence.
+
+**La voix s'affine par observation.** Quelques textes choisis sont un point de
+départ, pas une description : on présente ses meilleurs textes, et on ne voit
+pas ses propres tics. L'assistant, lui, voit ce que la personne écrit sans y
+penser. À la clôture d'une séance, il note au plus deux observations dans
+`commun/observations.md`, chacune avec une citation et son contexte (chat, mail,
+livrable), pour ne jamais appliquer un tic de chat à un rapport. Ce fichier est
+un tampon que les séances ne chargent pas ; un motif vu dans deux séances devient
+un point de socle à l'entretien, et c'est la personne qui tranche ce qui
+s'imite et ce qui s'observe sans s'imiter.
 
 **Pourquoi la voix est dans le cairn et pas dans l'outil :** c'est la partie de
 la mémoire qui coûte le plus cher à reconstruire et qui se perd à chaque
@@ -440,8 +475,8 @@ n'a jamais de raison de dire non, donc il dit toujours oui, donc il étouffe.
 
 **Vingt souvenirs maximum** dans `commun/` : les faits, repères et préférences
 qui valent partout, sans compter les fichiers réservés du socle (`profil.md`,
-`voix.md`, `regles.md`, `retours.md`, `retours-assistant.md`, `ecartes.md`,
-`index.md`) ni les `propositions-JJ-MM-AAAA.md` qui séjournent dans `commun/`
+`voix.md`, `redaction.md`, `observations.md`, `regles.md`, `retours.md`,
+`retours-assistant.md`, `ecartes.md`, `index.md`) ni les `propositions-JJ-MM-AAAA.md` qui séjournent dans `commun/`
 avant d'être archivés. Aucun de ces fichiers n'est un souvenir : un plafond qui
 les compterait se déclencherait pour de mauvaises raisons, et le premier faux
 positif décrédibilise le garde-fou.

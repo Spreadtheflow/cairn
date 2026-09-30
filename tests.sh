@@ -255,6 +255,7 @@ cd "$W"
 joue "$S" verifier
 verifie "dit que le profil est au gabarit"      'sortie_contient "profil        encore au gabarit"'
 verifie "dit que la voix est au gabarit"        'sortie_contient "voix          encore au gabarit"'
+verifie "dit que la rédaction est au gabarit"   'sortie_contient "rédaction     encore au gabarit"'
 verifie "compte les règles"                     'sortie_contient "règles        2 sur 12"'
 verifie "voit le bloc d'instructions à jour"    'sortie_contient "bloc Cairn à jour"'
 verifie "compte les skills"                     'sortie_contient "skills        12 sur 12"'

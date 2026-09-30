@@ -94,7 +94,28 @@ ce qu'on vient de faire, et le poser en une question fermée : le sujet est chau
 la réponse coûte dix secondes. Appliquer la réponse, retirer le point. Les autres
 attendent une prochaine séance.
 
-## 5. Regarder si un retour est opportun
+## 5. Noter ce qu'on a observé de son écriture
+
+La voix s'affine par observation : c'est l'agent qui voit ce que la personne
+écrit sans y penser. **Relire ses messages de la séance, toujours**, même quand
+la séance a été courte : une façon d'ouvrir ou de conclure, un mot qui revient,
+une ponctuation, un émoticône, une manière de valider ou de refuser. Un seul
+message en porte souvent un ou deux. S'il y en a, noter **au plus deux
+observations** en tête de `commun/observations.md`, sous la date du jour :
+
+- une **citation** mot pour mot, tirée de ce qu'elle a écrit pendant la séance ;
+- son **contexte** : chat, mail qu'elle a dicté ou corrigé, livrable ;
+- ce qu'elle **suggère** : un trait de voix, ou quelque chose à ne pas imiter.
+
+Le signal le plus fort est une correction : ce qu'elle a supprimé ou réécrit
+dans un brouillon est ce qui ne lui ressemble pas. Une correction de rédaction,
+elle, se pose en pierre dans le projet (une paire avant/après), pas ici.
+
+Ne rien noter plutôt que noter par devoir. Ne pas charger ce fichier au
+démarrage d'une séance, et ne rien en appliquer : c'est un tampon. Respecter la
+politique de capture du projet : en `capture: non`, rien.
+
+## 6. Regarder si un retour est opportun
 
 Avant de conclure, ouvrir `commun/retours.md` et regarder la date du dernier
 retour. Si elle remonte à plus de trois semaines, ou si on vient de clore un
@@ -105,7 +126,7 @@ Voir le skill `retour`, qui porte la méthode et les garde-fous.
 Sinon, ne rien demander. Une question de trop est plus coûteuse qu'une question
 de moins.
 
-## 6. Écrire, puis rendre compte
+## 7. Écrire, puis rendre compte
 
 Après validation, écrire les souvenirs retenus et mettre l'`index.md` à jour, une
 ligne par souvenir, avec `cairn.sh index --appliquer` si le script est là.

@@ -83,6 +83,11 @@ nommant le fichier source.
   ce qui attend encore sa « Suite ». Un travers déjà relevé deux fois dans un
   projet a normalement été posé en préférence de projet pendant la séance ; s'il
   revient dans un second projet, c'est une promotion, catégorie 3.
+- **Les observations mûres.** Dans `commun/observations.md`, un motif noté
+  dans deux séances différentes : catégorie 3, sous la forme « ajouter ce trait
+  à voix.md » ou « ne pas l'imiter », avec les deux citations.
+- **Les corrections de rédaction.** Une paire avant/après posée en pierre dans
+  deux projets : promotion vers `commun/redaction.md`, catégorie 3.
 - **Le socle.** Plus de quinze souvenirs dans `commun/`, ou une règle qui
   souffre des exceptions : catégorie 3. Un profil ou une voix absents ou au
   gabarit : catégorie 3, et en premier.

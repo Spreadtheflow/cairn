@@ -35,4 +35,4 @@
 
 **Latitude prise.** Ce qui a été tranché sans avoir été délégué, le cas précis.
 
-**Suite** — *à renseigner à l'arbitrage.*
+**Suite :** *à renseigner à l'arbitrage.*

@@ -4,6 +4,7 @@ domaine: pro
 chemin: /chemin/vers/le/dossier/de/travail
 capture: oui
 diffusion: privee
+audience:
 cree: 05/09/2026
 maj: 05/09/2026
 ---
@@ -13,7 +14,10 @@ maj: 05/09/2026
 
      `capture: non` est un choix légitime et fréquent.
      `diffusion` répond à : où va finir ce texte ? Pas à : ces données
-     sont-elles sensibles ? Le nom d'un client dans son propre cairn n'est pas
+     sont-elles sensibles ?
+     `audience`, facultatif : le lecteur habituel des livrables de ce projet,
+     une des audiences de commun/redaction.md. Vide si le client en déclare
+     une dans son _commun/, ou si rien n'est livré. Le nom d'un client dans son propre cairn n'est pas
      un risque, c'est l'intérêt de la chose.
 
      Le `chemin` est indicatif. C'est le `projet` qui identifie, jamais le

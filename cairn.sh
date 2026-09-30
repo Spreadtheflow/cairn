@@ -468,7 +468,7 @@ souvenirs_de() {
     for f in "$1"/*.md; do
         [ -f "$f" ] || continue
         case $(basename "$f") in
-            contexte.md|index.md|journal.md|journal-*.md|retours.md|retours-assistant.md|ecartes.md|a-revoir.md|propositions-*.md) continue ;;
+            contexte.md|index.md|journal.md|journal-*.md|retours.md|retours-assistant.md|ecartes.md|a-revoir.md|observations.md|propositions-*.md) continue ;;
         esac
         e=$(entete_de "$f")
         [ -n "$(champ_de "$e" titre)" ] || continue
@@ -1013,6 +1013,13 @@ cmd_verifier() {
     else
         echo "  voix          établie"
     fi
+    if [ ! -f "$racine/commun/redaction.md" ]; then
+        echo "  rédaction     absente : facultative (gabarits/redaction.md pour commencer)"
+    elif au_gabarit "$racine/commun/redaction.md"; then
+        echo "  rédaction     encore au gabarit : elle se remplira par les corrections"
+    else
+        echo "  rédaction     établie"
+    fi
     if [ -f "$racine/commun/regles.md" ]; then
         n=$(grep -c '^[0-9][0-9]*\. ' "$racine/commun/regles.md" || true)
         if [ "$n" -gt 12 ]; then echo "  règles        $n sur 12 : le plafond est dépassé, fusionner ou retirer"; afaire=$((afaire+1))
@@ -1023,7 +1030,7 @@ cmd_verifier() {
     n=0
     for f in "$racine"/commun/*.md; do
         [ -f "$f" ] || continue
-        case $(basename "$f") in profil.md|regles.md|voix.md|retours.md|retours-assistant.md|ecartes.md|index.md|propositions-*.md) continue ;; esac
+        case $(basename "$f") in profil.md|regles.md|voix.md|redaction.md|observations.md|retours.md|retours-assistant.md|ecartes.md|index.md|propositions-*.md) continue ;; esac
         [ -n "$(champ_de "$(entete_de "$f")" nature)" ] && n=$((n+1))
     done
     if [ "$n" -gt 20 ]; then echo "  socle         $n souvenirs sur 20 : le plafond est dépassé"; afaire=$((afaire+1))

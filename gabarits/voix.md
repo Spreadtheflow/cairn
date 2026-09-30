@@ -14,7 +14,11 @@ statut: actif
 
      Il s'établit en OBSERVANT des textes que j'ai réellement écrits, mails,
      articles, posts, messages, code, jamais en me demandant de me décrire.
-     Garder les exemples : une phrase de moi vaut mieux qu'un adjectif. -->
+     Garder les exemples : une phrase de moi vaut mieux qu'un adjectif.
+
+     Les sections qui suivent décrivent la BASE, ce qui vaut quelle que soit la
+     relation. Les facettes, plus bas, ne disent que ce qui change. Chaque trait
+     dit d'où il vient : (chat), (mail), (livrable), (code). -->
 
 ## Registre
 
@@ -42,10 +46,27 @@ particulière. Longueur habituelle d'un mail, d'un post.
 Si je code : langue des identifiants, des commentaires, des messages de commit.
 Style des commentaires. Ce que je nomme et ce que je laisse parler tout seul.
 
+## Facettes
+
+### Familière
+
+Avec les proches, les collègues, et dans nos échanges de travail. Seulement ce
+qui diffère de la base.
+
+### Pro
+
+Avec les clients et les inconnus. Seulement ce qui diffère de la base. Si elle
+ne diffère pas, le dire en une ligne et supprimer la section.
+
 ## Ce qui ne me ressemble pas
 
 Les tics qu'on me prêterait à tort. Les formules toutes faites qui me feraient
 grincer si je les lisais signées de mon nom.
+
+## Ce qui s'observe mais ne s'imite pas
+
+Les coquilles de frappe rapide, les tournures que je voudrais perdre. Elles
+aident à reconnaître mon écriture, elles ne doivent jamais être reproduites.
 
 ## Exemples
 

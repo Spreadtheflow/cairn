@@ -133,8 +133,8 @@ Quand une chose vaut pour tous les chantiers d'un client, propose-la pour le
 `_commun/` de ce client plutôt que de la recopier.
 
 **Le socle `commun/` est plafonné à vingt souvenirs**, sans compter ses fichiers
-réservés (`profil.md`, `voix.md`, `regles.md`, `retours.md`,
-`retours-assistant.md`, `ecartes.md`, `index.md`). Au-delà, il faut fusionner ou
+réservés (`profil.md`, `voix.md`, `redaction.md`, `observations.md`,
+`regles.md`, `retours.md`, `retours-assistant.md`, `ecartes.md`, `index.md`). Au-delà, il faut fusionner ou
 redescendre quelque chose avant d'ajouter. Un socle qui n'a jamais de raison de
 dire non dit toujours oui, et il étouffe.
 
@@ -181,11 +181,17 @@ le travail pénible dans trois mois.
 
 ## Ma voix
 
-`commun/voix.md` décrit comment j'écris et je parle. Applique-la dès que tu
-rédiges quelque chose qui sera lu comme venant de moi : un mail, un article, un
-message, un commentaire de code. Elle ne s'applique pas à nos échanges de
-travail. Si elle est absente ou encore au gabarit, propose une fois de l'établir
-à partir de quelques textes de moi, c'est le skill `voix`.
+`commun/voix.md` décrit comment j'écris et je parle, avec ses facettes (familière,
+pro). Applique-la dès que tu rédiges quelque chose qui sera lu comme venant de
+moi : un mail, un article, un message, un commentaire de code. Elle ne
+s'applique pas à nos échanges de travail. `commun/redaction.md` dit comment
+écrire pour un lecteur selon l'audience ; celle du projet est dans son
+`contexte.md` ou le `_commun/` du client. Si la voix est absente ou encore au
+gabarit, propose une fois de l'établir, c'est le skill `voix`.
+
+À la « fin », note au plus deux observations sur ma façon d'écrire dans
+`commun/observations.md`, citation et contexte à l'appui. Ne charge pas ce
+fichier au démarrage : c'est un tampon.
 
 ## Le modèle et les retours
 

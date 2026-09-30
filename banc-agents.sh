@@ -286,7 +286,16 @@ EOF2
     echo "pas de préférence de projet"; return 1
 }
 
-TOUS="ouverture pierre pierre_spontanee capture_non dossier_inconnu sans_memoire fin retour voix_absente relire entretien a_revoir retour_second"
+# À la « fin », une observation sur l'écriture de la personne, citée et datée,
+# dans le tampon.
+sc_observation() {
+    decor "$1"; armer "$1" "$1/travail/orsay"
+    agent "$1/travail/orsay" "Ok top :-) Déjà, la DG a dit banco pour les 13 traitements... Ensuite la juridique veut son tableau des durées pour vendredi, on s'y colle demain. Allez, fin"
+    grep -q "$AUJOURDHUI" "$1/cairn/commun/observations.md" || { echo "aucune observation datée du jour"; return 1; }
+    grep -qE '«|"' "$1/cairn/commun/observations.md" || { echo "observation sans citation"; return 1; }
+}
+
+TOUS="ouverture pierre pierre_spontanee capture_non dossier_inconnu sans_memoire fin retour voix_absente relire entretien a_revoir retour_second observation"
 [ -n "$CHOISIS" ] || CHOISIS=$TOUS
 
 # ---------------------------------------------------------------------------
