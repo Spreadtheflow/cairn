@@ -199,6 +199,12 @@ project, a log. Adapt the skills, it is intended, they will survive updates.
 strict YAML parser: a colon in an unquoted description breaks the header on
 GitHub while breaking nothing locally.
 
+`sh banc-agents.sh` tests the skills and the instruction block with a real agent
+(`claude -p`), isolated from your own setup: about ten scenarios (finding the
+project, laying a stone, honouring `capture: non`, closing with "fin"...) judged
+on what ends up on disk, not on the reply. `-n 3` replays each scenario three
+times, because an agent is not deterministic.
+
 ### Without disk access
 
 Web or mobile: [adaptateurs/web-et-mobile.md](adaptateurs/web-et-mobile.md),

@@ -178,6 +178,13 @@ survivront aux mises à jour.
 un parseur YAML strict : un deux-points dans une description non quotée casse
 l'en-tête sur GitHub sans rien casser en local.
 
+`sh banc-agents.sh` éprouve les skills et le bloc d'instructions avec un vrai
+agent (`claude -p`), isolé de votre installation : une dizaine de scénarios
+(retrouver le projet, poser une pierre, respecter `capture: non`, clore avec
+« fin »...) jugés sur ce qui est écrit sur le disque, pas sur la réponse.
+`-n 3` rejoue chaque scénario trois fois, parce qu'un agent n'est pas
+déterministe.
+
 ### Sans accès au disque
 
 Web ou mobile : [adaptateurs/web-et-mobile.md](adaptateurs/web-et-mobile.md),
