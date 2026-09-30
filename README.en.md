@@ -182,6 +182,7 @@ projet, groupe          create without moving there
 index [--appliquer] [path]     compares indexes to headers, recomputes them
 methode [--appliquer]   compares the copies to the repository, aligns them
 verifier                diagnosis: profile, voice, base, instructions, skills, indexes
+trace                   called by a hook: logs skills invoked and memories read
 ```
 
 ### Copies are recomputed

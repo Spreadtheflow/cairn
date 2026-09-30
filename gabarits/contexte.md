@@ -36,6 +36,6 @@ Les personnes, les rôles, les interlocuteurs.
 Le dépôt, l'hébergement, les accès, la documentation. Les noms et les endroits,
 jamais les valeurs de secrets.
 
-## État actuel
-
-Une ligne, mise à jour quand ça bouge. Le détail va dans `journal.md`.
+<!-- Pas de section « État actuel » : un état qui bouge à chaque séance
+     périme ici sans que personne le voie. Il se lit dans l'entrée la plus
+     récente de `journal.md`. -->

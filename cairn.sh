@@ -39,6 +39,7 @@ Usage :
   cairn.sh projet <chemin>         crée un projet sans se placer dans son dossier
   cairn.sh index [--appliquer] [chemin]   compare les index aux en-têtes, et les recalcule
   cairn.sh methode [--appliquer]   dit si la méthode installée est en retard, et l'aligne
+  cairn.sh trace                   appelé par un hook : note un skill appelé ou un fichier du cairn lu
 
 Les chemins de projet sont relatifs à la racine du cairn, aussi profonds que voulu :
   cd ~/travail/nouveau-site && cairn.sh init
@@ -874,6 +875,56 @@ au_gabarit() {
     [ -f "$1" ] && grep -q 'Remplacez tout ce qui suit' "$1"
 }
 
+# ---------------------------------------------------------------------------
+# La trace d'usage.
+#
+# Appelée par un hook de l'assistant après chaque appel d'outil, sur l'entrée
+# standard au format JSON. Elle ne retient que deux choses : un skill appelé, et
+# un fichier du cairn lu. Une ligne par événement dans .trace/<machine>.tsv, à la
+# racine du cairn.
+#
+# C'est une mesure, pas de la mémoire : hors de git, et un fichier par machine,
+# parce que deux machines qui ajoutent au même fichier sous synchronisation se
+# disputent la dernière ligne. Rien ne la tient à la main, donc elle ne ment pas
+# par oubli. Elle ne fait jamais échouer l'outil qui l'appelle.
+# ---------------------------------------------------------------------------
+
+# Un champ texte de l'entrée JSON. $1 chemin jq, $2 nom de la clé pour le repli
+# sans jq, qui suffit à des valeurs sans guillemets échappés.
+champ_json() {
+    if command -v jq >/dev/null 2>&1; then
+        printf '%s' "$entree" | jq -r "$1 // empty" 2>/dev/null
+    else
+        printf '%s' "$entree" | tr -d '\n' \
+            | sed -n "s/.*\"$2\"[[:space:]]*:[[:space:]]*\"\([^\"]*\)\".*/\1/p"
+    fi
+}
+
+cmd_trace() {
+    entree=$(cat)
+    racine=${CAIRN:-$HOME/cairn}
+    [ -d "$racine" ] || exit 0
+    case $(champ_json .tool_name tool_name) in
+        Skill)
+            quoi=skill; cible=$(champ_json .tool_input.skill skill) ;;
+        Read)
+            quoi=lecture; cible=$(champ_json .tool_input.file_path file_path)
+            reel=$(CDPATH= cd -- "$racine" 2>/dev/null && pwd -P)
+            case $cible in
+                "$racine"/*) cible=${cible#"$racine"/} ;;
+                "$reel"/*)   cible=${cible#"$reel"/} ;;
+                *) exit 0 ;;
+            esac ;;
+        *) exit 0 ;;
+    esac
+    [ -n "$cible" ] || exit 0
+    session=$(champ_json .session_id session_id)
+    mkdir -p "$racine/.trace" 2>/dev/null || exit 0
+    printf '%s\t%s\t%s\t%s\n' "$(date '+%d/%m/%Y %H:%M:%S')" "${session:--}" "$quoi" "$cible" \
+        >> "$racine/.trace/$(uname -n).tsv" 2>/dev/null
+    exit 0
+}
+
 cmd_verifier() {
     racine=$(cairn_racine)
     afaire=0
@@ -906,7 +957,7 @@ cmd_verifier() {
     n=0
     for f in "$racine"/commun/*.md; do
         [ -f "$f" ] || continue
-        case $(basename "$f") in profil.md|regles.md|voix.md|retours.md|ecartes.md|index.md|propositions-*.md) continue ;; esac
+        case $(basename "$f") in profil.md|regles.md|voix.md|retours.md|retours-assistant.md|ecartes.md|index.md|propositions-*.md) continue ;; esac
         [ -n "$(champ_de "$(entete_de "$f")" nature)" ] && n=$((n+1))
     done
     if [ "$n" -gt 20 ]; then echo "  socle         $n souvenirs sur 20 : le plafond est dépassé"; afaire=$((afaire+1))
@@ -960,6 +1011,14 @@ cmd_verifier() {
         echo "  méthode       jamais vérifiée : cairn.sh methode"
     fi
 
+    # La trace d'usage : facultative, elle ne compte pas comme une chose à faire.
+    if ls "$racine"/.trace/*.tsv >/dev/null 2>&1; then
+        n=$(cat "$racine"/.trace/*.tsv | wc -l | tr -d ' ')
+        echo "  trace         $n événement(s), dernier le $(cat "$racine"/.trace/*.tsv | cut -f1 | sort -t/ -k3,3 -k2,2 -k1,1 | tail -1)"
+    else
+        echo "  trace         aucune : le hook n'est pas posé, voir adaptateurs/"
+    fi
+
     # Les index et les projets.
     ecarts_total=0
     liste=$(mktemp)
@@ -1003,6 +1062,7 @@ case "$commande" in
     projet)    cmd_projet "$@" ;;
     index)     cmd_index "$@" ;;
     methode)   cmd_methode "$@" ;;
+    trace)     cmd_trace "$@" ;;
     ici)       echo "\"ici\" s'appelle désormais \"init\"." >&2; cmd_init "$@" ;;
     *)         usage ;;
 esac

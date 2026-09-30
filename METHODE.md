@@ -256,7 +256,8 @@ question qui revient est un carcan.
 Une fois le projet trouvé, l'assistant lit, dans cet ordre : le socle `commun/`,
 qui vaut partout ; le `_commun/` de chaque dossier parent du projet dans le
 cairn, du plus haut au plus proche, parce que la fiche d'un client vit là et pas
-dans chacun de ses chantiers ; puis le `contexte.md` et l'`index.md` du projet.
+dans chacun de ses chantiers ; puis le `contexte.md` et l'`index.md` du projet,
+et l'entrée la plus récente de son journal, qui dit où en est le chantier.
 Les souvenirs eux-mêmes ne sont pas chargés d'avance : l'index sert à savoir
 lesquels ouvrir, et **on les ouvre avant d'agir sur leur sujet**, pas après.
 
@@ -461,6 +462,12 @@ par une décision plus récente. Ce qui sort va dans `archive/`, pas à la poube
 jamais qu'une règle n'a pas servi : il la remet en question, et c'est un humain
 qui sait. Un champ qu'il faudrait tenir à jour à chaque usage mentirait dès le
 premier oubli, et une question honnête vaut mieux qu'un compteur faux.
+
+Une trace **mécanique** n'a pas ce défaut, parce que personne n'a à s'en
+souvenir : un hook de l'assistant peut noter chaque skill appelé et chaque
+souvenir ouvert (`cairn.sh trace`, voir `adaptateurs/claude-code.md`). Elle est
+facultative, et elle dit ce qui a été lu, pas ce qui a servi : la question reste
+à poser, mais elle part d'un fait.
 
 **L'entretien propose, il n'applique jamais.** Il écrit dans un fichier daté, et
 c'est un humain qui tranche, dans un second geste. Les deux moitiés comptent

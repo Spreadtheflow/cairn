@@ -160,6 +160,7 @@ projet, groupe          créent sans se déplacer
 index [--appliquer] [chemin]   compare les index aux en-têtes, les recalcule
 methode [--appliquer]   compare les copies au dépôt, les aligne
 verifier                diagnostic : profil, voix, socle, instructions, skills, index
+trace                   appelé par un hook : note les skills appelés et les souvenirs lus
 ```
 
 ### Les copies se recalculent

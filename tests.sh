@@ -262,6 +262,21 @@ joue "$S" verifier
 verifie "voit le profil rempli"                 'sortie_contient "profil        rempli"'
 
 echo
+echo "trace"
+TR=$CAIRN/.trace/$(uname -n).tsv
+printf '{"session_id":"s1","tool_name":"Skill","tool_input":{"skill":"journal"}}' | "$S" trace
+printf '{"session_id":"s1","tool_name":"Read","tool_input":{"file_path":"%s/commun/profil.md"}}' "$CAIRN" | "$S" trace
+printf '{"session_id":"s1","tool_name":"Read","tool_input":{"file_path":"/etc/hosts"}}' | "$S" trace
+printf '{"session_id":"s1","tool_name":"Bash","tool_input":{"command":"ls"}}' | "$S" trace
+printf 'pas du json' | "$S" trace; CODE=$?
+verifie "note un skill appelé"                  'grep -q "	s1	skill	journal$" "$TR"'
+verifie "note une lecture, relative au cairn"   'grep -q "	s1	lecture	commun/profil.md$" "$TR"'
+verifie "ignore ce qui est hors du cairn"       '[ "$(wc -l < "$TR" | tr -d " ")" = 2 ]'
+verifie "ne fait jamais échouer le hook"        '[ "$CODE" = 0 ]'
+joue "$S" verifier
+verifie "verifier compte la trace"              'sortie_contient "trace         2 événement"'
+
+echo
 echo "aide"
 joue "$S" aide
 verifie "affiche AIDE.md et l'état"             'sortie_contient "Cairn, en une page" && sortie_contient "projets    : "'

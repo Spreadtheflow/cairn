@@ -28,8 +28,3 @@ coûte plus d'une heure prend trois semaines.
 Registre partagé sur leur espace documentaire interne. Les exports de bases
 transitent par un dépôt chiffré dont l'accès est nominatif. Le mot de passe du
 dépôt est dans mon gestionnaire, sous l'entrée « Orsay dépôt audit ».
-
-## État actuel
-
-Phase 2 sur 3. Cartographie terminée, plan de remédiation en cours de
-rédaction.
