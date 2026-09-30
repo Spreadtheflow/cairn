@@ -113,9 +113,11 @@ règle `fs_read` ; Aider, `read:` avec des chemins absolus.
 Dans tous les cas, l'assistant doit **demander** l'accès plutôt que de conclure
 que la mémoire est vide.
 
-## Sans accès au disque
+## À distance
 
-Une interface web ou mobile ne lit pas `~/cairn`. Voir `web-et-mobile.md`.
+Une interface web ou mobile ne lit pas `~/cairn`, et Cairn ne cherche pas à y
+aller : on pilote depuis le téléphone une session qui tourne sur la machine du
+cairn. Voir `a-distance.md`.
 
 ## Écrire un nouvel adaptateur
 

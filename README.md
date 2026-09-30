@@ -35,9 +35,11 @@ cairn/
   perso/
 ```
 
-Ça marche avec Claude Code, Codex, Gemini CLI, Cursor, Copilot et la plupart
-des autres. Changer d'outil, c'est changer un fichier de raccordement, pas votre
-mémoire. Tout se lit dans n'importe quel éditeur de texte, ou dans Obsidian.
+Il faut un assistant qui a accès à un terminal sur votre machine : Claude Code,
+Codex, Gemini CLI, Cursor, Copilot et la plupart des autres. Changer d'outil,
+c'est changer un fichier de raccordement, pas votre mémoire. C'est un outil pour
+qui travaille déjà avec un tel assistant ; depuis un téléphone, on pilote une
+session distante, on ne transporte pas le cairn.
 
 ## Ce qui compte
 
@@ -48,12 +50,23 @@ mémoire. Tout se lit dans n'importe quel éditeur de texte, ou dans Obsidian.
 - **Le journal dit ce qui s'est passé, la mémoire dit ce qu'il faut savoir.**
   On ne mélange pas les deux.
 - **Rien ne devient une règle sans vous.** Vos remarques sont gardées à part et
-  ne montent que si vous le décidez. C'est ce qui empêche l'assistant de finir
-  par vous opposer votre propre jurisprudence.
+  ne montent au socle que si vous le décidez. C'est ce qui empêche l'assistant
+  de finir par vous opposer votre propre jurisprudence.
+
+### Le noyau, et le reste
+
+Le noyau : un socle et des projets, un Pourquoi à chaque souvenir, des règles
+distinctes des préférences, un journal distinct de la mémoire, et deux mots,
+« pierre » et « fin ». Il suffit pour ne plus redonner le contexte.
+
+Le reste s'ajoute quand le besoin se présente, et chaque morceau se passe des
+autres : l'entretien qui trie ce qui a vieilli, la voix et la rédaction pour ce
+qui est écrit en votre nom, les fiches de vos interlocuteurs, les retours dans
+les deux sens, la trace d'usage, `a-trier/` pour ce qui arrive d'ailleurs.
 
 ## Installer
 
-### Sans terminal
+### Sans taper de commande
 
 Ouvrez Claude Code ou l'assistant de votre choix, et collez-lui cette adresse :
 
@@ -185,10 +198,11 @@ agent (`claude -p`), isolé de votre installation : une dizaine de scénarios
 `-n 3` rejoue chaque scénario trois fois, parce qu'un agent n'est pas
 déterministe.
 
-### Sans accès au disque
+### À distance
 
-Web ou mobile : [adaptateurs/web-et-mobile.md](adaptateurs/web-et-mobile.md),
-avec ce qui est vérifié et ce qui reste à démontrer.
+Cairn a besoin d'un assistant qui a un terminal sur la machine du cairn. Depuis
+un téléphone, on pilote une session distante qui tourne sur cette machine :
+[adaptateurs/a-distance.md](adaptateurs/a-distance.md).
 
 ## Licence
 

@@ -13,7 +13,9 @@ l'autorisation d'écrire des fichiers : acceptez, c'est le seul moment où vous
 avez quelque chose à faire.
 
 Si votre assistant n'a aucun accès à votre machine, une conversation dans un
-navigateur par exemple, voyez `adaptateurs/web-et-mobile.md`.
+navigateur par exemple, Cairn ne pourra pas fonctionner : il lui faut un
+assistant qui a accès à un terminal sur votre machine. Depuis un téléphone,
+passez par une session distante, voir `adaptateurs/a-distance.md`.
 
 ---
 

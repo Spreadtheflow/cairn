@@ -36,9 +36,11 @@ cairn/
   perso/
 ```
 
-It works with Claude Code, Codex, Gemini CLI, Cursor, Copilot and most others.
-Switching tools means switching one hook-up file, not your memory. Everything
-reads in any text editor, or in Obsidian.
+It needs an assistant with access to a terminal on your machine: Claude Code,
+Codex, Gemini CLI, Cursor, Copilot and most others. Switching tools means
+switching one hook-up file, not your memory. It is a tool for people who already
+work with such an assistant; from a phone, you drive a remote session, you do
+not carry the cairn around.
 
 ## What matters
 
@@ -51,6 +53,17 @@ reads in any text editor, or in Obsidian.
 - **Nothing becomes a rule without you.** Your remarks are kept apart and only
   promoted if you decide so. That is what keeps the assistant from ending up
   quoting your own case law back at you.
+
+### The core, and the rest
+
+The core: a base and projects, a Why on every memory, rules kept apart from
+preferences, a journal kept apart from memory, and two words, "pierre" and
+"fin". It is enough to never repeat your context again.
+
+The rest comes when you need it, and each piece works without the others:
+maintenance that sorts what has aged, voice and writing for what goes out in
+your name, files on the people you work with, feedback both ways, usage
+tracing, `a-trier/` for what comes from elsewhere.
 
 ## About the language
 
@@ -73,7 +86,7 @@ for « fin ».
 
 ## Install
 
-### Without a terminal
+### Without typing a command
 
 Open Claude Code or the assistant of your choice, and paste this address:
 
@@ -205,10 +218,11 @@ project, laying a stone, honouring `capture: non`, closing with "fin"...) judged
 on what ends up on disk, not on the reply. `-n 3` replays each scenario three
 times, because an agent is not deterministic.
 
-### Without disk access
+### Remotely
 
-Web or mobile: [adaptateurs/web-et-mobile.md](adaptateurs/web-et-mobile.md),
-with what is verified and what remains to be demonstrated.
+Cairn needs an assistant with a terminal on the machine that holds the cairn.
+From a phone, you drive a remote session running on that machine:
+[adaptateurs/a-distance.md](adaptateurs/a-distance.md) (in French).
 
 ## License
 

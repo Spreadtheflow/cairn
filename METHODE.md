@@ -15,6 +15,11 @@ l'automatisation se branchent sur le cairn par des adaptateurs ; ils ne le
 possèdent pas. Changer de modèle ou d'éditeur, c'est écrire un nouvel
 adaptateur de quelques lignes, pas refaire son organisation.
 
+**Un agent qui a un terminal.** Un cairn se lit et s'écrit par un assistant qui
+a accès au disque où il vit. C'est un outil pour qui travaille avec un tel
+assistant, pas pour tout le monde. Depuis un téléphone, on pilote une session
+qui tourne sur la machine du cairn : on déplace l'écran, pas la mémoire.
+
 **Lisible des deux côtés.** Le même fichier doit être compréhensible par un
 humain qui l'ouvre et exploitable par un programme qui le parse. D'où le
 Markdown avec un en-tête structuré, et rien de plus exotique.
@@ -93,10 +98,10 @@ dans un identifiant est souvent irrécupérable : rien ne distingue un dossier
 
 ### La boîte à trier
 
-`a-trier/` est le seul dossier du cairn où n'importe quoi peut entrer. Un agent
-distant, une application mobile, un téléphone, un copier-coller de fin de
-soirée : ce qui n'a pas pu passer par une séance de travail se dépose là, dans le
-format qui vient, sans en-tête et sans index.
+`a-trier/` est le seul dossier du cairn où n'importe quoi peut entrer. Un fichier
+transmis par quelqu'un d'autre, ce qu'un outil tiers a repéré, une note de fin
+de soirée : ce qui n'a pas pu passer par une séance de travail se dépose là, dans
+le format qui vient, sans en-tête et sans index.
 
 Une seule main la vide : **l'entretien lit `a-trier/`**, verse dans ses
 propositions ce qui mérite d'être gardé, et un humain l'arbitre comme le reste.
@@ -264,7 +269,7 @@ contraire d'une mémoire.
 ### Ce que la méthode fait et ne fait pas
 
 Elle **informe, elle ne bloque pas**. Le contenu d'un cairn est stocké en clair,
-versionné, et selon votre installation synchronisé jusque sur votre téléphone.
+versionné, et selon votre installation synchronisé entre plusieurs machines.
 C'est dit franchement pour que la décision soit prise en connaissance de cause.
 Le reste relève de votre jugement, pas de l'outil.
 

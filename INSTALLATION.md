@@ -65,14 +65,18 @@ pas un coffre.
 **Obsidian.** Ouvrez `~/cairn` comme coffre, rien à convertir. Un réglage : dans
 Fichiers et liens, format de lien sur « chemin absolu dans le coffre ».
 
-**Téléphone.** Obsidian mobile veut une copie locale : Syncthing sur Android, sans
-service tiers ; Obsidian Sync ou LiveSync sur iOS. Si vous utilisez git et un
-synchroniseur sur le même dossier, excluez `.git/` du synchroniseur.
+**À distance.** Depuis un téléphone, on pilote une session qui tourne sur la
+machine du cairn, on ne transporte pas le cairn : voir
+`adaptateurs/a-distance.md`. Si deux machines le portent, un synchroniseur les
+garde identiques ; excluez `.git/` du synchroniseur, et ne commitez que d'un
+côté.
 
-**Entretien.** Une fois par semaine ou par mois, `/entretien` puis `/arbitrer` :
-doublons, règles jamais déclenchées, décisions remplacées, états de chantier
-restés en mémoire. `cairn.sh index` recale les index sur les en-têtes. Un
-entretien automatisé doit proposer et ne jamais appliquer.
+**Entretien.** `cairn.sh verifier --appliquer` fait l'hygiène sans modèle
+(index, propositions expirées, souvenirs périmés), et peut tourner chaque jour.
+Une fois par semaine, `/entretien` trie le reste : ce qui concerne un projet va
+dans son `a-revoir.md`, et ne vous arrive que ce qui touche au socle, cinq points
+au plus, que vous tranchez avec `/arbitrer`. Un entretien automatisé n'applique
+jamais rien à la mémoire.
 
 **Mise à jour.** `cairn.sh methode` compare vos copies de la méthode au dépôt,
 `--appliquer` les aligne, sans toucher à votre mémoire. Ce que vous avez adapté
