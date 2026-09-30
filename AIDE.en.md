@@ -43,7 +43,7 @@ Type `/` to see them. None is mandatory.
 | `/retour` | Say what suits you or not in the way it works |
 | `/voix` | Establish the way you write, from texts of yours |
 | `/transmettre` | Prepare a copy to hand to someone |
-| `/entretien` | Clean up: it proposes, it touches nothing |
+| `/entretien` | Clean up: hygiene is done on its own, only what touches the base reaches you |
 | `/arbitrer` | Decide on those proposals |
 | `/cairn-aide` | Show this page again, update Cairn |
 

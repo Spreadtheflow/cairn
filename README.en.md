@@ -125,7 +125,7 @@ The shortcuts, none of them mandatory:
 - `/retour` records what you think of the way it works
 - `/voix` establishes the way you write, from texts of yours
 - `/transmettre` prepares a copy to hand to someone
-- `/entretien` proposes the clean-up, touching nothing
+- `/entretien` cleans up, and only brings you what touches the base
 - `/arbitrer` applies what you keep
 - `/cairn-aide` shows the guide again, updates Cairn
 

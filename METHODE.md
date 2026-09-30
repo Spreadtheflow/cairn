@@ -49,6 +49,7 @@ cairn/
         contexte.md        identité du projet et politique de capture
         index.md           une ligne par mémoire, jamais plus
         journal.md         chronologique, on ajoute, on ne réécrit pas
+        a-revoir.md        les points d'entretien propres au projet, s'il y en a
         *.md               les mémoires
       refonte-intranet/    un autre projet du même client
   perso/                   un autre domaine
@@ -469,9 +470,36 @@ souvenir ouvert (`cairn.sh trace`, voir `adaptateurs/claude-code.md`). Elle est
 facultative, et elle dit ce qui a été lu, pas ce qui a servi : la question reste
 à poser, mais elle part d'un fait.
 
-**L'entretien propose, il n'applique jamais.** Il écrit dans un fichier daté, et
-c'est un humain qui tranche, dans un second geste. Les deux moitiés comptent
-autant l'une que l'autre.
+**L'entretien trie, et seul le socle arrive à l'humain.** Le coût d'un
+arbitrage n'est pas la lecture, c'est la replongée dans un sujet refroidi : un
+entretien qui fait tout trancher devient une corvée qu'on abandonne, et la
+mémoire se remet à accumuler. Chaque constat va donc là où il coûte le moins
+cher à régler.
+
+1. **L'hygiène**, qui ne demande aucun jugement : index qui ont dérivé,
+   propositions expirées, souvenirs déjà déclarés périmés. Faite sans modèle
+   (`cairn.sh verifier --appliquer`), jamais proposée.
+2. **La cohérence d'un projet** : un contexte dépassé, un souvenir que le journal
+   contredit, un doublon interne. Un souvenir faux ne nuit que quand on le lit,
+   et on ne le lit qu'en travaillant sur ce projet. L'entretien dépose le point
+   dans le `a-revoir.md` du projet, trois au plus ; l'agent qui ouvre le projet
+   corrige ce que le travail prouve, et garde au plus une question pour la
+   « fin ».
+3. **Le socle** : une promotion, un retour qui deviendrait une préférence ou une
+   règle, la voix, une contradiction entre projets. Au plus **cinq points**, sur
+   une page, dans `commun/propositions-JJ-MM-AAAA.md`, chacun lisible seul : la
+   question, la preuve, une recommandation, ce qui change si c'est oui. C'est un
+   humain qui tranche, dans un second geste, avec le skill `arbitrer`.
+
+**La frontière :** rien ne monte au socle ni ne devient une règle sans l'humain.
+En dessous, l'agent agit seul et le dit en une ligne. Le carcan vient de
+préférences qui deviennent des lois sans qu'on l'ait voulu, pas d'un index
+recalculé.
+
+**Une proposition sans réponse expire au bout de quinze jours** : elle part aux
+archives sans effet. Le silence n'applique jamais rien, et il ne laisse pas
+s'empiler un retard qu'il faudrait ensuite rattraper. Un point réel reviendra
+avec une nouvelle occurrence, ce qui est justement le critère de promotion.
 
 **Et ce qui est refusé se consigne**, dans `commun/ecartes.md`, avec sa raison.
 Sans cette trace, l'entretien suivant reproposerait la même chose, et celui
@@ -495,8 +523,15 @@ n'a que deux destins : être perdue, ou devenir une règle immédiatement. Le se
 est précisément ce qui transforme un assistant en contrôleur au bout de quelques
 mois, puisque chaque remarque de passage se retrouve gravée. Le journal des
 retours est le **tampon** : la correction est gardée sans être promue, et ne
-devient une règle ou une préférence que par un arbitrage explicite, lors d'un
-entretien.
+devient une règle ou une préférence du socle que par un arbitrage explicite, lors
+d'un entretien.
+
+**Une exception : la seconde occurrence dans un projet.** Un travers relevé une
+seconde fois à propos du même projet devient tout de suite une préférence de ce
+projet, dont le Pourquoi cite les deux retours. Attendre l'arbitrage laisse le
+même défaut revenir de séance en séance, et un travers relevé deux fois n'est
+plus une remarque de passage. Sa montée au socle, elle, reste une décision
+humaine.
 
 C'est exactement la relation entre le journal et la mémoire, appliquée au
 comportement plutôt qu'au projet : on garde ce qui s'est dit, on distille

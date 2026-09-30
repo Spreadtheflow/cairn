@@ -104,7 +104,7 @@ Les raccourcis, aucun obligatoire :
 - `/retour` recueille ce que vous pensez de sa façon de travailler
 - `/voix` établit votre façon d'écrire, à partir de textes de vous
 - `/transmettre` prépare une copie à donner à quelqu'un
-- `/entretien` propose le ménage, sans rien toucher
+- `/entretien` fait le ménage, et ne vous soumet que ce qui touche au socle
 - `/arbitrer` applique ce que vous retenez
 - `/cairn-aide` réaffiche l'aide, met Cairn à jour
 

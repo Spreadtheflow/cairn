@@ -83,7 +83,18 @@ Signaler les promotions possibles : une chose qui vaut pour tous les chantiers
 d'un client va dans son `_commun/`, une chose qui vaut partout est candidate au
 socle. **Proposer, jamais promouvoir tout seul.**
 
-## 4. Regarder si un retour est opportun
+## 4. Régler un point en attente du projet
+
+Si le projet a un `a-revoir.md`, regarder ce qui y reste. Les points que la
+séance a prouvés ont déjà dû être corrigés et retirés en cours de route ; sinon,
+le faire maintenant, et le dire dans l'entrée de journal.
+
+Parmi ceux qui demandent un jugement, en choisir **un seul**, le plus proche de
+ce qu'on vient de faire, et le poser en une question fermée : le sujet est chaud,
+la réponse coûte dix secondes. Appliquer la réponse, retirer le point. Les autres
+attendent une prochaine séance.
+
+## 5. Regarder si un retour est opportun
 
 Avant de conclure, ouvrir `commun/retours.md` et regarder la date du dernier
 retour. Si elle remonte à plus de trois semaines, ou si on vient de clore un
@@ -94,7 +105,7 @@ Voir le skill `retour`, qui porte la méthode et les garde-fous.
 Sinon, ne rien demander. Une question de trop est plus coûteuse qu'une question
 de moins.
 
-## 5. Écrire, puis rendre compte
+## 6. Écrire, puis rendre compte
 
 Après validation, écrire les souvenirs retenus et mettre l'`index.md` à jour, une
 ligne par souvenir, avec `cairn.sh index --appliquer` si le script est là.

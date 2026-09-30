@@ -8,9 +8,18 @@ description: "Recueillir un retour sur la façon de travailler de l'assistant et
 Ce fichier alimente `commun/retours.md`, le cinquième garde-fou de la méthode :
 le tampon qui empêche une correction de passage de devenir une loi.
 
-**La règle qui gouverne tout : on consigne, on ne promeut pas.** Rien de ce qui
-est écrit ici ne s'applique automatiquement. C'est lors d'un entretien qu'on
-décide si un retour devient une règle, une préférence, ou rien du tout.
+**La règle qui gouverne tout : on consigne, on ne promeut pas au socle.** Une
+remarque de passage ne devient ni une règle ni une préférence du socle sans un
+arbitrage explicite, lors d'un entretien.
+
+**Une exception, et une seule : la seconde occurrence dans un projet.** Si le
+même travers a déjà été relevé dans `retours.md` à propos du même projet, il
+devient **tout de suite une préférence de ce projet**, sans attendre : un fichier
+de nature `preference` dans le dossier du projet, dont le Pourquoi cite les deux
+retours avec leur date. Le dire en une ligne, et renseigner la « Suite » des deux
+retours avec le nom du fichier. **Pourquoi :** attendre un arbitrage laisse le
+même défaut revenir séance après séance ; un travers relevé deux fois n'est plus
+une remarque de passage. Sa montée au socle, elle, reste une décision humaine.
 
 ## Quand demander, si personne n'a rien dit
 
@@ -71,8 +80,9 @@ ambigüe : demander un exemple. Puis se taire et écrire.
 
 ## Ce qu'il ne faut pas faire
 
-- Transformer un retour en règle dans la foulée. C'est exactement le mécanisme
-  qu'on cherche à empêcher.
+- Transformer un retour en règle, ou en préférence du socle, dans la foulée.
+  C'est exactement le mécanisme qu'on cherche à empêcher. Seule la préférence
+  de projet, à la seconde occurrence, s'écrit sans attendre.
 - Demander un retour au milieu d'une tâche.
 - Reposer la question quand elle a reçu « rien à signaler ».
 - Reformuler les mots de la personne pour les rendre plus polis ou plus

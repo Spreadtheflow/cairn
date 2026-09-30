@@ -264,6 +264,39 @@ joue "$S" verifier
 verifie "voit le profil rempli"                 'sortie_contient "profil        rempli"'
 
 echo
+echo "hygiène"
+P=$CAIRN/clients/machin/site
+printf 'Vieilles propositions.\n' > "$CAIRN/commun/propositions-01-01-2020.md"
+printf 'Propositions du jour.\n' > "$CAIRN/commun/propositions-$(date +%d-%m-%Y).md"
+cat > "$P/ancien-hebergeur.md" <<'EOF2'
+---
+titre: L'hébergeur est OVH
+description: avant la migration
+nature: fait
+cree: 01/01/2026
+maj: 01/06/2026
+statut: perime
+---
+
+OVH.
+
+**Pourquoi :** noté avant la migration.
+EOF2
+printf '# À revoir\n\n## 01/09/2026 · un point\n' > "$P/a-revoir.md"
+"$S" index --appliquer > /dev/null 2>&1
+sed -i.bak 's/^description: avant la migration/description: avant la migration de 2026/' "$P/ancien-hebergeur.md"; rm -f "$P/ancien-hebergeur.md.bak"
+joue "$S" verifier --appliquer
+verifie "archive une proposition expirée"      '[ -f "$CAIRN/archive/propositions/propositions-01-01-2020.md" ] && [ ! -f "$CAIRN/commun/propositions-01-01-2020.md" ]'
+verifie "garde une proposition récente"        '[ -f "$CAIRN/commun/propositions-$(date +%d-%m-%Y).md" ]'
+verifie "archive un souvenir périmé"           '[ -f "$CAIRN/archive/clients/machin/site/ancien-hebergeur.md" ] && [ ! -f "$P/ancien-hebergeur.md" ]'
+verifie "et le retire de l'index"              '! fichier_contient "$P/index.md" "ancien-hebergeur.md"'
+verifie "a-revoir.md n'est pas un souvenir"    '! fichier_contient "$P/index.md" "a-revoir.md"'
+verifie "dit ce qu'elle a fait"                'sortie_contient "expiré" && sortie_contient "statut perime" && sortie_contient "recalculé"'
+joue "$S" verifier --appliquer
+verifie "une seconde passe n'a rien à faire"   'sortie_contient "rien à faire"'
+rm -f "$CAIRN/commun/propositions-$(date +%d-%m-%Y).md" "$P/a-revoir.md"
+
+echo
 echo "trace"
 TR=$CAIRN/.trace/$(uname -n).tsv
 printf '{"session_id":"s1","tool_name":"Skill","tool_input":{"skill":"journal"}}' | "$S" trace

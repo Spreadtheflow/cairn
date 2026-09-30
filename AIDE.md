@@ -42,7 +42,7 @@ Tapez `/` pour les voir. Aucun n'est obligatoire.
 | `/retour` | Dire ce qui vous convient ou non dans sa façon de travailler |
 | `/voix` | Établir votre façon d'écrire, à partir de textes de vous |
 | `/transmettre` | Préparer une copie à donner à quelqu'un |
-| `/entretien` | Faire le ménage : il propose, il ne touche à rien |
+| `/entretien` | Faire le ménage : l'hygiène se fait seule, ne vous arrive que ce qui touche au socle |
 | `/arbitrer` | Trancher ces propositions |
 | `/cairn-aide` | Réafficher cette page, mettre Cairn à jour |
 

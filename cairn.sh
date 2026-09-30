@@ -31,7 +31,7 @@ usage() {
     cat <<'USAGE'
 Usage :
   cairn.sh aide                    rappelle comment ça marche, et l'état du cairn
-  cairn.sh verifier                diagnostic : profil, voix, socle, instructions, skills, index
+  cairn.sh verifier [--appliquer]  diagnostic ; avec --appliquer, fait d'abord l'hygiène sans modèle
   cairn.sh init [chemin|--aucun]   rattache le DOSSIER COURANT à un projet, ou le déclare sans mémoire
   cairn.sh ou                      dit à quel projet le dossier courant est rattaché
   cairn.sh installer [chemin]      crée le cairn lui-même (une fois, par défaut ~/cairn)
@@ -468,7 +468,7 @@ souvenirs_de() {
     for f in "$1"/*.md; do
         [ -f "$f" ] || continue
         case $(basename "$f") in
-            contexte.md|index.md|journal.md|journal-*.md|retours.md|ecartes.md|propositions-*.md) continue ;;
+            contexte.md|index.md|journal.md|journal-*.md|retours.md|retours-assistant.md|ecartes.md|a-revoir.md|propositions-*.md) continue ;;
         esac
         e=$(entete_de "$f")
         [ -n "$(champ_de "$e" titre)" ] || continue
@@ -925,12 +925,75 @@ cmd_trace() {
     exit 0
 }
 
+# ---------------------------------------------------------------------------
+# L'hygiène : ce qui ne demande aucun jugement, fait sans modèle.
+#
+# Trois gestes, tous réversibles et tous déjà décidés ailleurs : une
+# proposition de socle restée sans réponse quinze jours part aux archives sans
+# effet ; un souvenir déjà déclaré périmé part aux archives ; les index se
+# recalculent. Rien ici ne crée, ne promeut ni ne réécrit un souvenir.
+# ---------------------------------------------------------------------------
+
+EXPIRATION=15
+
+# Un numéro de jour pour une date JJ/MM/AAAA ou JJ-MM-AAAA : seule la
+# différence entre deux numéros a un sens.
+jour_de() {
+    printf '%s\n' "$1" | awk -F'[-/]' '{ d = $1 + 0; m = $2 + 0; y = $3 + 0
+        if (m < 3) { y--; m += 12 }
+        print int(365.25 * (y + 4716)) + int(30.6001 * (m + 1)) + d }'
+}
+
+hygiene() {
+    h_racine=$1 h_fait=0
+    h_jour=$(jour_de "$AUJOURDHUI")
+    for h_f in "$h_racine"/commun/propositions-*.md; do
+        [ -f "$h_f" ] || continue
+        h_d=$(basename "$h_f" .md | sed 's/^propositions-//')
+        case $h_d in [0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]) ;; *) continue ;; esac
+        if [ $((h_jour - $(jour_de "$h_d"))) -ge "$EXPIRATION" ]; then
+            mkdir -p "$h_racine/archive/propositions"
+            mv "$h_f" "$h_racine/archive/propositions/"
+            echo "  expiré      commun/$(basename "$h_f") : sans réponse depuis $EXPIRATION jours, archivé sans effet"
+            h_fait=$((h_fait+1))
+        fi
+    done
+    h_liste=$(mktemp)
+    find "$h_racine" -name '*.md' -not -path "$h_racine/archive/*" -not -path "$h_racine/gabarits/*" 2>/dev/null > "$h_liste"
+    while IFS= read -r h_f; do
+        [ -n "$h_f" ] || continue
+        [ "$(champ_de "$(entete_de "$h_f")" statut)" = perime ] || continue
+        h_rel=${h_f#"$h_racine"/}
+        mkdir -p "$h_racine/archive/$(dirname "$h_rel")"
+        mv "$h_f" "$h_racine/archive/$h_rel"
+        echo "  archivé     $h_rel : statut perime"
+        h_fait=$((h_fait+1))
+    done < "$h_liste"
+    find "$h_racine" -name index.md -not -path "*/gabarits/*" -not -path "*/archive/*" 2>/dev/null | sort > "$h_liste"
+    while IFS= read -r h_i; do
+        [ -n "$h_i" ] || continue
+        index_dossier "$(dirname "$h_i")" 1 > /dev/null
+        if [ "$ecarts" -gt 0 ]; then
+            echo "  recalculé   ${h_i#"$h_racine"/} : $ecarts ligne(s)"
+            h_fait=$((h_fait+1))
+        fi
+    done < "$h_liste"
+    rm -f "$h_liste"
+    [ "$h_fait" = 0 ] && echo "  rien à faire"
+    return 0
+}
+
 cmd_verifier() {
     racine=$(cairn_racine)
     afaire=0
     echo
     echo "Cairn : $racine"
     echo
+    if [ "${1:-}" = --appliquer ]; then
+        echo "Hygiène"
+        hygiene "$racine"
+        echo
+    fi
 
     # Le socle.
     if [ ! -f "$racine/commun/profil.md" ]; then

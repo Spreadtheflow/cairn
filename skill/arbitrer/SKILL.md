@@ -6,7 +6,13 @@ description: "Lire les propositions d'un entretien, les présenter de façon dé
 # Arbitrer les propositions d'un entretien
 
 `/entretien` propose et n'applique jamais. Ce skill est l'autre moitié : c'est ici
-que l'humain décide, et **seulement ici** que la mémoire est modifiée.
+que l'humain décide de ce qui touche au **socle**, une promotion, un retour qui
+devient une préférence ou une règle, la voix.
+
+Le reste ne passe pas par ici. L'hygiène est faite par `cairn.sh verifier
+--appliquer`, et les points de cohérence d'un projet se règlent en séance, depuis
+son `a-revoir.md`. Un fichier de propositions porte donc cinq points au plus, et
+chacun se lit seul.
 
 ## 1. Prendre le bon fichier
 
@@ -14,17 +20,19 @@ Le plus récent des `commun/propositions-JJ-MM-AAAA.md`, sauf si un autre est
 nommé. S'il y en a plusieurs non traités, le dire et les traiter du plus ancien
 au plus récent : un arbitrage rendu sur le premier change souvent le second.
 
+Un fichier sans réponse depuis quinze jours part aux archives sans effet, au
+passage suivant de l'hygiène. Ce n'est pas un refus : rien ne va dans
+`ecartes.md`, et un point réel reviendra avec une nouvelle occurrence.
+
 Lire aussi `commun/ecartes.md`, pour ne pas resoumettre ce qui a déjà été refusé.
 
 ## 2. Présenter de façon décidable
 
-**Ne pas relire le fichier à voix haute.** Il a été écrit pour être lu une fois ;
-votre travail est de le rendre *tranchable*.
-
-Numéroter, grouper par nature d'action, et ordonner par ce qui allège le plus.
-**Une ligne par proposition**, qui contient trois choses et rien d'autre : ce qui
-est proposé, sur quoi, et pourquoi. Si une ligne demande deux phrases, c'est que
-la proposition est mal formulée : reformulez-la, ne la rallongez pas.
+**Ne pas relire le fichier à voix haute.** Chaque point porte déjà sa question,
+sa preuve, une recommandation et ce qui change si c'est oui : le présenter en une
+ligne par point, avec son identifiant, et laisser la preuve à qui la demande.
+Si une ligne demande deux phrases, c'est que le point est mal formulé :
+reformulez-le, ne le rallongez pas.
 
 Signaler à part les propositions qui **changent une règle du socle** : elles
 méritent une phrase de plus, parce qu'elles engagent tout le reste.

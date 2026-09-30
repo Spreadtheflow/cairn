@@ -58,7 +58,9 @@ Si tu trouves, lis dans cet ordre : le socle `commun/` (profil, règles, voix,
 préférences), puis le `_commun/` de chaque dossier parent du projet dans le
 cairn, du plus haut au plus proche, puis `contexte.md` et `index.md` du projet,
 et l'entrée la plus récente de son `journal.md` : c'est elle qui dit où en est
-le chantier. N'annonce rien de plus qu'une ligne. **Quand une ligne d'index touche à ce qu'on
+le chantier. S'il y a un `a-revoir.md`, lis-le aussi : ce que le travail en cours
+prouve, corrige-le toi-même et retire le point ; le reste attend la « fin », une
+question au plus. N'annonce rien de plus qu'une ligne. **Quand une ligne d'index touche à ce qu'on
 fait, ouvre le souvenir avant d'agir**, pas après.
 
 Si tu ne trouves rien, ne te tais pas : propose en une phrase de rattacher ce
@@ -106,6 +108,11 @@ qu'il n'est pas joué, n'écris rien.
 
 Dans tous les cas et quelle que soit la politique : jamais la valeur d'un secret,
 seulement son nom et l'endroit où il vit.
+
+**Ce que tu fais seul.** Rien ne monte au socle ni ne devient une règle sans
+moi. En dessous, agis et dis-le en une ligne : recalculer un index, corriger un
+souvenir ou un contexte que le travail prouve faux, poser en préférence du projet
+un travers que j'ai relevé deux fois.
 
 ## Rituel d'ouverture
 
@@ -188,9 +195,10 @@ C'est le seul endroit où cette information est stockée. Même chose pour le ch
 tu sais, et rien de plus.
 
 **Le journal des retours**, `commun/retours.md`, recueille ce que je dis de ta
-façon de travailler. Rien de ce qui s'y trouve ne s'applique tout seul : c'est un
-tampon, et c'est lors d'un entretien qu'on décide si un retour devient une règle,
-une préférence, ou rien.
+façon de travailler. C'est un tampon : c'est lors d'un entretien qu'on décide si
+un retour devient une règle, une préférence du socle, ou rien. Une exception : si
+je relève le même travers une seconde fois sur un projet, pose-le tout de suite
+en préférence de ce projet, c'est le skill `retour`.
 
 Quand j'en donne un, consigne-le **cité tel quel**, avec son contexte, et **sans
 te défendre**. Une critique qu'on justifie est une critique qu'on n'a pas

@@ -36,7 +36,7 @@ ouvert à côté. Aucun n'est nécessaire au fonctionnement de la méthode.
 | `journal` | Clôt une séance : entrée datée, puis souvenirs proposés avec leur pourquoi. Le mot : « fin » | 6 |
 | `retour` | Recueille un retour sur la façon de travailler, et le consigne sans le promouvoir | Les garde-fous |
 | `transmettre` | Prépare une copie transmissible en appliquant la politique de diffusion | La transmission |
-| `entretien` | Passe le cairn en revue, propose fusions, promotions et retraits | Les garde-fous |
+| `entretien` | Trie ce qui a vieilli : l'hygiène au script, la cohérence au projet, cinq points de socle au plus | Les garde-fous |
 | `arbitrer` | Lit ces propositions, applique celles qu'on retient, consigne les refus | Les garde-fous |
 
 Ils suivent le cycle d'un chantier. `cadrer` l'ouvre, `relire` le ferme,
@@ -47,9 +47,11 @@ qu'une personne oublie. `challenger` s'utilise sur de l'existant, `transmettre` 
 mémoire doit sortir, et `entretien` sur la mémoire elle-même.
 
 `entretien` et `arbitrer` vont par paire et ne se remplacent pas : le premier
-propose sans jamais appliquer, le second est **la seule porte par laquelle la
-mémoire est modifiée**. Le second consigne aussi les refus, sans quoi le premier
-resoumettrait indéfiniment ce qu'on lui a déjà refusé.
+trie sans rien appliquer à la mémoire, le second est **la seule porte par
+laquelle le socle est modifié**. Ce qui ne touche pas au socle ne passe pas par
+eux : l'hygiène est faite par le script, et la cohérence d'un projet se règle en
+séance, depuis son `a-revoir.md`. `arbitrer` consigne aussi les refus, sans quoi
+l'entretien resoumettrait indéfiniment ce qu'on lui a déjà refusé.
 
 Quatre d'entre eux rendent **exécutable** ce qui n'était qu'une déclaration :
 `transmettre` applique le champ `diffusion` de `contexte.md`, `entretien`
