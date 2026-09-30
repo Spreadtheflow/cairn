@@ -724,10 +724,10 @@ traiter() {
         ajour)  ajour=$((ajour+1)) ;;
         absent) absent=$((absent+1))
                 echo "  absent               $nom"
-                [ "$appliquer" = 1 ] && { $poser_fn "$ref" "$dst"; pose=$((pose+1)); } ;;
+                if [ "$appliquer" = 1 ]; then $poser_fn "$ref" "$dst"; pose=$((pose+1)); fi ;;
         retard) retard=$((retard+1))
                 echo "  en retard            $nom"
-                [ "$appliquer" = 1 ] && { $poser_fn "$ref" "$dst"; pose=$((pose+1)); } ;;
+                if [ "$appliquer" = 1 ]; then $poser_fn "$ref" "$dst"; pose=$((pose+1)); fi ;;
         adapte) adapte=$((adapte+1))
                 echo "  adapté sur place     $nom   (le dépôt n'a pas bougé, rien à faire)"
                 if [ "$forcer" = 1 ]; then
@@ -806,17 +806,17 @@ cmd_methode() {
         if [ "$etat" = absent ]; then
             absent=$((absent+1))
             echo "  absent               bloc Cairn de $INSTRUCTIONS"
-            [ "$appliquer" = 1 ] && { poser_bloc "$ref" "$INSTRUCTIONS"; pose=$((pose+1)); }
+            if [ "$appliquer" = 1 ]; then poser_bloc "$ref" "$INSTRUCTIONS"; pose=$((pose+1)); fi
         elif [ "$etat" = retard ]; then
             retard=$((retard+1))
             echo "  en retard            bloc Cairn de $INSTRUCTIONS"
-            [ "$appliquer" = 1 ] && { poser_bloc "$ref" "$INSTRUCTIONS"; pose=$((pose+1)); }
+            if [ "$appliquer" = 1 ]; then poser_bloc "$ref" "$INSTRUCTIONS"; pose=$((pose+1)); fi
         elif [ "$etat" = ajour ]; then
             ajour=$((ajour+1))
         elif [ "$etat" = adapte ]; then
             adapte=$((adapte+1))
             echo "  adapté sur place     bloc Cairn de $INSTRUCTIONS   (le dépôt n'a pas bougé)"
-            [ "$forcer" = 1 ] && { cp "$INSTRUCTIONS" "$INSTRUCTIONS.avant-maj"; poser_bloc "$ref" "$INSTRUCTIONS"; pose=$((pose+1)); }
+            if [ "$forcer" = 1 ]; then cp "$INSTRUCTIONS" "$INSTRUCTIONS.avant-maj"; poser_bloc "$ref" "$INSTRUCTIONS"; pose=$((pose+1)); fi
         else
             fusion=$(mktemp)
             if [ "$appliquer" = 1 ] && [ "$forcer" = 0 ] && [ -n "$base" ] && fusionner "$ref" "$extrait" "$base" "$fusion"; then

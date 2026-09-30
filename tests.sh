@@ -199,9 +199,11 @@ verifie "puis tout est à jour"                  'sortie_contient "Tout est à j
 
 # Le dépôt avance : la copie est en retard.
 printf '\nLigne ajoutée par le dépôt.\n' >> "$DEPOT/gabarits/journal.md"
+printf '\nLigne ajoutée par le dépôt.\n' >> "$DEPOT/gabarits/ecartes.md"
 commit_depot "Le dépôt avance"
 joue "$S" methode
 verifie "voit un retard"                        'sortie_contient "en retard            $CAIRN/gabarits/journal.md"'
+verifie "voit tous les retards, pas le premier" 'sortie_contient "en retard            $CAIRN/gabarits/ecartes.md" && [ "$CODE" = 0 ]'
 joue "$S" methode --appliquer
 verifie "l'aligne"                              'fichier_contient "$CAIRN/gabarits/journal.md" "Ligne ajoutée par le dépôt."'
 
