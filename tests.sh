@@ -285,7 +285,11 @@ EOF2
 printf '# À revoir\n\n## 01/09/2026 · un point\n' > "$P/a-revoir.md"
 "$S" index --appliquer > /dev/null 2>&1
 sed -i.bak 's/^description: avant la migration/description: avant la migration de 2026/' "$P/ancien-hebergeur.md"; rm -f "$P/ancien-hebergeur.md.bak"
+mkdir -p "$CAIRN/.stversions/clients/machin/site"
+cp "$P/ancien-hebergeur.md" "$CAIRN/.stversions/clients/machin/site/ancien-hebergeur~20260901.md"
+printf -- '- [Fantôme](rien.md) · une copie de Syncthing\n' > "$CAIRN/.stversions/clients/machin/site/index.md"
 joue "$S" verifier --appliquer
+verifie "ne touche pas aux dossiers cachés"    '[ -f "$CAIRN/.stversions/clients/machin/site/ancien-hebergeur~20260901.md" ] && fichier_contient "$CAIRN/.stversions/clients/machin/site/index.md" "rien.md" && [ ! -d "$CAIRN/archive/.stversions" ]'
 verifie "archive une proposition expirée"      '[ -f "$CAIRN/archive/propositions/propositions-01-01-2020.md" ] && [ ! -f "$CAIRN/commun/propositions-01-01-2020.md" ]'
 verifie "garde une proposition récente"        '[ -f "$CAIRN/commun/propositions-$(date +%d-%m-%Y).md" ]'
 verifie "archive un souvenir périmé"           '[ -f "$CAIRN/archive/clients/machin/site/ancien-hebergeur.md" ] && [ ! -f "$P/ancien-hebergeur.md" ]'

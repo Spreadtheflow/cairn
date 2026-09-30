@@ -92,7 +92,7 @@ domaines_de() {
 
 # Les contexte.md des projets, hors gabarits et archive, un par ligne.
 contextes_de() {
-    find "$1" -name contexte.md -not -path "*/gabarits/*" -not -path "*/archive/*" 2>/dev/null
+    find "$1" -name contexte.md -not -path "$1/.*" -not -path "$1/*/.*" -not -path "*/gabarits/*" -not -path "*/archive/*" 2>/dev/null
 }
 
 cmd_installer() {
@@ -543,7 +543,7 @@ cmd_index() {
     fi
     total=0
     liste=$(mktemp)
-    find "$depart" -name index.md -not -path "*/gabarits/*" -not -path "*/archive/*" 2>/dev/null | sort > "$liste"
+    find "$depart" -name index.md -not -path "$depart/.*" -not -path "$depart/*/.*" -not -path "*/gabarits/*" -not -path "*/archive/*" 2>/dev/null | sort > "$liste"
     echo
     while IFS= read -r i; do
         [ -n "$i" ] || continue
@@ -928,6 +928,9 @@ cmd_trace() {
 # ---------------------------------------------------------------------------
 # L'hygiène : ce qui ne demande aucun jugement, fait sans modèle.
 #
+# Les dossiers cachés ne sont jamais parcourus : .stversions/ de Syncthing,
+# .obsidian/, .trace/ portent des copies ou des mesures, pas la mémoire.
+#
 # Trois gestes, tous réversibles et tous déjà décidés ailleurs : une
 # proposition de socle restée sans réponse quinze jours part aux archives sans
 # effet ; un souvenir déjà déclaré périmé part aux archives ; les index se
@@ -959,7 +962,7 @@ hygiene() {
         fi
     done
     h_liste=$(mktemp)
-    find "$h_racine" -name '*.md' -not -path "$h_racine/archive/*" -not -path "$h_racine/gabarits/*" 2>/dev/null > "$h_liste"
+    find "$h_racine" -name '*.md' -not -path "$h_racine/.*" -not -path "$h_racine/*/.*" -not -path "$h_racine/archive/*" -not -path "$h_racine/gabarits/*" 2>/dev/null > "$h_liste"
     while IFS= read -r h_f; do
         [ -n "$h_f" ] || continue
         [ "$(champ_de "$(entete_de "$h_f")" statut)" = perime ] || continue
@@ -969,7 +972,7 @@ hygiene() {
         echo "  archivé     $h_rel : statut perime"
         h_fait=$((h_fait+1))
     done < "$h_liste"
-    find "$h_racine" -name index.md -not -path "*/gabarits/*" -not -path "*/archive/*" 2>/dev/null | sort > "$h_liste"
+    find "$h_racine" -name index.md -not -path "$h_racine/.*" -not -path "$h_racine/*/.*" -not -path "*/gabarits/*" -not -path "*/archive/*" 2>/dev/null | sort > "$h_liste"
     while IFS= read -r h_i; do
         [ -n "$h_i" ] || continue
         index_dossier "$(dirname "$h_i")" 1 > /dev/null
@@ -1085,7 +1088,7 @@ cmd_verifier() {
     # Les index et les projets.
     ecarts_total=0
     liste=$(mktemp)
-    find "$racine" -name index.md -not -path "*/gabarits/*" -not -path "*/archive/*" 2>/dev/null > "$liste"
+    find "$racine" -name index.md -not -path "$racine/.*" -not -path "$racine/*/.*" -not -path "*/gabarits/*" -not -path "*/archive/*" 2>/dev/null > "$liste"
     while IFS= read -r i; do
         [ -n "$i" ] || continue
         index_dossier "$(dirname "$i")" 0 > /dev/null
