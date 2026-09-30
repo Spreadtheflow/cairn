@@ -132,6 +132,12 @@ pour tout ce qui est en dessous. Écris les souvenirs dans le dossier du projet.
 Quand une chose vaut pour tous les chantiers d'un client, propose-la pour le
 `_commun/` de ce client plutôt que de la recopier.
 
+Les interlocuteurs ont une fiche dans le `_commun/personnes/` de leur
+organisation, que tu ne charges pas à l'ouverture : quand un nom apparaît,
+regarde s'il y en a une. À la seconde apparition d'un interlocuteur, crée-la
+sans demander ; jamais pour une personne qui n'est qu'une donnée, jamais rien de
+privé. C'est le skill `personne`.
+
 **Le socle `commun/` est plafonné à vingt souvenirs**, sans compter ses fichiers
 réservés (`profil.md`, `voix.md`, `redaction.md`, `observations.md`,
 `regles.md`, `retours.md`, `retours-assistant.md`, `ecartes.md`, `index.md`). Au-delà, il faut fusionner ou
@@ -248,7 +254,7 @@ de ces choses, demande-moi ce qui était non évident là-dedans, et retiens ça
 
 ## 2. Les skills
 
-Le dépôt fournit douze skills dans `skill/`, à copier dans `~/.claude/skills/`.
+Le dépôt fournit ses skills dans `skill/`, à copier dans `~/.claude/skills/`.
 `/cairn` fait la résolution et le rattachement en conversation, sans script ni
 ligne de commande ; `/pierre` retient tout de suite ; les autres mettent la
 doctrine en gestes. Voir `skill/README.md`.

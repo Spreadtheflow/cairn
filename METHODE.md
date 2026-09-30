@@ -47,6 +47,7 @@ cairn/
     _commun/               ce qui vaut pour tout le domaine
     orsay-mutuelle/        un groupe : pas de contexte.md
       _commun/             la fiche client, les interlocuteurs
+        personnes/         une fiche par interlocuteur, non chargée à l'ouverture
       audit-conformite/    un projet : il a un contexte.md
         contexte.md        identité du projet et politique de capture
         index.md           une ligne par mémoire, jamais plus
@@ -165,6 +166,33 @@ s'imite et ce qui s'observe sans s'imiter.
 la mémoire qui coûte le plus cher à reconstruire et qui se perd à chaque
 changement de modèle ou de fournisseur. Écrite une fois dans un fichier à elle,
 elle suit la personne partout.
+
+### Les personnes
+
+Le cairn tient une fiche par **interlocuteur**, dans le `_commun/personnes/` de
+son organisation : qui il est au travail, et comment travailler avec lui. La
+première partie évite de refaire la bio à chaque séance ; la seconde garde ce
+qui rend une relation fluide et qu'aucun annuaire ne connaît, « ne répond jamais
+le matin », « décide seule, fait relire par X ».
+
+Quatre règles la bornent, parce qu'une fiche sur une personne réelle se tient
+mal très vite.
+
+- **Des interlocuteurs, jamais des données.** Une personne qui figure dans une
+  base auditée, une liste d'abonnés ou un export n'a pas de fiche.
+- **La seconde apparition.** Un nom vu une fois est noté en une ligne ; vu une
+  seconde fois, l'agent crée la fiche sans demander, depuis les sources de la
+  personne qui tient le cairn.
+- **Le professionnel et l'observé, rien d'autre.** Un poste, un rôle, des
+  habitudes de travail, chacun daté et sourcé ; un motif sans cause supposée ;
+  jamais la vie privée. La recherche publique se fait **à la demande**, limitée
+  au rôle professionnel, et vérifie l'homonymie avant d'écrire.
+- **Hors du chargement.** Ces dossiers ne se lisent pas à l'ouverture : l'agent
+  ouvre une fiche quand le nom apparaît.
+
+Un cairn est versionné et souvent poussé sur une forge : effacer quelqu'un de
+son historique n'est pas trivial. C'est une raison de plus pour n'y écrire que
+ce qu'on pourrait montrer à la personne sans gêne.
 
 ## 3. Domaines et groupes
 

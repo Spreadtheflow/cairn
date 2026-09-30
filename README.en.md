@@ -140,7 +140,7 @@ The shortcuts, none of them mandatory:
 | [METHODE.md](METHODE.md) | The specification |
 | [DOCTRINE.md](DOCTRINE.md) | How to conduct the exchange with an assistant |
 | [adaptateurs/](adaptateurs/) | Hooking up each tool, and the web |
-| [skill/](skill/) | The twelve skills |
+| [skill/](skill/) | The skills |
 | [exemples/](exemples/) | A fictional project, to see what it looks like once lived in |
 
 ## For the initiated

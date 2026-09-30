@@ -118,7 +118,7 @@ Les raccourcis, aucun obligatoire :
 | [METHODE.md](METHODE.md) | La spécification |
 | [DOCTRINE.md](DOCTRINE.md) | Comment conduire l'échange avec un assistant |
 | [adaptateurs/](adaptateurs/) | Brancher chaque outil, et le web |
-| [skill/](skill/) | Les douze skills |
+| [skill/](skill/) | Les skills |
 | [exemples/](exemples/) | Un projet fictif, pour voir à quoi ça ressemble habité |
 
 ## Pour les initiés

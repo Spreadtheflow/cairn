@@ -29,7 +29,8 @@ ouvert à côté. Aucun n'est nécessaire au fonctionnement de la méthode.
 | `cairn` | Rattache un dossier de travail à sa mémoire, crée le projet, ou déclare le dossier sans mémoire | La méthode |
 | `cairn-aide` | Rappelle comment ça marche, confronté à l'état réel du cairn, et met la méthode à jour | La méthode |
 | `pierre` | Retient tout de suite une chose avec son pourquoi, sans clore. Le mot : « pierre » | 6 |
-| `voix` | Établit la façon d'écrire de la personne depuis ses textes, dans `commun/voix.md` | La méthode |
+| `voix` | Établit la façon d'écrire de la personne depuis ses textes, dans `commun/voix.md`, puis l'affine par observation | La méthode |
+| `personne` | Tient la fiche d'un interlocuteur : qui il est au travail, comment travailler avec lui | La méthode |
 | `cadrer` | Ouvre un chantier : échange en prose, tensions, phases | 1 |
 | `challenger` | Passe un projet au crible, une fois, sans bloquer | 2 |
 | `relire` | Vérifie avant de livrer, selon la nature du produit, sécurité et conformité comprises | 8 |

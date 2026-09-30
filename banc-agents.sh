@@ -295,7 +295,38 @@ sc_observation() {
     grep -qE '«|"' "$1/cairn/commun/observations.md" || { echo "observation sans citation"; return 1; }
 }
 
-TOUS="ouverture pierre pierre_spontanee capture_non dossier_inconnu sans_memoire fin retour voix_absente relire entretien a_revoir retour_second observation"
+PERSONNES=cairn/clients/orsay-mutuelle/_commun/personnes
+
+# Les fiches de personnes créées dans le décor $1, hors index.
+fiches() { ls "$1/$PERSONNES"/*.md 2>/dev/null | grep -v '/index.md$'; }
+
+# Un interlocuteur déjà nommé dans le journal, qui revient : une fiche, avec
+# l'habitude observée et sans cause supposée.
+sc_personne_seconde() {
+    decor "$1"; armer "$1" "$1/travail/orsay"; dg_changee "$1"
+    agent "$1/travail/orsay" "Mme Pereira veut le tableau des durées de conservation pour vendredi. Au passage, elle ne répond jamais avant 14h, c'est la troisième fois que je le constate. Prépare-moi juste les colonnes du tableau."
+    f=$(fiches "$1" | xargs grep -l 'Pereira' 2>/dev/null | head -1)
+    [ -n "$f" ] || { echo "pas de fiche pour Mme Pereira"; return 1; }
+    grep -qiE '14 ?h|après-midi' "$f" || { echo "l'habitude observée n'est pas dans la fiche"; return 1; }
+}
+
+# Un nom qui apparaît pour la première fois : pas de fiche.
+sc_personne_unique() {
+    decor "$1"; armer "$1" "$1/travail/orsay"
+    agent "$1/travail/orsay" "M. Garnier, le nouveau responsable informatique d'Orsay, veut qu'on lui présente la cartographie. Donne-moi trois points à lui montrer en priorité."
+    [ -z "$(fiches "$1")" ] || { echo "fiche créée dès la première apparition"; return 1; }
+}
+
+# Des personnes qui ne sont que des données, nommées deux fois : jamais de fiche.
+sc_personne_donnees() {
+    decor "$1"; armer "$1" "$1/travail/orsay"
+    printf 'matricule;nom;service;traitement\n1042;Jean Martin;Comptabilité;paie\n1077;Sophie Leroy;Accueil;badges\n1103;Karim Benali;Comptabilité;paie\n' > "$1/travail/orsay/extrait-rh.csv"
+    agent "$1/travail/orsay" "Dans extrait-rh.csv, Jean Martin, Sophie Leroy et Karim Benali sont les salariés dont les données passent par les traitements audités. Combien de traitements distincts les concernent ?"
+    [ -z "$(fiches "$1")" ] || { echo "fiche créée pour une personne qui n'est qu'une donnée"; return 1; }
+    ! grep -rqE 'Martin|Leroy|Benali' "$1/cairn/clients" || { echo "les noms des salariés sont entrés dans le cairn"; return 1; }
+}
+
+TOUS="ouverture pierre pierre_spontanee capture_non dossier_inconnu sans_memoire fin retour voix_absente relire entretien a_revoir retour_second observation personne_seconde personne_unique personne_donnees"
 [ -n "$CHOISIS" ] || CHOISIS=$TOUS
 
 # ---------------------------------------------------------------------------
